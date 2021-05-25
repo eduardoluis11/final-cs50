@@ -31,6 +31,11 @@ function Player:update(dt)
     elseif love.keyboard.isDown("right") then
         self.x = self.x + 210 * dt
     end
+
+    --[[ This will prevent the player from being able to jump right after falling of a ledge. --]]
+    if self.last.y ~= self.y then
+        self.canJump = false
+    end
 end	-- End of Player:update
 
 
@@ -53,3 +58,18 @@ function Player:collide(e, direction)
     end
 end
 
+--[[ This will call the checkResolve() function so that, if the player is on top of a throwable block, they will be able to stand on top of them (collision will be resolved). Otherwise, the player will be able to walk through the block (collision WON’T be resolved.)
+
+This will only apply to throwable blocks, not the walls nor the floors. --]]
+function Player:checkResolve(e, direction)
+    -- CHANGE “Box” TO “block” 
+    if e:is(Box) then
+        if direction == "bottom" then
+            return true
+        else
+            return false
+        end
+    end
+    return true
+end
+    

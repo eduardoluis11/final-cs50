@@ -105,19 +105,46 @@ wasHorizontallyAligned will check if the current instance of the entity and the 
 
 The height divided by 2 will also calculate the center of the sprite of the two entity instances that are touching each other (like the player and the wall.) The self:collide() function will prevent the player from falling through the floor.  
 
-The “else” statement below “wasHorizontallyAligned”  will let the player to fall through the floor until it reaches the center of the floor’s sprite.
---]]
+The “else” statement below “wasHorizontallyAligned”  will let the player to fall through the floor until it reaches the center of the floor’s 
+sprite.
+
+Now, I want to walk through the box. I don’t want the player to push the box. So, I will create a function called “checkResolve()”. If the 
+player and the box touch each other, they won’t push each other nor block each other, that is, the collision won’t be resolved.
+
+So, I will create 2 variables (a and b) to check if both objects call the checkResolve() function. If yes, then the object with the 
+highest strength will bloeck the weaker object (i.e. the wall will block the player.)
+
+If not, one of the objects will be able to walk through the other (i.e. the player will be able to walk through the box). However, if the
+former object (like the player) jumps on top of the 2nd object (like the block), they will be able to stay on top of the other object 
+(the player won’t fall through the block.) --]]
         if self:wasVerticallyAligned(e) then
             if self.x + self.width/2 < e.x + e.width/2 then
-        self:collide(e, "right")
+                local a = self:checkResolve(e, "right")
+                local b = e:checkResolve(self, "left")
+
+                if a and b then
+                    self:collide(e, "right")
+                end
             else
-        self:collide(e, "left")
+                local a = self:checkResolve(e, "left")
+                local b = e:checkResolve(self, "right")
+                if a and b then
+                    self:collide(e, "left")
+                end
             end
         elseif self:wasHorizontallyAligned(e) then
             if self.y + self.height/2 < e.y + e.height/2 then
-                self:collide(e, "bottom")
+                local a = self:checkResolve(e, "bottom")
+                local b = e:checkResolve(self, "top")
+                if a and b then
+                    self:collide(e, "bottom")
+                end
             else
-                self:collide(e, "top")
+                local a = self:checkResolve(e, "bottom")
+                local b = e:checkResolve(self, "top")
+                if a and b then
+                    self:collide(e, "top")
+                end
             end
         end
 
@@ -160,7 +187,7 @@ end
 are touching each other. Without this function, I will get a "nil" error when trying to call checkCollision
 from resolveCollision.
     
-Source of this code: https://sheepolution.com/learn/book/23 ]]
+Source of this code: https://sheepolution.com/learn/book/23 --]]
 function Entity:checkCollision(e)
     return self.x + self.width > e.x
     and self.x < e.x + e.width
@@ -188,4 +215,12 @@ end
 
 function Entity:wasHorizontallyAligned(e)
     return self.last.x < e.last.x + e.width and self.last.x + self.width > e.last.x
+end
+
+--[[ This is the checkResolve() function. This function will allow me to walk through throwable blocks, and let the player jump 
+and stay on top of these blocks/boxes.  
+
+Source: https://sheepolution.com/learn/book/24  --]]
+function Entity:checkResolve(e, direction)
+    return true
 end

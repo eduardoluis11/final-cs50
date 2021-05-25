@@ -1,0 +1,46 @@
+Sprites and backgrounds:
+
+
+1) Medieval pixel art asset FREE by Blackspire Studio:
+https://blackspirestudio.itch.io/medieval-pixel-art-asset-free
+
+2) Animated Pixel Character by Lil Cthulhu:
+https://lil-cthulhu.itch.io/animated-pixel-charackter
+
+3) Coins & Gems & Chests & Etc by greatdocbrown:
+https://greatdocbrown.itch.io/coins-gems-etc
+
+4) Free Dungeon Mini-Tileset by Raou:
+https://raou.itch.io/free-dungeon-mini-tileset
+
+5) 16x16 Dungeon Tileset by 0x72:
+https://0x72.itch.io/16x16-dungeon-tileset
+
+6) Cave Platformer Tileset [16x16][FREE] by RottingPixels:
+https://rottingpixels.itch.io/cave-platformer-tileset-16x16free
+
+7) Caverns Environment By ansimuz:
+https://ansimuz.itch.io/caverns-environment
+
+8) Kyrise's Free 16x16 RPG Icon Pack by Kyrise:
+https://kyrise.itch.io/kyrises-free-16x16-rpg-icon-pack
+
+9) Dungeon Platformer Tileset [16x16][FREE] by RottingPixels:
+https://rottingpixels.itch.io/platformer-dungeon-tileset
+
+
+
+
+==========================================================================0
+
+Code: 
+
+1) Sheepolution, Chapter 24 - Platformer
+https://sheepolution.com/learn/book/24
+
+2) Love2D documentation, how to get the space bar key:
+https://love2d.org/wiki/KeyConstant
+
+3) Sheepolution, Chapter 23 - Resolving collision
+https://sheepolution.com/learn/book/23
+
