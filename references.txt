@@ -35,12 +35,14 @@ https://rottingpixels.itch.io/platformer-dungeon-tileset
 
 Code: 
 
-1) Sheepolution, Chapter 24 - Platformer
+1) Sheepolution, Chapter 24 - Platformer:
 https://sheepolution.com/learn/book/24
 
 2) Love2D documentation, how to get the space bar key:
 https://love2d.org/wiki/KeyConstant
 
-3) Sheepolution, Chapter 23 - Resolving collision
+3) Sheepolution, Chapter 23 - Resolving collision:
 https://sheepolution.com/learn/book/23
 
+4) GitHub, classic.lua file:
+https://github.com/rxi/classic
