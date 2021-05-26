@@ -18,14 +18,23 @@ function love.load()
     require "block"
     require "wall"
     
+    -- This gets the chest.lua file.
+    require "chest"
+
 
     player = Player(100, 100)
     block = Block(400, 150)
+
+    --[[ This renders the chest at the specified location on the debug room. --]]
+    chest = Chest(200, 100)
+
 
     objects = {}
     table.insert(objects, player)
     table.insert(objects, block)
 
+    -- This inserts a chest into the “objects” table.
+    table.insert(objects, chest)
 
     -- This will create a table that creates the walls.
     walls = {}

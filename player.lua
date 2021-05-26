@@ -62,8 +62,18 @@ end
 
 This will only apply to throwable blocks, not the walls nor the floors. --]]
 function Player:checkResolve(e, direction)
-    -- CHANGE “Box” TO “block” 
     if e:is(Block) then
+        if direction == "bottom" then
+            return true
+        else
+            return false
+        end
+    --[[ I will add another condition so that the player will be unable to push around chests. It will only be able to jump on top 
+    of chests (just like with blocks.)
+
+    I WON’T use the “or” operator, because off behavior may occur if the player touches both a block and a chest at the same 
+    time (the chest may get pushed around.) --]]
+    elseif e:is(Chest) then
         if direction == "bottom" then
             return true
         else
