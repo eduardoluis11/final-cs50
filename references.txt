@@ -46,3 +46,6 @@ https://sheepolution.com/learn/book/23
 
 4) GitHub, classic.lua file:
 https://github.com/rxi/classic
+
+5) Sheepolution, Chapter 14 - Game: Shoot the enemy:
+https://sheepolution.com/learn/book/14
