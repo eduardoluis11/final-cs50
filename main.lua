@@ -7,6 +7,13 @@ Step 1: Adding gravity to the game world
 END OF COMMENT --]]
 --[[ Source of most of this code: https://sheepolution.com/learn/book/24 --]]
 
+--[[ This variable will allow me to travel to different rooms each time I enter through a door. Depending on the 
+number stored on this variable, a new room will be rendered when calling the “map” table. 
+
+The default room will be the test room which will be room 12 (room 0 will be the main hub.)
+--]]
+roomNumber = 12
+
 function love.load()
     -- "require classic" needs to be the 1st required file to prevent errors.
     Object = require "classic"
@@ -41,24 +48,42 @@ function love.load()
 
     --[[ This will render the walls, platforms, and floor of Room 1. However, I will have to make the left and right walls invisible. I don’t want the player to see the walls to the side of the room but I don’t want the player falling of to the side of the screen if they walk past the edges of the screen. 
 
-I don’t need a ceiling. --]]
+    I don’t need a ceiling. --]]
 
 
-    map = {
-        {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
-        {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
-        {1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
-        {1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
-        {1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
-        {1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
-        {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-        {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-    }
-
+    --[[ I will try to render different rooms by creating a variable that holds the room number. Depending on the number stored on the roomNumber variable, a different room will be rendered. So, each map table will be inside of an if statement. 
+    --]]
+    if roomNumber == 12 then
+        map = {
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
+            {1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
+            {1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
+            {1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
+            {1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+        }
+    elseif roomNumber == 1 then
+        map = {
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+        }
+    end
 
 --[[ This “for” loop will convert the above map into walls by converting the 1s into walls, and the 0s into empty space, and insert them into the “walls” table. --]]
     for i,v in ipairs(map) do
@@ -150,5 +175,18 @@ function love.keypressed(key)
     --[[ The key “space” will make the player to jump if they press the space bar. Source: https://love2d.org/wiki/KeyConstant  --]]
     if key == "space" then
         player:jump()
+    end
+
+    --[[ This will be done for DEBUGGING purposes: This will render a different room each time that the user touches the “d” key. The test room will be number 12, and the hub will be number 0. 
+    I added “love.load()” to reset the game to call once again the love.load() function and check which number is stores in roomNumber (source: https://sheepolution.com/learn/book/14). 
+    Depending on the number stored in that variable, a different room will be rendered. --]]
+    if key == "d" then
+        if roomNumber == 12 then
+            roomNumber = 1
+            love.load()
+        else
+            roomNumber = 12
+            love.load()
+        end
     end
 end
