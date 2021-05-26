@@ -15,16 +15,16 @@ function love.load()
     properties from entity.lua --]]
     require "entity"
     require "player"
-    require "box"
+    require "block"
     require "wall"
     
 
     player = Player(100, 100)
-    box = Box(400, 150)
+    block = Block(400, 150)
 
     objects = {}
     table.insert(objects, player)
-    table.insert(objects, box)
+    table.insert(objects, block)
 
 
     -- This will create a table that creates the walls.

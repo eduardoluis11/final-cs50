@@ -63,7 +63,7 @@ end
 This will only apply to throwable blocks, not the walls nor the floors. --]]
 function Player:checkResolve(e, direction)
     -- CHANGE “Box” TO “block” 
-    if e:is(Box) then
+    if e:is(Block) then
         if direction == "bottom" then
             return true
         else
