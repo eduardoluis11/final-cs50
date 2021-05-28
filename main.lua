@@ -1,192 +1,53 @@
--- TODO
 --[[ BEGINNING OF COMMENT
-Step 1: Adding gravity to the game world
-	In this step, I will render Room 1 without using its respective sprites yet, and I will add gravity so that the character will be able to fall after jumping.
-	I will use code similar to the one found in here: https://sheepolution.com/learn/book/24
+	This time, I will be using class.lua to create the classes (source: 
+    http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip  , 
+    which comes from https://cs50.harvard.edu/games/2018/weeks/1/ )
+	
+    I will redo my code by using Colton Ogden’s 2018 GD50 Game Dev’s class from Harvard.
+	
+    I will start by using Fifty Bird as the basis for my code (source: https://youtu.be/3IdOCxHGMIo ).
+	
+    First, I will put the floor and the background. For this, first I need to create main.lua, and add the love.load(), 
+    love.update(dt), and love.draw(dt) functions.
+	
+    And even before that, I want to add some constants in order to grab the resolution from Love2D’s game screen, which, 
+    by default, is 800x600 pixels (source: 
+    https://love2d.org/forums/viewtopic.php?t=8995#:~:text=Re%3A%20Default%20Screen%20Size&text=With%20no%20config%20file%20specifying,is%20the%201344x768%20widescreen%20variant. )
+	
+    So, my first 2 constants will be “VIRTUAL_WIDTH = 800” and “VIRTUAL_HEIGHT = 600”.
 
 END OF COMMENT --]]
---[[ Source of most of this code: https://sheepolution.com/learn/book/24 --]]
+VIRTUAL_WIDTH = 800
+VIRTUAL_HEIGHT = 600
 
---[[ This variable will allow me to travel to different rooms each time I enter through a door. Depending on the 
-number stored on this variable, a new room will be rendered when calling the “map” table. 
+--[[ BEGINNING OF COMMENT
+	These two local variables will contain the sprites for the floor and the background (source: https://youtu.be/3IdOCxHGMIo)
+END OF COMMENT --]]
+local floor = love.graphics.newImage('graphics/floor_room_1.png')
+local background = love.graphics.newImage('graphics/background_room_1.png')
 
-The default room will be the test room which will be room 12 (room 0 will be the main hub.)
---]]
-roomNumber = 12
-
+-- Here’s the love.load() function, which will load the variables.
 function love.load()
-    -- "require classic" needs to be the 1st required file to prevent errors.
-    Object = require "classic"
+	--[[ This will give a name to the window that runs my game (source: https://youtu.be/3IdOCxHGMIo )  --]]
+	love.window.setTitle('Final Project')
+end
 
-    --[[ "require entity" needs to be the 2nd required file to prevent errors. Most other files will take the
-    properties from entity.lua --]]
-    require "entity"
-    require "player"
-    require "block"
-    require "wall"
-    
-    -- This gets the chest.lua file.
-    require "chest"
-
-
-    player = Player(100, 100)
-    block = Block(400, 150)
-
-    --[[ This renders the chest at the specified location on the debug room. --]]
-    chest = Chest(200, 100)
-
-
-    objects = {}
-    table.insert(objects, player)
-    table.insert(objects, block)
-
-    -- This inserts a chest into the “objects” table.
-    table.insert(objects, chest)
-
-    -- This will create a table that creates the walls.
-    walls = {}
-
-    --[[ This will render the walls, platforms, and floor of Room 1. However, I will have to make the left and right walls invisible. I don’t want the player to see the walls to the side of the room but I don’t want the player falling of to the side of the screen if they walk past the edges of the screen. 
-
-    I don’t need a ceiling. --]]
-
-
-    --[[ I will try to render different rooms by creating a variable that holds the room number. Depending on the number stored on the roomNumber variable, a different room will be rendered. So, each map table will be inside of an if statement. 
-    --]]
-    if roomNumber == 12 then
-        map = {
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1},
-            {1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
-            {1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1},
-            {1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
-            {1,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-        }
-    elseif roomNumber == 1 then
-        map = {
-            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-        }
-    end
-
---[[ This “for” loop will convert the above map into walls by converting the 1s into walls, and the 0s into empty space, and insert them into the “walls” table. --]]
-    for i,v in ipairs(map) do
-        for j,w in ipairs(v) do
-            if w == 1 then
-	        -- I may need to change this later. 
-                -- This will add each wall into the “walls” table.
-                table.insert(walls, Wall((j-1)*50, (i-1)*50))
-            end
-        end
-    end
-end	-- End of the load() function.
-
-
--- update() function. This will make the game run if it gets executed.
-function love.update(dt)
-    for i,v in ipairs(objects) do
-        v:update(dt)
-    end
-    
-
-    -- This should render the walls.
-    for i,v in ipairs(walls) do
-        v:update(dt)
-    end
-
---[[ I will use these two variables to execute a “while” loop. “loop” will allow me to start the loop, and “limit” is the counter that will stop the loop once it reaches a value. --]]
-    local loop = true
-    local limit = 0
-
-    -- “while” loop.
-    while loop do
-
-	--[[ This will make the condition that started the “while” disappear, so that the loop stops once “limit” reaches the specified value. --]]
-        loop = false
-
-
-	--[[ Once this counter reaches 100, the “while” loop will stop. This will add 1 to the “limit” counter during each iteration. --]]
-        limit = limit + 1
-        if limit > 100 then
-            break
-        end
-
- --[[ This will add collision detection to the walls and floor. That is, if the player touches a wall or the floor, they will stop. --]]
-        for i=1,#objects-1 do
-            for j=i+1,#objects do
-                local collision = objects[i]:resolveCollision(objects[j])
-                if collision then
-                    loop = true
-                end
-            end
-        end
-
-
---[[ This will check any collision between each wall and each object --]]
-        for i,wall in ipairs(walls) do
-            for j,object in ipairs(objects) do
-                local collision = object:resolveCollision(wall)
-                if collision then
-                    loop = true
-                end
-            end
-        end
-    end
-end	-- End of update() function
-
-
-
--- draw() function. This will render all of the graphics
-
-function love.draw()
-
-    -- This will render every non-wall object
-    for i,v in ipairs(objects) do
-        v:draw()
-    end
-
-    -- This will render every wall (and floor tile)
-    for i,v in ipairs(walls) do
-        v:draw()
-    end
-end	-- End of the draw() function.
-
-
-
--- This function will make the player jump
+--[[ This will check if the user has pressed any keys on their keyboard (source: https://youtu.be/3IdOCxHGMIo) --]]
 function love.keypressed(key)
+	-- This will close the game if the user presses the escape key
+	if key == 'escape' then
+		love.event.quit()
+	end
+end
 
-    --[[ The key “space” will make the player to jump if they press the space bar. Source: https://love2d.org/wiki/KeyConstant  --]]
-    if key == "space" then
-        player:jump()
-    end
-
-    --[[ This will be done for DEBUGGING purposes: This will render a different room each time that the user touches the “d” key. The test room will be number 12, and the hub will be number 0. 
-    I added “love.load()” to reset the game to call once again the love.load() function and check which number is stores in roomNumber (source: https://sheepolution.com/learn/book/14). 
-    Depending on the number stored in that variable, a different room will be rendered. --]]
-    if key == "d" then
-        if roomNumber == 12 then
-            roomNumber = 1
-            love.load()
-        else
-            roomNumber = 12
-            love.load()
-        end
-    end
+-- This is the function that renders everything onscreen.
+function love.draw()
+	--[[ This will render the background and the floor. Since the background will be rendered from top to bottom, I will 
+    render it at the (0, 0) coordinates. 
+	
+    Meanwhile, since I want to render the floor at the bottom of the screen, I will help myself with the constant that stores 
+    the height of Love2D’s screen size. Then, I will subtract the height of the floor sprite from the screen height (which 
+    is 121 px). Source: https://youtu.be/3IdOCxHGMIo --]]
+	love.graphics.draw(background, 0, 0)
+	love.graphics.draw(floor, 0, VIRTUAL_HEIGHT - 121)
 end

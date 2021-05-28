@@ -44,8 +44,17 @@ https://love2d.org/wiki/KeyConstant
 3) Sheepolution, Chapter 23 - Resolving collision:
 https://sheepolution.com/learn/book/23
 
-4) GitHub, classic.lua file:
-https://github.com/rxi/classic
+
+4) Harvard, GD50, 2018 Lecture, Fifty Bird, class.lua file:
+http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip , 
+which comes from https://cs50.harvard.edu/games/2018/weeks/1/
+
 
 5) Sheepolution, Chapter 14 - Game: Shoot the enemy:
 https://sheepolution.com/learn/book/14
+
+
+
+
+*) IGNORE SINCE I ENDED UP NOT USING IT: GitHub, classic.lua file:
+https://github.com/rxi/classic
