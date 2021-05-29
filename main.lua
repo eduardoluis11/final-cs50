@@ -49,6 +49,17 @@ function love.keypressed(key)
 	end
 end
 
+--[[ This is the love.update() function, which will make changes on the “backend” of the game. That is, if I change sprites 
+or the rooms, I need ot first call this function, and then I will render it with love.draw().
+
+I use dt so that, if 2 computers can run the game at 60 FPS, that both computers can make the player run at 200 px/s horizontally. 
+That is, a faster computer won’t make the player run at 600 px/s. --]]
+function love.update(dt)
+	--[[ This will update any changes on the player’s script (before rendering them into player:render().) --]]
+	player:update(dt)
+end
+
+
 -- This is the function that renders everything onscreen.
 function love.draw()
 	--[[ This will render the background and the floor. Since the background will be rendered from top to bottom, I will 
