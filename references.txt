@@ -35,26 +35,40 @@ https://rottingpixels.itch.io/platformer-dungeon-tileset
 
 Code: 
 
-1) Sheepolution, Chapter 24 - Platformer:
-https://sheepolution.com/learn/book/24
+1) Flappy Bird - Lecture 1 - CS50's Introduction to Game Development 2018:
+https://youtu.be/3IdOCxHGMIo
+
 
 2) Love2D documentation, how to get the space bar key:
 https://love2d.org/wiki/KeyConstant
 
-3) Sheepolution, Chapter 23 - Resolving collision:
-https://sheepolution.com/learn/book/23
 
-
-4) Harvard, GD50, 2018 Lecture, Fifty Bird, class.lua file:
+3) Harvard, GD50, 2018 Lecture, Fifty Bird, class.lua file:
 http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip , 
 which comes from https://cs50.harvard.edu/games/2018/weeks/1/
 
 
-5) Sheepolution, Chapter 14 - Game: Shoot the enemy:
+
+
+=============================================================================
+
+OLD CODE:
+
+I had to do all of my code, so I may end up not using any of these tutorials nor
+any of this code.
+
+
+1*) Sheepolution, Chapter 24 - Platformer:
+https://sheepolution.com/learn/book/24
+
+2*) IGNORE SINCE I ENDED UP NOT USING IT: GitHub, classic.lua file:
+https://github.com/rxi/classic
+
+3*) Sheepolution, Chapter 23 - Resolving collision:
+https://sheepolution.com/learn/book/23
+
+4*) Sheepolution, Chapter 14 - Game: Shoot the enemy:
 https://sheepolution.com/learn/book/14
 
 
 
-
-*) IGNORE SINCE I ENDED UP NOT USING IT: GitHub, classic.lua file:
-https://github.com/rxi/classic

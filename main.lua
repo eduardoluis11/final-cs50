@@ -17,6 +17,12 @@
     So, my first 2 constants will be “VIRTUAL_WIDTH = 800” and “VIRTUAL_HEIGHT = 600”.
 
 END OF COMMENT --]]
+-- This will allow Lua to use classes
+Class = require 'class'
+
+-- Player’s script
+require 'Player'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
@@ -25,6 +31,9 @@ VIRTUAL_HEIGHT = 600
 END OF COMMENT --]]
 local floor = love.graphics.newImage('graphics/floor_room_1.png')
 local background = love.graphics.newImage('graphics/background_room_1.png')
+
+-- This variable will call the player script
+local player = Player()
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
@@ -50,4 +59,7 @@ function love.draw()
     is 121 px). Source: https://youtu.be/3IdOCxHGMIo --]]
 	love.graphics.draw(background, 0, 0)
 	love.graphics.draw(floor, 0, VIRTUAL_HEIGHT - 121)
+
+    --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
+	player:render()
 end
