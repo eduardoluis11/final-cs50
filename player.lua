@@ -35,6 +35,11 @@ function Player:update(dt)
 	-- This is the speed that the player will gain due to gravity
 	self.dy = self.dy + GRAVITY * dt
 
+	--[[ This makes the player jump. This is where the keysPressed table from main.lua is being used. --]]
+	if love.keyboard.wasPressed('space') then
+		self.dy = -6 
+	end
+	
 	--[[ This will make the player fall due to gravity (by updating his y coordinate) --]]
 	self.y = self.y + self.dy
 end

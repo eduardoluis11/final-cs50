@@ -39,13 +39,28 @@ local player = Player()
 function love.load()
 	--[[ This will give a name to the window that runs my game (source: https://youtu.be/3IdOCxHGMIo )  --]]
 	love.window.setTitle('Final Project')
+
+    -- This table will detect all of my previous inputs from the keyboard
+	love.keyboard.keysPressed = {}
 end
 
 --[[ This will check if the user has pressed any keys on their keyboard (source: https://youtu.be/3IdOCxHGMIo) --]]
 function love.keypressed(key)
+    --[[ This will keep track of all of my previous keystrokes on the keysPressed table --]]
+	love.keyboard.keysPressed[key] = true
+
 	-- This will close the game if the user presses the escape key
 	if key == 'escape' then
 		love.event.quit()
+	end
+end
+
+function love.keyboard.wasPressed(key)
+	--[[ This is a debugging function that will return true each time that the user presses a key on their keyboard --]]
+	if love.keyboard.keysPressed[key] then
+		return true
+	else
+		return false
 	end
 end
 
@@ -57,6 +72,10 @@ That is, a faster computer won’t make the player run at 600 px/s. --]]
 function love.update(dt)
 	--[[ This will update any changes on the player’s script (before rendering them into player:render().) --]]
 	player:update(dt)
+
+    --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
+    so that it becomes empty. --]]
+	love.keyboard.keysPressed = {}
 end
 
 
