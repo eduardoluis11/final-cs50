@@ -23,17 +23,29 @@ Class = require 'class'
 -- Player’s script
 require 'Player'
 
+-- Floor’s script
+require 'Floor'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
+
+--[[ This global variable will store the current room where the player currently is. Temporarily, for debugging 
+purposes, the current room will be Room 1. --]]
+currentRoom = 1
+
 
 --[[ BEGINNING OF COMMENT
 	These two local variables will contain the sprites for the floor and the background (source: https://youtu.be/3IdOCxHGMIo)
 END OF COMMENT --]]
-local floor = love.graphics.newImage('graphics/floor_room_1.png')
+-- I may DELETE this later, since the sprite will now be called from the Floor class.
+-- local floor = love.graphics.newImage('graphics/floor_room_1.png')
 local background = love.graphics.newImage('graphics/background_room_1.png')
 
 -- This variable will call the player script
 local player = Player()
+
+-- This will store my floors
+local floor = Floor()
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
@@ -73,6 +85,12 @@ function love.update(dt)
 	--[[ This will update any changes on the player’s script (before rendering them into player:render().) --]]
 	player:update(dt)
 
+	--[[ This will update the Floor class. This MAY GIVE ME AN ERROR, since I’m not storing my floors on a 
+	table, and I’m not rendering using “pairs” nor a “for” loop. 
+	
+	I HAVEN'T CREATED THE Floor:update() function yet--]]
+	-- floor:update(dt)
+
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
 	love.keyboard.keysPressed = {}
@@ -86,9 +104,14 @@ function love.draw()
 	
     Meanwhile, since I want to render the floor at the bottom of the screen, I will help myself with the constant that stores 
     the height of Love2D’s screen size. Then, I will subtract the height of the floor sprite from the screen height (which 
-    is 121 px). Source: https://youtu.be/3IdOCxHGMIo --]]
+    is 121 px). Source: https://youtu.be/3IdOCxHGMIo 
+	
+	I MAY DELETE THIS for the floor, since I will be using a class for the floor. --]]
 	love.graphics.draw(background, 0, 0)
-	love.graphics.draw(floor, 0, VIRTUAL_HEIGHT - 121)
+	-- love.graphics.draw(floor, 0, VIRTUAL_HEIGHT - 121)
+
+	-- This will render the floor
+	floor:render()
 
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
