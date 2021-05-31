@@ -91,6 +91,18 @@ function love.update(dt)
 	I HAVEN'T CREATED THE Floor:update() function yet--]]
 	-- floor:update(dt)
 
+	--[[ This will detect if there’s collision between the player and the floor. I will DELETE the debugging message later. 
+	
+	The playerCollision variable will keep track of whether or not the player hast touched the floor. --]]
+	if player:collides(floor) then
+		-- DELETE LATER
+		--print("There is collision")
+		playerCollision = true
+	else
+		playerCollision = false
+	end
+	
+
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
 	love.keyboard.keysPressed = {}

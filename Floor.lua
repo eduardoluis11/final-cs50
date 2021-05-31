@@ -27,6 +27,7 @@
       if currentRoom == 1 then
           self.x = 0
           self.width = FLOOR_IMAGE:getWidth()
+          self.height = FLOOR_IMAGE:getHeight()
       end
   end
   

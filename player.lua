@@ -30,6 +30,21 @@ function Player:init()
 	self.dy = 0
 end
 
+--[[ This will check collision between 2 bodies (source: https://youtu.be/3IdOCxHGMIo?t=5867 ). More specifically, 
+it will check collision between the player and the floor. 
+
+I’m not using a constant to get the width and the height of the floor (unlike Colton), so I will get the width and the height by 
+using getWidth() and getHeight() from Floor.lua. --]]
+function Player:collides(floor)
+	if self.x + self.width >= floor.x and self.x <= floor.x + floor.width then 
+		if self.y + self.height >= floor.y and self.y <= floor.y + floor.height then
+			return true
+		end
+	end
+	return false
+end
+
+
 --[[ This will make the player do any actions (run, throw blocks, fall due to gravity, etc) --]]
 function Player:update(dt)
 	-- This is the speed that the player will gain due to gravity
@@ -40,8 +55,19 @@ function Player:update(dt)
 		self.dy = -6 
 	end
 	
-	--[[ This will make the player fall due to gravity (by updating his y coordinate) --]]
-	self.y = self.y + self.dy
+	--[[ This will make the player fall due to gravity (by updating his y coordinate).
+	
+	I added an "if" statement that will check whether the player is in the air (be it from
+	jumping or by falling.) If the player is in the air, I will apply gravity to them.
+	
+	It works, but the player will sometimes get their feet deeper into the floor when junping too high. 
+	They can still jump, but it's still a bug. However, I would need a better collision detector  
+	to fix that, so I may leave that as is. 
+	
+	Now, I need to find a way to jump only once. Right now, I can jump infinitely. --]]
+	if playerCollision == false or love.keyboard.wasPressed('space') then
+		self.y = self.y + self.dy
+	end
 end
 
 -- This will render the player’s sprite onscreen
