@@ -34,13 +34,14 @@ end
 it will check collision between the player and the floor. 
 
 I’m not using a constant to get the width and the height of the floor (unlike Colton), so I will get the width and the height by 
-using getWidth() and getHeight() from Floor.lua. --]]
+using getWidth() and getHeight() from Floor.lua. 
+
+I don't need (for the time being) to check if I'm touching on the x axis the floor. --]]
 function Player:collides(floor)
-	if self.x + self.width >= floor.x and self.x <= floor.x + floor.width then 
-		if self.y + self.height >= floor.y and self.y <= floor.y + floor.height then
-			return true
-		end
+	if self.y + self.height >= floor.y and self.y <= floor.y + floor.height then
+		return true
 	end
+
 	return false
 end
 
