@@ -52,7 +52,7 @@ I will use a simplified code that will check if the player and the floor are tou
 need to check if they’re horizontally aligned, so I will only check if they touch each other on the y coordinates 
 (source: https://sheepolution.com/learn/book/23 )--]]
 function Player:collides(floor)
-	return self.y + self.height > floor.y and self.y < floor.y + floor.height
+	return self.last.y + self.height > floor.y and self.last.y < floor.y + floor.height
 end
 
 
@@ -93,11 +93,24 @@ function Player:update(dt)
 end
 
 --[[ This function will make it so that, if the player touches the floor (or a wall,) that they won’t clip 
-through the floor, since they will go back to their previous position (source: https://sheepolution.com/learn/book/23 .) ]]
+through the floor, since they will go back to their previous position (source: https://sheepolution.com/learn/book/23 .) 
+
+After further reading, it turns out that I shouldn’t return the player to their previous position (by using last{}). 
+Instead, I should create a variable which will subtract the distance in which the player falls through the floor. 
+
+This way, the player will only touch the floor, NOT fall through it (source: https://sheepolution.com/learn/book/23 )]]
 function Player:resolveCollision(floor)
     if self:collides(floor) then
-        self.x = self.last.x
-        self.y = self.last.y
+		if self.y + self.height/2 < floor.y + floor.height/2 then
+			local pushback = self.y + self.height - floor.y
+			self.y = self.y - pushback
+		end
+
+		-- local pushback = self.y + self.width - floor.y
+		-- self.y = self.y + pushback
+		
+		-- self.x = self.last.x
+		-- self.y = self.last.y
     end
 end
 
