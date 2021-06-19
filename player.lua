@@ -50,7 +50,9 @@ I NEED TO MODIFY THIS TO COMPARE THE CENTER OF THE FLOOR SPRITE AND OF THE PLAYE
 
 I will use a simplified code that will check if the player and the floor are touching each other. I technically don’t 
 need to check if they’re horizontally aligned, so I will only check if they touch each other on the y coordinates 
-(source: https://sheepolution.com/learn/book/23 )--]]
+(source: https://sheepolution.com/learn/book/23 )
+
+I changed the player's y position to "last.y" to get the previous y position from the last{} table. --]]
 function Player:collides(floor)
 	return self.last.y + self.height > floor.y and self.last.y < floor.y + floor.height
 end
@@ -98,7 +100,13 @@ through the floor, since they will go back to their previous position (source: h
 After further reading, it turns out that I shouldn’t return the player to their previous position (by using last{}). 
 Instead, I should create a variable which will subtract the distance in which the player falls through the floor. 
 
-This way, the player will only touch the floor, NOT fall through it (source: https://sheepolution.com/learn/book/23 )]]
+This way, the player will only touch the floor, NOT fall through it (source: https://sheepolution.com/learn/book/23 .)
+
+I will now check if the center of the player's sprite is higher than the center of the floor's sprite. If so, I will
+push the player upwards, so that they don't fall through the floor. After that, I subtract the player's height to the floor's 
+y coordinate, and push them upwards at exactly that distance so that the player's feet never fall through the floor.
+
+IT WORKS, but I suspect that the player will fall through the floor once their weight due to gravity becomes large enough.]]
 function Player:resolveCollision(floor)
     if self:collides(floor) then
 		if self.y + self.height/2 < floor.y + floor.height/2 then
@@ -106,7 +114,7 @@ function Player:resolveCollision(floor)
 			self.y = self.y - pushback
 		end
 
-		-- local pushback = self.y + self.width - floor.y
+		-- local pushback = self.y + self.height - floor.y
 		-- self.y = self.y + pushback
 		
 		-- self.x = self.last.x
