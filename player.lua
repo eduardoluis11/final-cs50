@@ -106,12 +106,16 @@ I will now check if the center of the player's sprite is higher than the center 
 push the player upwards, so that they don't fall through the floor. After that, I subtract the player's height to the floor's 
 y coordinate, and push them upwards at exactly that distance so that the player's feet never fall through the floor.
 
-IT WORKS, but I suspect that the player will fall through the floor once their weight due to gravity becomes large enough.]]
+IT WORKS, but the player will fall through the floor once their weight due to gravity becomes large enough.
+
+I added some code to reset the gravity back to 0 for the player if they touch the floor (source: 
+https://sheepolution.com/learn/book/24 ). In my case, “self.dy” stores the player’s weight due to gravity.  ]]
 function Player:resolveCollision(floor)
     if self:collides(floor) then
 		if self.y + self.height/2 < floor.y + floor.height/2 then
 			local pushback = self.y + self.height - floor.y
 			self.y = self.y - pushback
+			self.dy = 0
 		end
 
 		-- local pushback = self.y + self.height - floor.y
