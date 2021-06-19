@@ -28,6 +28,14 @@ function Player:init()
 	--[[ This is the player's initical vertical speed. If I don't initialize it here, I will get an error
 	once I try to apply gravity to the player. --]]
 	self.dy = 0
+
+	--[[ This will store the current position of the player into a table, and set 
+	it as their last position. I will use this to reset the player’s position once they collide with the floor so that 
+	they don’t clip through the floor (source: https://sheepolution.com/learn/book/23 ). ]]
+	self.last = {}
+	self.last.x = self.x
+	self.last.y = self.y
+
 end
 
 --[[ This will check collision between 2 bodies (source: https://youtu.be/3IdOCxHGMIo?t=5867 ). More specifically, 
@@ -36,13 +44,15 @@ it will check collision between the player and the floor.
 I’m not using a constant to get the width and the height of the floor (unlike Colton), so I will get the width and the height by 
 using getWidth() and getHeight() from Floor.lua. 
 
-I don't need (for the time being) to check if I'm touching on the x axis the floor. --]]
-function Player:collides(floor)
-	if self.y + self.height >= floor.y and self.y <= floor.y + floor.height then
-		return true
-	end
+I don't need (for the time being) to check if I'm touching on the x axis the floor. 
 
-	return false
+I NEED TO MODIFY THIS TO COMPARE THE CENTER OF THE FLOOR SPRITE AND OF THE PLAYER’S SPRITE TO USE RESOLVECOLLISION(). 
+
+I will use a simplified code that will check if the player and the floor are touching each other. I technically don’t 
+need to check if they’re horizontally aligned, so I will only check if they touch each other on the y coordinates 
+(source: https://sheepolution.com/learn/book/23 )--]]
+function Player:collides(floor)
+	return self.y + self.height > floor.y and self.y < floor.y + floor.height
 end
 
 
@@ -56,6 +66,12 @@ function Player:update(dt)
 		self.dy = -6 
 	end
 	
+	--[[ DEBUGGING CODE. This will make the player move downwards if the user presses the down arrow key
+	(source: https://sheepolution.com/learn/book/23 )]]
+    if love.keyboard.isDown("down") then
+        self.y = self.y + 200 * dt
+    end
+
 	--[[ This will make the player fall due to gravity (by updating his y coordinate).
 	
 	I added an "if" statement that will check whether the player is in the air (be it from
@@ -69,6 +85,20 @@ function Player:update(dt)
 	if playerCollision == false or love.keyboard.wasPressed('space') then
 		self.y = self.y + self.dy
 	end
+
+	--[[ This will store the previous position of the player into the last{} table (source: 
+	-- https://sheepolution.com/learn/book/23 ) ]]
+	self.last.x = self.x
+	self.last.y = self.y
+end
+
+--[[ This function will make it so that, if the player touches the floor (or a wall,) that they won’t clip 
+through the floor, since they will go back to their previous position (source: https://sheepolution.com/learn/book/23 .) ]]
+function Player:resolveCollision(floor)
+    if self:collides(floor) then
+        self.x = self.last.x
+        self.y = self.last.y
+    end
 end
 
 -- This will render the player’s sprite onscreen
