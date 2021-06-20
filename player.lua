@@ -36,6 +36,9 @@ function Player:init()
 	self.last.x = self.x
 	self.last.y = self.y
 
+	--[[ Initially, the player won’t be able to jump (source: https://sheepolution.com/learn/book/24 ). ]]
+	self.canJump = false
+
 end
 
 --[[ This will check collision between 2 bodies (source: https://youtu.be/3IdOCxHGMIo?t=5867 ). More specifically, 
@@ -63,16 +66,20 @@ function Player:update(dt)
 	-- This is the speed that the player will gain due to gravity
 	self.dy = self.dy + GRAVITY * dt
 
-	--[[ This makes the player jump. This is where the keysPressed table from main.lua is being used. --]]
-	if love.keyboard.wasPressed('space') then
-		self.dy = -6 
+	--[[ This makes the player jump. This is where the keysPressed table from main.lua is being used. 
+	
+	I will also prevent the player from jumping again mid-jump (source: https://sheepolution.com/learn/book/24 ).
+	I need to specify that, besides pressing the spacebar, you also need the canJump variable to be “true” to be able to jump. --]]
+	if love.keyboard.wasPressed('space') and self.canJump then
+		self.dy = -6
+		self.canJump = false 
 	end
 	
 	--[[ DEBUGGING CODE. This will make the player move downwards if the user presses the down arrow key
 	(source: https://sheepolution.com/learn/book/23 )]]
-    if love.keyboard.isDown("down") then
-        self.y = self.y + 200 * dt
-    end
+    -- if love.keyboard.isDown("down") then
+    --     self.y = self.y + 200 * dt
+    -- end
 
 	--[[ This will make the player fall due to gravity (by updating his y coordinate).
 	

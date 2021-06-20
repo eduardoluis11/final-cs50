@@ -96,11 +96,16 @@ function love.update(dt)
 
 	--[[ This will detect if there’s collision between the player and the floor. I will DELETE the debugging message later. 
 	
-	The playerCollision variable will keep track of whether or not the player hast touched the floor. --]]
+	The playerCollision variable will keep track of whether or not the player hast touched the floor. 
+	
+	I will add a variable called “canJump”, which will prevent the player from jumping infinitely. That is, the player will 
+	only be able to jump once they land on the floor (source: https://sheepolution.com/learn/book/24 ).--]]
 	if player:collides(floor) then
-		-- DELETE LATER
-		print("There is collision")
+		-- DEBUGGING MESSAGE. DELETE LATER
+		-- print("There is collision")
+
 		playerCollision = true
+		player.canJump = true
 		
 		--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
 		player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
