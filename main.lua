@@ -26,6 +26,9 @@ require 'Player'
 -- Floor’s script
 require 'Floor'
 
+-- Platform’s script
+require 'Platform'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
@@ -46,6 +49,9 @@ local player = Player()
 
 -- This will store my floors
 local floor = Floor()
+
+-- This will call the platform script
+local platform = Platform()
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
@@ -139,4 +145,8 @@ function love.draw()
 
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
+
+	-- This will render the platforms
+	platform:render()
+
 end
