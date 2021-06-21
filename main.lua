@@ -144,13 +144,14 @@ function love.draw()
 	love.graphics.draw(background, 0, 0)
 	-- love.graphics.draw(floor, 0, VIRTUAL_HEIGHT - 121)
 
+	--[[ This will render the platforms. I will render them 1st so that they are in a layer behind the player and the 
+	floor sprite. ]]
+	platform1:render()
+
 	-- This will render the floor
 	floor:render()
 
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
-
-	-- This will render the platforms
-	platform1:render()
 
 end
