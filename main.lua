@@ -57,8 +57,17 @@ For platform1, I will make it the tallest and furthermost platform. Since it’s
 211 to the width of the screen to locate it to the furthest part of the screen in the x axis.
 
 For the y axis, I need to subtract the height of the platform sprite nd of the floor sprite (121) from the 
-height of the screen.]]
-local platform1 = Platform(VIRTUAL_WIDTH - 211, VIRTUAL_HEIGHT - 240 - 121)
+height of the screen.
+
+Now, it's 600 px tall (as tall as the screen size.) So, I will manually adjust the height until I get the desired
+height.
+
+I want to show the tresure inside of the chest on the highest platform. So, I won't make the platform too tall.
+
+I use the “* 2” multiplier so that platforms 1 and 2 are touching each other horizontally.]]
+local platform1 = Platform(VIRTUAL_WIDTH - 211, VIRTUAL_HEIGHT - 490)
+
+local platform2 = Platform(VIRTUAL_WIDTH - (211 * 2), VIRTUAL_HEIGHT - 415)
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
@@ -147,6 +156,7 @@ function love.draw()
 	--[[ This will render the platforms. I will render them 1st so that they are in a layer behind the player and the 
 	floor sprite. ]]
 	platform1:render()
+	platform2:render()
 
 	-- This will render the floor
 	floor:render()
