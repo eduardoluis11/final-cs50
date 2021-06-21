@@ -51,8 +51,14 @@ local player = Player()
 local floor = Floor()
 
 --[[ This will call each instance of the platform script. I will assign its x and y coordinates to specify the 
-position of each platform I create. ]]
-local platform1 = Platform(200, 200)
+position of each platform I create. 
+
+For platform1, I will make it the tallest and furthermost platform. Since it’s width is of 211 px, I will subtract 
+211 to the width of the screen to locate it to the furthest part of the screen in the x axis.
+
+For the y axis, I need to subtract the height of the platform sprite nd of the floor sprite (121) from the 
+height of the screen.]]
+local platform1 = Platform(VIRTUAL_WIDTH - 211, VIRTUAL_HEIGHT - 240 - 121)
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
@@ -97,9 +103,6 @@ function love.update(dt)
 	
 	I HAVEN'T CREATED THE Floor:update() function yet--]]
 	-- floor:update(dt)
-
-
-
 
 	--[[ This will detect if there’s collision between the player and the floor. I will DELETE the debugging message later. 
 	
