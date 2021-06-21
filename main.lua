@@ -67,7 +67,8 @@ I want to show the tresure inside of the chest on the highest platform. So, I wo
 I use the “* 2” multiplier so that platforms 1 and 2 are touching each other horizontally.]]
 local platform1 = Platform(VIRTUAL_WIDTH - 211, VIRTUAL_HEIGHT - 490)
 
-local platform2 = Platform(VIRTUAL_WIDTH - (211 * 2), VIRTUAL_HEIGHT - 415)
+local platform2 = Platform(VIRTUAL_WIDTH - (211 * 2), VIRTUAL_HEIGHT - 420)
+local platform3 = Platform(VIRTUAL_WIDTH - (211 * 3), VIRTUAL_HEIGHT - 300)
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
@@ -157,6 +158,7 @@ function love.draw()
 	floor sprite. ]]
 	platform1:render()
 	platform2:render()
+	platform3:render()
 
 	-- This will render the floor
 	floor:render()
