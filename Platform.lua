@@ -4,10 +4,14 @@ It will work more or less like the Floor class. ]]
 Platform = Class{}
 
 --[[ For debugging purposes, I will first use a single image to render the 3 platforms in the 1st room. I will LATER 
-CHANGE this by reusing a single image 3 times in the 1st room to make my code more efficient. --]]
-local PLATFORM_IMAGE = love.graphics.newImage('graphics/platforms_room_1.png')
+CHANGE this by reusing a single image 3 times in the 1st room to make my code more efficient.
+
+Now, I will use the real base sprite for all of the platforms (1 image with 1 platform sprite.) 
+--]]
+local PLATFORM_IMAGE = love.graphics.newImage('graphics/platform.png')
 
 --[[ This will have the initial properties of the platforms.
+
 The x coordinate will change depending on the room, since some rooms will have 3 platforms, while others will have only 1.  
 The height will vary (since some platforms will be taller than others,) but the y coordinate will always be the same, since 
 all of the platforms will touch the floor at the same height in all of the rooms.
@@ -16,9 +20,21 @@ For the y coordinate, I will subtract the height of the floor times 2 to try to 
 (121 px * 2 = 242 px.) 
 
 However, due to the way that I edited the image with the 3 sprites in Photoshop, the height of the image for room 1 
-is 600px. Therefore, if I put “-600 + Virtual Height”, the platforms will render perfectly on top of the floor.--]]
-function Platform:init()
-	self.y = -600 + VIRTUAL_HEIGHT 
+is 600px. Therefore, if I put “-600 + Virtual Height”, the platforms will render perfectly on top of the floor.
+
+Now I’m using the real platform sprite, which is 150x150 px in size. Here in the init() function, I will be able to modify 
+the size of the sprite. 
+
+However, since I will use 3 different sizes, I will have to specify later the size of each platform that I want to spawn 
+by inserting parameters from the main.lua file.
+
+I will specify between the parentheses of the init() function the height and the width of the platform, which will be 
+taken from each time I instantiate a platform from main.lua.
+
+Self.y and self.x will take the value taken from the x and y coordinates that I specify at main.lua from each time 
+that I instantiate a platform.--]]
+function Platform:init(platform_width, platform_height)
+	self.y = platform_height
 
 	--[[ I will add 3 platforms in the 1st room. I need to find out how to change the size of the platforms within the same 
     room and in an efficient way. 
@@ -27,7 +43,7 @@ function Platform:init()
     
     For the image with the 3 platform sprites, the platforms render perfectly in plce at self.x = 0 px.    --]]
 	if currentRoom == 1 then
-        self.x = 0
+        self.x = platform_width
 		self.width = PLATFORM_IMAGE:getWidth()
 		self.height = PLATFORM_IMAGE:getHeight()
 	end

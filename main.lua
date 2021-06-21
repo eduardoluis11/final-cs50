@@ -50,8 +50,9 @@ local player = Player()
 -- This will store my floors
 local floor = Floor()
 
--- This will call the platform script
-local platform = Platform()
+--[[ This will call each instance of the platform script. I will assign its x and y coordinates to specify the 
+position of each platform I create. ]]
+local platform1 = Platform(200, 200)
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
@@ -147,6 +148,6 @@ function love.draw()
 	player:render()
 
 	-- This will render the platforms
-	platform:render()
+	platform1:render()
 
 end
