@@ -81,6 +81,13 @@ function Player:update(dt)
     --     self.y = self.y + 200 * dt
     -- end
 
+	--[[ This will make the player move left or right by pressing the arrow keys. ]]
+	if love.keyboard.isDown("left") then
+        self.x = self.x - 200 * dt
+	elseif love.keyboard.isDown("right") then
+		self.x = self.x + 200 * dt
+    end
+
 	--[[ This will make the player fall due to gravity (by updating his y coordinate).
 	
 	I added an "if" statement that will check whether the player is in the air (be it from
