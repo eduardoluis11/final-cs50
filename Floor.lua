@@ -15,7 +15,7 @@
   I put the negative 121 pixels before adding the constant with the virtual height because, otherwise, 
   I would get an error message. --]]
   function Floor:init()
-      self.y = -121 + VIRTUAL_HEIGHT
+      self.y = -80 + VIRTUAL_HEIGHT
   
       --[[ I have mixed feelings about adding the initial width of the floor here. Sure, I need to have the initial 
       width somewhere. However, as I sad, some rooms will have the floor narrower than others. 

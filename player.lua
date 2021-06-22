@@ -11,7 +11,7 @@ END OF COMMENT --]]
 Player = Class{}
 
 -- This adds the value for gravity
-local GRAVITY = 21
+local GRAVITY = 19
 
 -- Initializing function, which will contain many of the properties of the main character’s class.
 function Player:init()
@@ -83,9 +83,9 @@ function Player:update(dt)
 
 	--[[ This will make the player move left or right by pressing the arrow keys. ]]
 	if love.keyboard.isDown("left") then
-        self.x = self.x - 200 * dt
+        self.x = self.x - 260 * dt
 	elseif love.keyboard.isDown("right") then
-		self.x = self.x + 200 * dt
+		self.x = self.x + 260 * dt
     end
 
 	--[[ This will make the player fall due to gravity (by updating his y coordinate).
