@@ -67,8 +67,8 @@ I want to show the tresure inside of the chest on the highest platform. So, I wo
 I use the “* 2” multiplier so that platforms 1 and 2 are touching each other horizontally.]]
 local platform1 = Platform(VIRTUAL_WIDTH - 141, VIRTUAL_HEIGHT - 430)
 
-local platform2 = Platform(VIRTUAL_WIDTH - (141 * 2), VIRTUAL_HEIGHT - 400)
-local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3), VIRTUAL_HEIGHT - 260)
+local platform2 = Platform(VIRTUAL_WIDTH - (141 * 2) - 20, VIRTUAL_HEIGHT - 400)
+local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 260)
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
