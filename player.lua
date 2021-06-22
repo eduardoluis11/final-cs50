@@ -55,9 +55,20 @@ I will use a simplified code that will check if the player and the floor are tou
 need to check if they’re horizontally aligned, so I will only check if they touch each other on the y coordinates 
 (source: https://sheepolution.com/learn/book/23 )
 
-I changed the player's y position to "last.y" to get the previous y position from the last{} table. --]]
-function Player:collides(floor)
-	return self.last.y + self.height > floor.y and self.last.y < floor.y + floor.height
+I changed the player's y position to "last.y" to get the previous y position from the last{} table. 
+
+Since I want to have the same collision detection on the platforms as in the floor, I will change “floor” by a 
+generic variable.
+
+I think I need to check for collision detection on the x axis as well so that the game checks that I’m both vertically 
+and horizontally aligned to the floor or the platform before pushing me back upwards so that I don’t fall through 
+the floor/platform, but I don’t float in the air either. Without checking collision on the x axis, the character will 
+float if it’s at the same height as any of the platforms.--]]
+function Player:collides(e)
+	return self.last.y + self.height > e.y 
+	and self.last.y < e.y + e.height
+	and self.last.x + self.width > e.x
+	and self.last.x < e.x + e.width
 end
 
 
@@ -123,11 +134,13 @@ y coordinate, and push them upwards at exactly that distance so that the player'
 IT WORKS, but the player will fall through the floor once their weight due to gravity becomes large enough.
 
 I added some code to reset the gravity back to 0 for the player if they touch the floor (source: 
-https://sheepolution.com/learn/book/24 ). In my case, “self.dy” stores the player’s weight due to gravity.  ]]
-function Player:resolveCollision(floor)
-    if self:collides(floor) then
-		if self.y + self.height/2 < floor.y + floor.height/2 then
-			local pushback = self.y + self.height - floor.y
+https://sheepolution.com/learn/book/24 ). In my case, “self.dy” stores the player’s weight due to gravity.
+
+I will change “floor” by a generic variable to let the player land on both the floor and the platforms.]]
+function Player:resolveCollision(e)
+    if self:collides(e) then
+		if self.y + self.height/2 < e.y + e.height/2 then
+			local pushback = self.y + self.height - e.y
 			self.y = self.y - pushback
 			self.dy = 0
 		end

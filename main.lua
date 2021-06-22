@@ -70,6 +70,16 @@ local platform1 = Platform(VIRTUAL_WIDTH - 141, VIRTUAL_HEIGHT - 430)
 local platform2 = Platform(VIRTUAL_WIDTH - (141 * 2) - 20, VIRTUAL_HEIGHT - 400)
 local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 260)
 
+--[[ I will create a table where I will store every sprite or object that’s not the player. This will be called in a 
+“for” loop so that I can check collision for the floor and all of the platforms (so that I can reuse the collides() 
+and resolveCollision() functions efficiently) (source: https://sheepolution.com/learn/book/23 .) ]]
+objects = {}
+table.insert(objects, floor)
+table.insert(objects, platform1)
+table.insert(objects, platform2)
+table.insert(objects, platform3)
+
+
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
 	--[[ This will give a name to the window that runs my game (source: https://youtu.be/3IdOCxHGMIo )  --]]
@@ -119,21 +129,34 @@ function love.update(dt)
 	The playerCollision variable will keep track of whether or not the player hast touched the floor. 
 	
 	I will add a variable called “canJump”, which will prevent the player from jumping infinitely. That is, the player will 
-	only be able to jump once they land on the floor (source: https://sheepolution.com/learn/book/24 ).--]]
-	if player:collides(floor) then
-		-- DEBUGGING MESSAGE. DELETE LATER
-		-- print("There is collision")
-
-		playerCollision = true
-		player.canJump = true
-		
-		--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
-		player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
-		player:resolveCollision(floor)
-	else
-		playerCollision = false
-	end
+	only be able to jump once they land on the floor (source: https://sheepolution.com/learn/book/24 ).
 	
+	Now, since I also want the platforms to have the same collision detection as the floor, I will use a generic 
+	variable (“e”) instead of “floor” in both collides() and in resolveCollision().
+	
+	I will use a “for” loop for both the resolveCollision() and the collides() function. This way, I will be able to use 
+	a generic variable to check if the player is colliding against any object (like the floor or any of the platforms) 
+	instead of manually checking collision for the floor and every platform separately (source: 
+	https://sheepolution.com/learn/book/23 .)
+	
+	Since I can only use (key, value) pairs for “for” loops in Lua (as far as I’m aware), I need to specify where does 
+	the loop begin and where does it end. So, I will begin at 1, and end it at the last object (source: 
+	https://sheepolution.com/learn/book/23 .)--]]
+	for i=1,#objects do
+		if player:collides(objects[i]) then
+			-- DEBUGGING MESSAGE. DELETE LATER
+			-- print("There is collision")
+
+			playerCollision = true
+			player.canJump = true
+			
+			--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
+			player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
+			player:resolveCollision(objects[i])
+		else
+			playerCollision = false
+		end
+	end -- End of "for" loop
 
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
