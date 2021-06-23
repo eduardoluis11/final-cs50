@@ -119,6 +119,16 @@ function Player:update(dt)
 	self.last.y = self.y
 end
 
+--[[ Besides the standard collision detection, I will also detect if the player and the object are one on top of the 
+other, or in other words, if they have the same x coordinate (source: https://sheepolution.com/learn/book/23 ). 
+This could also be called that they are horizontally aligned.
+
+This will prevent the player from appearing on top of a platform if they walk below a platform.  ]]
+function Player:sameHorizontalPosition(e)
+    return self.last.x < e.x + e.width and self.last.x + self.width > e.x
+end
+
+
 --[[ This function will make it so that, if the player touches the floor (or a wall,) that they won’t clip 
 through the floor, since they will go back to their previous position (source: https://sheepolution.com/learn/book/23 .) 
 
@@ -136,20 +146,40 @@ IT WORKS, but the player will fall through the floor once their weight due to gr
 I added some code to reset the gravity back to 0 for the player if they touch the floor (source: 
 https://sheepolution.com/learn/book/24 ). In my case, “self.dy” stores the player’s weight due to gravity.
 
-I will change “floor” by a generic variable to let the player land on both the floor and the platforms.]]
+I will change “floor” by a generic variable to let the player land on both the floor and the platforms.
+
+I will add an extra condition to resolveCollision(): to check if the player and the object are in the same horizontal 
+position (source: https://sheepolution.com/learn/book/23 ). This way, the player won’t spawn on top of a platform if 
+they walk below the platforms.
+
+I was able to more or less fix the bug where the player was spawning on top of the platforms if they walked below them
+by changing "e.height/2" by "e.height/10" (or a smaller number). This is because the platform sprite is very tall, so 
+the player was never walking below the vertical center of the platforms' sprites.  
+
+In the end, I had to cut the platform sprite into 2 parts: the top part (the red rectangle), and the bottom blue base.
+The top part will have collision detection. 
+
+I will make my character to be pushed downwards if they jump below the platform. This will prevent the player 
+from going to the top of platforms 1 and 2 if I jump high enough from below, and will prevnt the player from
+getting stuck below platform 3 if they jump below it.]]
 function Player:resolveCollision(e)
     if self:collides(e) then
-		if self.y + self.height/2 < e.y + e.height/2 then
-			local pushback = self.y + self.height - e.y
-			self.y = self.y - pushback
-			self.dy = 0
-		end
+		if self:sameHorizontalPosition(e) then
+			if self.y + self.height/2 < e.y + e.height/2 then
+				local pushback = self.y + self.height - e.y
+				self.y = self.y - pushback
+				self.dy = 0
+			else
+                local pushback = e.y + e.height - self.y
+                self.y = self.y + pushback
+			end
 
-		-- local pushback = self.y + self.height - floor.y
-		-- self.y = self.y + pushback
-		
-		-- self.x = self.last.x
-		-- self.y = self.last.y
+			-- local pushback = self.y + self.height - floor.y
+			-- self.y = self.y + pushback
+			
+			-- self.x = self.last.x
+			-- self.y = self.last.y
+		end
     end
 end
 

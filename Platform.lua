@@ -6,9 +6,12 @@ Platform = Class{}
 --[[ For debugging purposes, I will first use a single image to render the 3 platforms in the 1st room. I will LATER 
 CHANGE this by reusing a single image 3 times in the 1st room to make my code more efficient.
 
-Now, I will use the real base sprite for all of the platforms (1 image with 1 platform sprite.) 
+Now, I will use the real base sprite for all of the platforms (1 image with 1 platform sprite.)
+
+I will first only render the top part of the platforms, since they are the sprites which will have collision detection.
+The bottom part will be used only for decoration.
 --]]
-local PLATFORM_IMAGE = love.graphics.newImage('graphics/platform.png')
+local PLATFORM_IMAGE = love.graphics.newImage('graphics/platform-top.png')
 
 --[[ This will have the initial properties of the platforms.
 
