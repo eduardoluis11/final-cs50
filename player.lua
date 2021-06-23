@@ -128,6 +128,15 @@ function Player:sameHorizontalPosition(e)
     return self.last.x < e.x + e.width and self.last.x + self.width > e.x
 end
 
+--[[ For the time being, I WON'T check for horizontal collision detection, because, otherwise, my character will clip
+through the floor.
+
+I would have to create a different collision detection that is entirely separate for the floor. However, I don't need
+that urgently for the time being.]]
+-- function Player:sameVerticalPosition(e)
+--     return self.last.y < e.y + e.height and self.last.y + self.height > e.y
+-- end
+
 
 --[[ This function will make it so that, if the player touches the floor (or a wall,) that they won’t clip 
 through the floor, since they will go back to their previous position (source: https://sheepolution.com/learn/book/23 .) 
@@ -161,7 +170,7 @@ The top part will have collision detection.
 
 I will make my character to be pushed downwards if they jump below the platform. This will prevent the player 
 from going to the top of platforms 1 and 2 if I jump high enough from below, and will prevnt the player from
-getting stuck below platform 3 if they jump below it.]]
+getting stuck below platform 3 if they jump below it (source: https://sheepolution.com/learn/book/23).]]
 function Player:resolveCollision(e)
     if self:collides(e) then
 		if self:sameHorizontalPosition(e) then

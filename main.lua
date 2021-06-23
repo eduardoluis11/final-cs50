@@ -29,6 +29,9 @@ require 'Floor'
 -- Platform’s script
 require 'Platform'
 
+-- Chest’s script
+require 'Chest'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
@@ -67,8 +70,11 @@ I want to show the tresure inside of the chest on the highest platform. So, I wo
 I use the “* 2” multiplier so that platforms 1 and 2 are touching each other horizontally.]]
 local platform1 = Platform(VIRTUAL_WIDTH - 141, VIRTUAL_HEIGHT - 430)
 
-local platform2 = Platform(VIRTUAL_WIDTH - (141 * 2) - 20, VIRTUAL_HEIGHT - 400)
-local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 260)
+local platform2 = Platform(VIRTUAL_WIDTH - (141 * 2) - 20, VIRTUAL_HEIGHT - 350)
+local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 270)
+
+--[[ This will create each instance of the chests. I need to specify their x and y coordinates in here as parameters. ]]
+local chest1 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 
 --[[ I will create a table where I will store every sprite or object that’s not the player. This will be called in a 
 “for” loop so that I can check collision for the floor and all of the platforms (so that I can reuse the collides() 
@@ -185,6 +191,9 @@ function love.draw()
 
 	-- This will render the floor
 	floor:render()
+
+	-- This will render the chests
+	chest1:render()
 
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()

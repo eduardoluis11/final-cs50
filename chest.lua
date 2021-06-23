@@ -1,17 +1,31 @@
---[[ BEGINNING COMMENT
-Step 2: Adding the chests with treasure
+--[[ This script handles the treasure chests. Each of the 5 main rooms will have a chest with a different treasure on it. The player will need to find the game’s 5 treasures to beat the game. ]]
+-- This creates the class for the chest
+Chest = Class{}
 
-	I need to create this script in order to create chests, add their sprites, and be able to open them.
-	It will be another subclass from the Entity base class, so that they don’t clip through the floor, and to be able to render their sprites without having to reuse code (among other things).
-	I need to add a button (like “Z” or “X”) to open them.
-	I will need to call this script from main.lua via a “require”.
-	I also need to specify that the chests will be a subclass from the Entity base class using “extend”. 
-END OF COMMENT --]]
+-- This stores the closed chest sprite
+local CHEST_IMAGE = love.graphics.newImage('graphics/chest-closed.png')
 
--- This gets the properties from Entity, and transfers it to the chest.
-Chest = Entity:extend()
+--[[ This will have the initial properties of the chest.
 
---[[ This creates a new instance of chest. --]]
-function Chest:new(x, y)
-    Chest.super.new(self, x, y, "graphics/chest-closed.png")
+Since most of the chests will have different positions, I need to specify the x and y coordinates of each chest from main.lua 
+for each time that I instantiate a chest. 
+
+The height and width of all chests will be the same, so there’s no point in obtaining the width and height of each chest 
+inside of an “if” statement. ]]
+function Chest:init(chest_x, chest_y)
+	self.width = CHEST_IMAGE:getWidth()
+	self.height = CHEST_IMAGE:getHeight()
+
+	--[[ The position of each chest will be rendered depending on the room where the player is currently located. ]]
+	if currentRoom == 1 then
+		self.y = chest_y 
+		self.x = chest_x
+	end
+end
+
+--[[ I will add the update() function later to make the chest to change from being closed to being opened. --]]
+
+-- This will render the chest sprite
+function Chest:render()
+	love.graphics.draw(CHEST_IMAGE, self.x, self.y)
 end
