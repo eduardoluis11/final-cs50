@@ -42,6 +42,10 @@ currentRoom = 1
 --[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one. ]]
 closedChest = true
 
+--[[ This variable will check if the user is touching the treasure chests, so that they will be able to open 
+the chest only if they are touching them. ]]
+canOpenChest = false
+
 --[[ BEGINNING OF COMMENT
 	These two local variables will contain the sprites for the floor and the background (source: https://youtu.be/3IdOCxHGMIo)
 END OF COMMENT --]]
@@ -165,6 +169,16 @@ function love.update(dt)
 			playerCollision = false
 		end
 	end -- End of "for" loop
+
+	--[[ This will check if the user is touching a treasure chest.
+	
+	It seems that I will have to call this function 5 times (one for each instance of the Chest{} class.)
+		
+	Or I could to a separate table (something like chestList{}), and then I would use a "for" loop to see
+	if I'm touching any of the 5 chests without needing to call this function 5 times.]]
+	if player:collides(chest1) then
+		canOpenChest = true
+	end	
 
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
