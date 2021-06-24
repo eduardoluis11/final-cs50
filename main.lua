@@ -39,6 +39,8 @@ VIRTUAL_HEIGHT = 600
 purposes, the current room will be Room 1. --]]
 currentRoom = 1
 
+--[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one. ]]
+closedChest = true
 
 --[[ BEGINNING OF COMMENT
 	These two local variables will contain the sprites for the floor and the background (source: https://youtu.be/3IdOCxHGMIo)
