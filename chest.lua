@@ -33,7 +33,8 @@ end
 
 To be able to change the chest from closed to open, I will render the closed chest on a layer on top of the opened 
 chest sprite. Then, I will create a variable that will store whether the chest should be opened or closed, and use an 
-“if” statement to tell the game whether to show or remove the closed chest sprite.
+“if” statement to tell the game whether to show or remove the closed chest sprite (source: 
+https://youtu.be/F86edI_EF3s).
 
 If that variable says that the chest should be closed (by default), the chest will remain closed. Otherwise, the closed 
 chest sprite will disappear, and will reveal the opened chest sprite underneath it.
@@ -41,11 +42,14 @@ chest sprite will disappear, and will reveal the opened chest sprite underneath 
 I will render the closed chest on top of the opened chest sprite.
 
 In the end, I decided just to use an "else" statement to render the opened chest if the closedChest variable is equal
-to "false". ]]
+to "false".
+
+I decided to subtract 23 px to the height of the opened chest so that it doesn't clip through the floor (23 px is the 
+height difference between the closed and opened chest sprites).]]
 function Chest:render()
 	if closedChest == true then
 		love.graphics.draw(CLOSED_CHEST_IMAGE, self.x, self.y)
 	else
-		love.graphics.draw(OPENED_CHEST_IMAGE, self.x, self.y)
+		love.graphics.draw(OPENED_CHEST_IMAGE, self.x, self.y - 23)
 	end
 end

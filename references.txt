@@ -53,6 +53,9 @@ https://sheepolution.com/learn/book/24
 5) Sheepolution, Chapter 23 - Resolving collision:
 https://sheepolution.com/learn/book/23
 
+6) Breakout - Lecture 2 - CS50's Introduction to Game Development 2018
+https://youtu.be/F86edI_EF3s
+
 
 
 
