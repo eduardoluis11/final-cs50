@@ -32,6 +32,9 @@ require 'Platform'
 -- Chest’s script
 require 'Chest'
 
+-- Treasure’s script
+require 'Treasure'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
@@ -81,6 +84,13 @@ local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 270)
 
 --[[ This will create each instance of the chests. I need to specify their x and y coordinates in here as parameters. ]]
 local chest1 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
+
+--[[ I will call the instances of the treasures here rather than on chest.lua. I will have to repeat the x and y 
+coordinates of the chest for their corresponding treasures, but, right now, I don’t know a more efficient way of doing this.
+
+In the treasure.lua script, I’m already subtracting a number of pixels to the y coordinate to put the treasure above its 
+respective chest, so I don’t need to modify the y coordinate in here. ]]
+local treasure1 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 
 --[[ I will create a table where I will store every sprite or object that’s not the player. This will be called in a 
 “for” loop so that I can check collision for the floor and all of the platforms (so that I can reuse the collides() 
@@ -210,6 +220,9 @@ function love.draw()
 
 	-- This will render the chests
 	chest1:render()
+
+	-- This will render the treasures
+	treasure1:render()
 
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
