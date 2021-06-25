@@ -93,6 +93,7 @@ function Player:update(dt)
 	if love.keyboard.wasPressed('e') then
 		if canOpenChest == true then
 			closedChest = false
+			timerOn = true
 		end
 	end
 	

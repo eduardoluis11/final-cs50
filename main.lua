@@ -49,6 +49,11 @@ closedChest = true
 the chest only if they are touching them. ]]
 canOpenChest = false
 
+--[[ This variable will tell a timer when to start running and when to stop. I will use the timer to make a treasure 
+disappear after a few seconds of spawning on top of a chest after opening the chest. ]]
+timerOn = false
+
+
 --[[ BEGINNING OF COMMENT
 	These two local variables will contain the sprites for the floor and the background (source: https://youtu.be/3IdOCxHGMIo)
 END OF COMMENT --]]
@@ -139,6 +144,10 @@ That is, a faster computer won’t make the player run at 600 px/s. --]]
 function love.update(dt)
 	--[[ This will update any changes on the player’s script (before rendering them into player:render().) --]]
 	player:update(dt)
+
+	--[[ This will update the treasure so that it appears for only a few seconds after opening a chest, and then
+	disappears.]]
+	treasure1:update(dt)
 
 	--[[ This will update the Floor class. This MAY GIVE ME AN ERROR, since I’m not storing my floors on a 
 	table, and I’m not rendering using “pairs” nor a “for” loop. 

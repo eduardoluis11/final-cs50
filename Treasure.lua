@@ -28,18 +28,46 @@ function Treasure:init(treasure_x, treasure_y)
 
     self.y = treasure_y - 80
     self.x = treasure_x + 20
+
+    -- I need to start the timer at 0 here, or else the timer will have a nil value, and I'll get an error message.
+    self.timer = 0
 end
 
---[[ I will add the update() function later to make each treasure disappear after a few seconds of appearing (that is, 
-after a few seconds of opening a chest). --]]
+--[[ The update() function will make each treasure disappear after a few seconds of appearing (that is, after a few seconds 
+of opening a chest). 
 
+To do this, I will start running the timer here, and I will stop it after reaching, for instance, 5 seconds. 
+
+I will start the timer at 0. Otherwise, it will start at a NULL value, and I’ll get errors.
+
+Then, if the timer is activated from the timerOn variable, I will start running the timer.
+
+Finally, if I reach a certain number of seconds (like 5), I will deactivate the 
+timer, and reset it back to 0.
+
+I need to add "dt" as a parameter inside of the parenthesis, or the dt value will be nil, and I won't be able
+to add every second of the timer and I'll get an error message.
+--]]
+function Treasure:update(dt)
+    if timerOn == true and self.timer < 3 then
+        self.timer = self.timer + dt
+        --print("The timer is on.")   -- DEBUGGING MESSAGE. DELETE LATER.
+    else
+        timerOn = false
+        self.timer = 0
+    end
+end
+    
 --[[ This will render each treasure sprite.
 
 The treasures will only be rendered when the sprite of the opened treasure chest is rendered.
 
-Here is where I need to specify the room number to decide which treasure to render. ]]
+Here is where I need to specify the room number to decide which treasure to render. 
+
+I will also only render the treasure for a few seconds, and then make it disappear. To make that, I will make the 
+treasure to only render if the timer is running, that is, if I’m not at the 0th second. ]]
 function Treasure:render()
-	if currentRoom == 1 then
+    if currentRoom == 1 and timerOn == true then
         if closedChest == false then
             love.graphics.draw(TREASURE_1_IMAGE, self.x, self.y)
         end
