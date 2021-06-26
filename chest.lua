@@ -6,7 +6,8 @@ Chest = Class{}
 local CLOSED_CHEST_IMAGE = love.graphics.newImage('graphics/chest-closed.png')
 local OPENED_CHEST_IMAGE = love.graphics.newImage('graphics/chest-opened.png')
 
---[[ DEBUGGING CODE: Thsi will contain the sprites for the 5 treasures to compare their sizes to the chest sprites.
+--[[ DEBUGGING CODE: This will contain the sprites for the 5 treasures and of the treasure bubble to compare their 
+sizes to the chest sprites.
 
 DELETE LATER. ]]
 local TREASURE_1_IMAGE = love.graphics.newImage('graphics/treasures/bronze-ring.png')
@@ -14,6 +15,8 @@ local TREASURE_2_IMAGE = love.graphics.newImage('graphics/treasures/bronze-armor
 local TREASURE_3_IMAGE = love.graphics.newImage('graphics/treasures/ruby.png')
 local TREASURE_4_IMAGE = love.graphics.newImage('graphics/treasures/gold-ingot.png')
 local TREASURE_5_IMAGE = love.graphics.newImage('graphics/treasures/diamond.png')
+
+local BUBBLE_IMAGE = love.graphics.newImage('graphics/treasure-bubble-empty.png')
 
 --[[ This will have the initial properties of the chest.
 
@@ -63,8 +66,12 @@ function Chest:render()
 	end
 
 	--[[ DEBUGGING CODE. I will render the treasures to see their sizes compared to the size of the chest sprites.
+
+	Also, I will render the treasure UI bubble to see if I need to modify the size of the sprite.
 	
 	DELETE LATER.
 	]]
+	love.graphics.draw(BUBBLE_IMAGE, self.x + 5, self.y - 90)
+
 	-- love.graphics.draw(TREASURE_5_IMAGE, self.x + 20, self.y - 50)
 end
