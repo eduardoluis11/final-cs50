@@ -58,14 +58,17 @@ I will modify the "self.closedChest" to "true" so that only the current instance
 in the Chest:render() function (that is, so that the rest of the chest remain closed if I only open 1 chest.)
 	
 I may remove the "timerOn" variable from here since, right now, it's a global variable, and it's affecting ALL instances
-of the chest{} class (that is, the timer is affecting ALL the chests at the same time). --]]
-function Chest:update(isChestOpen)
+of the chest{} class (that is, the timer is affecting ALL the chests at the same time).
+
+I had an error that I had to fix. The parameter inside of chest:update() doesn’t tell me if the chest is open. 
+It tells me if the player is touching the chest. So, I will rename the parameter “isTouchingChest”.--]]
+function Chest:update(isTouchingChest)
 	--[[ This will make the user open a chest by pressing the “E” key.
 	
 	I will add an extra variable to check whether the player is colliding with the chest. This way, I’ll only be 
 	able to open the chest if I’m touching it.]]
 	if love.keyboard.wasPressed('e') then
-		if isChestOpen == true then
+		if isTouchingChest == true then
 			self.closedChest = false
 			timerOn = true
 		end

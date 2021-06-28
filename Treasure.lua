@@ -68,8 +68,6 @@ I will also only render the treasure for a few seconds, and then make it disappe
 treasure to only render if the timer is running, that is, if I’m not at the 0th second. ]]
 function Treasure:render()
     if currentRoom == 1 and timerOn == true then
-        if closedChest == false then
-            love.graphics.draw(TREASURE_1_IMAGE, self.x, self.y)
-        end
+        love.graphics.draw(TREASURE_1_IMAGE, self.x, self.y)
     end
 end
