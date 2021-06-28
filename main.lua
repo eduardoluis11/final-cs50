@@ -42,12 +42,16 @@ VIRTUAL_HEIGHT = 600
 purposes, the current room will be Room 1. --]]
 currentRoom = 1
 
---[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one. ]]
-closedChest = true
+--[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one.
+
+It would be better if this variable were located on chest.lua, so that not all treasure chests open at the same 
+time if I open the 1st treasure chest. That is, each instance of the chest will have their own associated “closedChest” 
+variable. ]]
+-- closedChest = true
 
 --[[ This variable will check if the user is touching the treasure chests, so that they will be able to open 
 the chest only if they are touching them. ]]
-canOpenChest = false
+--canOpenChest = false
 
 --[[ This variable will tell a timer when to start running and when to stop. I will use the timer to make a treasure 
 disappear after a few seconds of spawning on top of a chest after opening the chest. ]]
@@ -89,6 +93,7 @@ local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 270)
 
 --[[ This will create each instance of the chests. I need to specify their x and y coordinates in here as parameters. ]]
 local chest1 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
+local chest2 = Chest(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 330)
 
 --[[ I will call the instances of the treasures here rather than on chest.lua. I will have to repeat the x and y 
 coordinates of the chest for their corresponding treasures, but, right now, I don’t know a more efficient way of doing this.
@@ -194,9 +199,25 @@ function love.update(dt)
 	It seems that I will have to call this function 5 times (one for each instance of the Chest{} class.)
 		
 	Or I could to a separate table (something like chestList{}), and then I would use a "for" loop to see
-	if I'm touching any of the 5 chests without needing to call this function 5 times.]]
+	if I'm touching any of the 5 chests without needing to call this function 5 times.
+		
+	I'm now inserting the update() function for the chests inside the player:collides() function since chests
+	will (for the time being) only be updated once the player touches them. That is, they will change from closed 
+	to opened only of the user touches them (and also presses "E"). 
+	
+	I will send a "true" value to the chest:render() function to indicate the chest.lua script that the player is touching
+	the chest. So, if the player touches "E" right now, the chest should be opened.]]
 	if player:collides(chest1) then
-		canOpenChest = true
+		chest1:update(true)
+		-- canOpenChest = true
+	else
+		chest1:update(false)
+	end
+	
+	if player:collides(chest2) then
+		chest2:update(true)
+	else
+		chest2:update(false)
 	end	
 
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
@@ -229,6 +250,7 @@ function love.draw()
 
 	-- This will render the chests
 	chest1:render()
+	chest2:render()
 
 	-- This will render the treasures
 	treasure1:render()

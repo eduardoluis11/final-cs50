@@ -85,17 +85,6 @@ function Player:update(dt)
 		self.dy = -6
 		self.canJump = false 
 	end
-
-	--[[ This will make the user open a chest by pressing the “E” key.
-	
-	I will add an extra variable to check whether the player is colliding with the chest. This way, I’ll only be 
-	able to open the chest if I’m touching it.]]
-	if love.keyboard.wasPressed('e') then
-		if canOpenChest == true then
-			closedChest = false
-			timerOn = true
-		end
-	end
 	
 	--[[ DEBUGGING CODE. This will make the player move downwards if the user presses the down arrow key
 	(source: https://sheepolution.com/learn/book/23 )]]

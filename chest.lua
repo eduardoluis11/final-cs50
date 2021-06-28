@@ -18,6 +18,8 @@ local TREASURE_5_IMAGE = love.graphics.newImage('graphics/treasures/diamond.png'
 
 local BUBBLE_IMAGE = love.graphics.newImage('graphics/treasure-bubble-empty.png')
 
+
+
 --[[ This will have the initial properties of the chest.
 
 Since most of the chests will have different positions, I need to specify the x and y coordinates of each chest from main.lua 
@@ -32,14 +34,43 @@ function Chest:init(chest_x, chest_y)
 	self.width = CLOSED_CHEST_IMAGE:getWidth()
 	self.height = CLOSED_CHEST_IMAGE:getHeight()
 
-	--[[ The position of each chest will be rendered depending on the room where the player is currently located. ]]
-	if currentRoom == 1 then
-		self.y = chest_y 
-		self.x = chest_x
-	end
+	--[[ The position of each chest will be rendered depending on the room where the player is currently located.
+	However, that will be specified on the render() function, not here. ]]
+	self.y = chest_y 
+	self.x = chest_x
+
+	--[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one for 
+	the current instance of the chest. 
+	
+	I'm using "self." so that only the current instance of the chest will be closed. That is, if I open a chest, the 
+	rest of the chests will remain closed, and if a chest is opened, it will remain opened once the player returns
+	to the room. Or in other words, if I had 2 chests in the same room, this will prevent the 2 chests from opening 
+	at the same time if I open 1 chest. ]]
+	self.closedChest = true
 end
 
---[[ I will add the update() function later to make the chest to change from being closed to being opened. --]]
+--[[ The update() function makes the chest change from being closed to being opened.
+
+It will accept a parameter from main.lua that should have the value "true". If this function receives that value, 
+it means that the player is touching a chest, and that, if they press the "E" key, the chest should open.
+
+I will modify the "self.closedChest" to "true" so that only the current instance of the chest will be opened 
+in the Chest:render() function (that is, so that the rest of the chest remain closed if I only open 1 chest.)
+	
+I may remove the "timerOn" variable from here since, right now, it's a global variable, and it's affecting ALL instances
+of the chest{} class (that is, the timer is affecting ALL the chests at the same time). --]]
+function Chest:update(isChestOpen)
+	--[[ This will make the user open a chest by pressing the “E” key.
+	
+	I will add an extra variable to check whether the player is colliding with the chest. This way, I’ll only be 
+	able to open the chest if I’m touching it.]]
+	if love.keyboard.wasPressed('e') then
+		if isChestOpen == true then
+			self.closedChest = false
+			timerOn = true
+		end
+	end
+end
 
 --[[ This will render the chest sprite.
 
@@ -57,9 +88,12 @@ In the end, I decided just to use an "else" statement to render the opened chest
 to "false".
 
 I decided to subtract 23 px to the height of the opened chest so that it doesn't clip through the floor (23 px is the 
-height difference between the closed and opened chest sprites).]]
+height difference between the closed and opened chest sprites).
+
+To fix the bug where all of the chest were being opened if I opened only 1 chest, I had to change "closedChest" to 
+"self.closedChest" so that only the current instance of the chest changes from closed to opened. ]]
 function Chest:render()
-	if closedChest == true then
+	if self.closedChest == true then
 		love.graphics.draw(CLOSED_CHEST_IMAGE, self.x, self.y)
 	else
 		love.graphics.draw(OPENED_CHEST_IMAGE, self.x, self.y - 23)
@@ -71,7 +105,7 @@ function Chest:render()
 	
 	DELETE LATER.
 	]]
-	love.graphics.draw(BUBBLE_IMAGE, self.x + 5, self.y - 90)
+	-- love.graphics.draw(BUBBLE_IMAGE, self.x + 5, self.y - 90)
 
 	-- love.graphics.draw(TREASURE_5_IMAGE, self.x + 20, self.y - 50)
 end
