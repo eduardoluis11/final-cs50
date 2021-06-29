@@ -66,11 +66,22 @@ function Chest:update(isTouchingChest)
 	--[[ This will make the user open a chest by pressing the “E” key.
 	
 	I will add an extra variable to check whether the player is colliding with the chest. This way, I’ll only be 
-	able to open the chest if I’m touching it.]]
+	able to open the chest if I’m touching it.
+	
+	From here, I will also call the treasure.lua script via the treasure:render() function, and I will pass “false” 
+	as a parameter to indicate that the chest has been opened, so it’s ok to render the treasure. BUT it may give me an error, 
+	since I think I need to specify if it’s treasure1.
+	
+	I need to activate the timer ONLY ONCE. The timer should only activate the 1st time that I open the current chest. 
+
+	To do that, I may put another “if” statement inside of “isTouchingChest” to say that, if the chest is closed, to 
+	activate the timer. It SHOULDN’T activate the timer if the chest is already open. ]]
 	if love.keyboard.wasPressed('e') then
 		if isTouchingChest == true then
-			self.closedChest = false
-			timerOn = true
+			if self.closedChest == true then
+				self.closedChest = false
+				timerOn = true
+			end
 		end
 	end
 end
