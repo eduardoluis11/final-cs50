@@ -49,7 +49,7 @@ I need to add "dt" as a parameter inside of the parenthesis, or the dt value wil
 to add every second of the timer and I'll get an error message.
 --]]
 function Treasure:update(dt)
-    if timerOn == true and self.timer < 3 then
+    if timerOn == true and self.timer < 2 then
         self.timer = self.timer + dt
         --print("The timer is on.")   -- DEBUGGING MESSAGE. DELETE LATER.
     else
