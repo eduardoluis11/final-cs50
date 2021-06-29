@@ -106,6 +106,18 @@ function Player:update(dt)
 	elseif love.keyboard.wasPressed('2') then
 		currentRoom = 2
 		print("Room 2.")
+	elseif love.keyboard.wasPressed('3') then
+		currentRoom = 3
+		print("Room 3.")
+	elseif love.keyboard.wasPressed('4') then
+		currentRoom = 4
+		print("Room 4.")
+	elseif love.keyboard.wasPressed('5') then
+		currentRoom = 5
+		print("Room 5.")
+	elseif love.keyboard.wasPressed('0') then
+		currentRoom = 0
+		print("Main Hub.")
 	end
 
 

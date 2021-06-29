@@ -107,6 +107,10 @@ coordinates of the chest for their corresponding treasures, but, right now, I do
 In the treasure.lua script, I’m already subtracting a number of pixels to the y coordinate to put the treasure above its 
 respective chest, so I don’t need to modify the y coordinate in here. ]]
 local treasure1 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
+local treasure2 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 330)
+local treasure3 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 40, -80 + VIRTUAL_HEIGHT - 62)
+local treasure4 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT - 62)
+local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -162,6 +166,10 @@ function love.update(dt)
 	--[[ This will update the treasure so that it appears for only a few seconds after opening a chest, and then
 	disappears.]]
 	treasure1:update(dt)
+	treasure2:update(dt)
+	treasure3:update(dt)
+	treasure4:update(dt)
+	treasure5:update(dt)
 
 	--[[ This will update the Floor class. This MAY GIVE ME AN ERROR, since I’m not storing my floors on a 
 	table, and I’m not rendering using “pairs” nor a “for” loop. 
@@ -286,9 +294,23 @@ function love.draw()
 	from treasure.lua. ]]
 	treasure_list:render()
 
-	-- This will render the treasures
-	treasure1:render()
-
+	--[[ This will render the treasures. 
+	
+	I need to specify the room number with an "if" statement so that each treasure only renders in its corresponding
+	room. Or in other words, that if I open a chest in a room, the treasure won't render on top of all 5 chests at the 
+	same time. ]]
+	if currentRoom == 1 then
+		treasure1:render()
+	elseif currentRoom == 2 then
+		treasure2:render()
+	elseif currentRoom == 3 then
+		treasure3:render()
+	elseif currentRoom == 4 then
+		treasure4:render()
+	elseif currentRoom == 5 then
+		treasure5:render()
+	end
+	
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
 

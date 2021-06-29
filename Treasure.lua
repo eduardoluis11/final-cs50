@@ -45,6 +45,10 @@ function Treasure:init(treasure_x, treasure_y)
     self.showTreasure = false
 
     showTreasure_1 = false
+    showTreasure_2 = false
+    showTreasure_3 = false
+    showTreasure_4 = false
+    showTreasure_5 = false
 end
 
 --[[ The update() function will make each treasure disappear after a few seconds of appearing (that is, after a few seconds 
@@ -127,10 +131,46 @@ function Treasure:render()
         if timerOn == true then
             love.graphics.draw(TREASURE_1_IMAGE, self.x, self.y)
         end
+    elseif currentRoom == 2 and self.showTreasure == true then
+        showTreasure_2 = true
+        
+        if timerOn == true then
+            love.graphics.draw(TREASURE_2_IMAGE, self.x, self.y)
+        end
+    elseif currentRoom == 3 and self.showTreasure == true then
+        showTreasure_3 = true
+        
+        if timerOn == true then
+            love.graphics.draw(TREASURE_3_IMAGE, self.x, self.y)
+        end
+    elseif currentRoom == 4 and self.showTreasure == true then
+        showTreasure_4 = true
+        
+        if timerOn == true then
+            love.graphics.draw(TREASURE_4_IMAGE, self.x, self.y)
+        end
+    elseif currentRoom == 5 and self.showTreasure == true then
+        showTreasure_5 = true
+        
+        if timerOn == true then
+            love.graphics.draw(TREASURE_5_IMAGE, self.x, self.y)
+        end      
     end    
 
     -- This will permanently render the treasure on the bubble UI
     if showTreasure_1 == true then
         love.graphics.draw(TREASURE_1_IMAGE, 170, 10)
     end
+    if showTreasure_2 == true then
+        love.graphics.draw(TREASURE_2_IMAGE, 270, 10)
+    end
+    if showTreasure_3 == true then
+        love.graphics.draw(TREASURE_3_IMAGE, 370, 10)
+    end
+    if showTreasure_4 == true then
+        love.graphics.draw(TREASURE_4_IMAGE, 470, 10)
+    end
+    if showTreasure_5 == true then
+        love.graphics.draw(TREASURE_5_IMAGE, 570, 10)
+    end    
 end
