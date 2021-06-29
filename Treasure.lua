@@ -131,6 +131,6 @@ function Treasure:render()
 
     -- This will permanently render the treasure on the bubble UI
     if showTreasure_1 == true then
-        love.graphics.draw(TREASURE_1_IMAGE, 100, 20)
+        love.graphics.draw(TREASURE_1_IMAGE, 170, 10)
     end
 end

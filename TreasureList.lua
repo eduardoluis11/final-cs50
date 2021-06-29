@@ -19,11 +19,11 @@ of the 4 bubbles in the render() function (by specifying different x coordinates
 
 They will be at the top-center part of the screen. ]]
 function TreasureList:init()
-	self.width = TREASURE_INCLUDED_IMAGE:getWidth()
-	self.height = TREASURE_INCLUDED_IMAGE:getHeight()
+    self.width = TREASURE_INCLUDED_IMAGE:getWidth()
+    self.height = TREASURE_INCLUDED_IMAGE:getHeight()
 
-    self.x = 100
-    self.y = 20
+    self.x = 155
+    self.y = 0
 end
 
 --[[ Since I won’t be changing any sprites for the treasure UI, I won’t include an update() function for this script. --]]
