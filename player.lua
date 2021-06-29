@@ -99,6 +99,16 @@ function Player:update(dt)
 		self.x = self.x + 260 * dt
     end
 
+	--[[ DEBUGGING CODE. DELETE LATER. This will change the room number if I press any of the number keys (between 0 and 5.) ]]
+	if love.keyboard.wasPressed('1') then
+		currentRoom = 1
+		print("Room 1.")
+	elseif love.keyboard.wasPressed('2') then
+		currentRoom = 2
+		print("Room 2.")
+	end
+
+
 	--[[ This will make the player fall due to gravity (by updating his y coordinate).
 	
 	I added an "if" statement that will check whether the player is in the air (be it from
