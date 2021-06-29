@@ -21,7 +21,15 @@ The height and width of all of the treasures are the same. So, I can use any of 
 height using getWidth() and getHeight(). 
 
 The x and y coordinate of each treasure will be obtained from the Chest{} class whenever the chest() function is called, 
-so there’s no point in specifying the room number to get the treasure position in here. ]]
+so there’s no point in specifying the room number to get the treasure position in here.
+
+I will also add a variable that will keep track whether to render each of the 5 treasures individually. I will do this 
+so that the treasure icons get rendered on the bubble UI permanently,that is, so that the icons don’t disappear once 
+I leave a room.
+
+This variable could be global, since I want, for instance, treasure 1 to be permanently rendered, regardless of whether
+I’m opening chest 1 or chest 2. So, I won’t put the “self.” suffix to it. 
+]]
 function Treasure:init(treasure_x, treasure_y)
 	self.width = TREASURE_1_IMAGE:getWidth()
 	self.height = TREASURE_1_IMAGE:getHeight()
@@ -35,6 +43,8 @@ function Treasure:init(treasure_x, treasure_y)
     --[[ This variable will keep track on whether or not to permanently render the treasure on the bubble UI at the 
     top of the screen. By default, the treasure won’t be rendered.  ]]
     self.showTreasure = false
+
+    showTreasure_1 = false
 end
 
 --[[ The update() function will make each treasure disappear after a few seconds of appearing (that is, after a few seconds 
@@ -102,13 +112,25 @@ I will only render the treasure above its respective chest for 2 seconds (with t
 the treasure on the bubble UI at the top of the screen.
 
 I don’t know right now where to permanently render the treasures to put them in the bubble UI, but that’s not important 
-for the time being. ]]
+for the time being.
+
+I will check the room number where the player currently is. Depending on the room number, I will render the respective 
+treasure (the bronze ring in room 1, or the diamond in room 5.) So, depending on the room I'm in, I will activate the 
+global variable that tells me which treasure to render on the UI. Then, I will add an additional condition checking if 
+that variable is activated: if it is, I will use the draw() function to render that respective treasure.
+]]
 function Treasure:render()
+    -- This will temporarily render the treasure above its respective chest
     if currentRoom == 1 and self.showTreasure == true then
-        love.graphics.draw(TREASURE_1_IMAGE, 100, 20)
+        showTreasure_1 = true
         
         if timerOn == true then
             love.graphics.draw(TREASURE_1_IMAGE, self.x, self.y)
         end
     end    
+
+    -- This will permanently render the treasure on the bubble UI
+    if showTreasure_1 == true then
+        love.graphics.draw(TREASURE_1_IMAGE, 100, 20)
+    end
 end
