@@ -97,6 +97,9 @@ local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 270)
 --[[ This will create each instance of the chests. I need to specify their x and y coordinates in here as parameters. ]]
 local chest1 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 local chest2 = Chest(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 330)
+local chest3 = Chest(VIRTUAL_WIDTH - (141 * 3) - 40, -80 + VIRTUAL_HEIGHT - 62)
+local chest4 = Chest(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT - 62)
+local chest5 = Chest(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
 
 --[[ I will call the instances of the treasures here rather than on chest.lua. I will have to repeat the x and y 
 coordinates of the chest for their corresponding treasures, but, right now, I don’t know a more efficient way of doing this.
@@ -224,7 +227,24 @@ function love.update(dt)
 		chest2:update(true)
 	else
 		chest2:update(false)
-	end	
+	end
+	if player:collides(chest3) then
+		chest3:update(true)
+	else
+		chest3:update(false)
+	end
+	if player:collides(chest4) then
+		chest4:update(true)
+	else
+		chest4:update(false)
+	end
+	if player:collides(chest5) then
+		chest5:update(true)
+	else
+		chest5:update(false)
+	end
+
+
 
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
@@ -257,6 +277,10 @@ function love.draw()
 	-- This will render the chests
 	chest1:render()
 	chest2:render()
+	chest3:render()
+	chest4:render()
+	chest5:render()
+
 
 	--[[ This will render the bubble UI for the treasure icons. I need to render this on a layer behind the treasure sprites
 	from treasure.lua. ]]
