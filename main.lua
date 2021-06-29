@@ -35,6 +35,9 @@ require 'Chest'
 -- Treasure’s script
 require 'Treasure'
 
+-- Script that contains the bubble UI
+require 'TreasureList'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
@@ -101,6 +104,9 @@ coordinates of the chest for their corresponding treasures, but, right now, I do
 In the treasure.lua script, I’m already subtracting a number of pixels to the y coordinate to put the treasure above its 
 respective chest, so I don’t need to modify the y coordinate in here. ]]
 local treasure1 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
+
+--[[ This will render the bubble UI that contains the treasure icons ]]
+local treasure_list = TreasureList()
 
 --[[ I will create a table where I will store every sprite or object that’s not the player. This will be called in a 
 “for” loop so that I can check collision for the floor and all of the platforms (so that I can reuse the collides() 
@@ -251,6 +257,10 @@ function love.draw()
 	-- This will render the chests
 	chest1:render()
 	chest2:render()
+
+	--[[ This will render the bubble UI for the treasure icons. I need to render this on a layer behind the treasure sprites
+	from treasure.lua. ]]
+	treasure_list:render()
 
 	-- This will render the treasures
 	treasure1:render()
