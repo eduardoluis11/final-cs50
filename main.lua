@@ -309,6 +309,12 @@ function love.draw()
 		treasure4:render()
 	elseif currentRoom == 5 then
 		treasure5:render()
+	else
+		treasure1:render()
+		treasure2:render()
+		treasure3:render()
+		treasure4:render()
+		treasure5:render()	
 	end
 	
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
