@@ -95,6 +95,15 @@ function Treasure:update(dt)
         if currentRoom == 2 then
             showTreasure_2 = true
         end
+        if currentRoom == 3 then
+            showTreasure_3 = true
+        end
+        if currentRoom == 4 then
+            showTreasure_4 = true
+        end
+        if currentRoom == 5 then
+            showTreasure_5 = true
+        end
         
         --print("The timer is on.")   -- DEBUGGING MESSAGE. DELETE LATER.
     else
