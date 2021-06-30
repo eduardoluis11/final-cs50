@@ -79,12 +79,23 @@ the UI once the user finds a treasure.
 
 If the timer gets activated at least once, the variable that keeps track on whether or not to render the treasure 
 will be permanently activated (turned to “true”.)
+
+I will add an extra condition to say that, for instance, if I’m in room 1 and I open a chest, that the 1st treasure 
+should be permanently rendered on the bubble UI.
 --]]
 function Treasure:update(dt)
     if timerOn == true and self.timer < 2 then
         self.timer = self.timer + dt
 
         self.showTreasure = true
+
+        if currentRoom == 1 then
+            showTreasure_1 = true
+        end
+        if currentRoom == 2 then
+            showTreasure_2 = true
+        end
+        
         --print("The timer is on.")   -- DEBUGGING MESSAGE. DELETE LATER.
     else
         timerOn = false
@@ -122,35 +133,41 @@ I will check the room number where the player currently is. Depending on the roo
 treasure (the bronze ring in room 1, or the diamond in room 5.) So, depending on the room I'm in, I will activate the 
 global variable that tells me which treasure to render on the UI. Then, I will add an additional condition checking if 
 that variable is activated: if it is, I will use the draw() function to render that respective treasure.
+
+I will modify the code so that it checks, for instance, if the treasure from room 1 should be permanently rendered as 
+an icon at the top of the screen. This will fix the bug that automatically renders every treasure once I change rooms. 
+I just need to modify the code snippet that permanently renders the treasure icons.
+
+However, to fix a bug, I also had to remove "showTreasureNUMBER = true" from the code that temporarily renders the
+treasures. 
 ]]
 function Treasure:render()
     -- This will temporarily render the treasure above its respective chest
     if currentRoom == 1 and self.showTreasure == true then
-        showTreasure_1 = true
         
         if timerOn == true then
             love.graphics.draw(TREASURE_1_IMAGE, self.x, self.y)
         end
+
     elseif currentRoom == 2 and self.showTreasure == true then
-        showTreasure_2 = true
         
         if timerOn == true then
             love.graphics.draw(TREASURE_2_IMAGE, self.x, self.y)
         end
     elseif currentRoom == 3 and self.showTreasure == true then
-        showTreasure_3 = true
+        -- showTreasure_3 = true
         
         if timerOn == true then
             love.graphics.draw(TREASURE_3_IMAGE, self.x, self.y)
         end
     elseif currentRoom == 4 and self.showTreasure == true then
-        showTreasure_4 = true
+        -- showTreasure_4 = true
         
         if timerOn == true then
             love.graphics.draw(TREASURE_4_IMAGE, self.x, self.y)
         end
     elseif currentRoom == 5 and self.showTreasure == true then
-        showTreasure_5 = true
+        -- showTreasure_5 = true
         
         if timerOn == true then
             love.graphics.draw(TREASURE_5_IMAGE, self.x, self.y)
