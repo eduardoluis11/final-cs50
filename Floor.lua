@@ -14,8 +14,8 @@
   
   I put the negative 121 pixels before adding the constant with the virtual height because, otherwise, 
   I would get an error message. --]]
-  function Floor:init()
-      self.y = -80 + VIRTUAL_HEIGHT
+  function Floor:init(floor_x, floor_y)
+      self.y = floor_y
   
       --[[ I have mixed feelings about adding the initial width of the floor here. Sure, I need to have the initial 
       width somewhere. However, as I sad, some rooms will have the floor narrower than others. 
@@ -25,7 +25,7 @@
   
       Then, I would use an “if” statement. --]]
       if currentRoom == 1 then
-          self.x = 0
+          self.x = floor_x
           self.width = FLOOR_IMAGE:getWidth()
           self.height = FLOOR_IMAGE:getHeight()
       end

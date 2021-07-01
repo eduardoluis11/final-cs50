@@ -72,7 +72,7 @@ local background = love.graphics.newImage('graphics/background_room_1.png')
 local player = Player()
 
 -- This will store my floors
-local floor = Floor()
+local floor1 = Floor(0, -80 + VIRTUAL_HEIGHT)
 
 --[[ This will call each instance of the platform script. I will assign its x and y coordinates to specify the 
 position of each platform I create. 
@@ -117,9 +117,11 @@ local treasure_list = TreasureList()
 
 --[[ I will create a table where I will store every sprite or object that’s not the player. This will be called in a 
 “for” loop so that I can check collision for the floor and all of the platforms (so that I can reuse the collides() 
-and resolveCollision() functions efficiently) (source: https://sheepolution.com/learn/book/23 .) ]]
+and resolveCollision() functions efficiently) (source: https://sheepolution.com/learn/book/23 .) 
+
+Remember to insert each instance of the floor in here to prevent the player from falling through the floor. ]]
 objects = {}
-table.insert(objects, floor)
+table.insert(objects, floor1)
 table.insert(objects, platform1)
 table.insert(objects, platform2)
 table.insert(objects, platform3)
@@ -280,7 +282,7 @@ function love.draw()
 	platform3:render()
 
 	-- This will render the floor
-	floor:render()
+	floor1:render()
 
 	-- This will render the chests
 	chest1:render()
