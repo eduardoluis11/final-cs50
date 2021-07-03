@@ -38,6 +38,9 @@ require 'Treasure'
 -- Script that contains the bubble UI
 require 'TreasureList'
 
+-- Lever’s script
+require 'Lever'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
@@ -111,6 +114,9 @@ local treasure2 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 330)
 local treasure3 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 40, -80 + VIRTUAL_HEIGHT - 62)
 local treasure4 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT - 62)
 local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
+
+--[[ This will create the levers by calling the lever{} class ]]
+local lever1 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -254,7 +260,13 @@ function love.update(dt)
 		chest5:update(false)
 	end
 
-
+	--[[ This will check if the player is touching a lever. If they do, the player will be able to activate the lever 
+	by pressing E. ]]
+	if player:collides(lever1) then
+		lever1:update(true)
+	else
+		lever1:update(false)
+	end
 
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
@@ -291,6 +303,8 @@ function love.draw()
 	chest4:render()
 	chest5:render()
 
+	-- This will render the levers
+	lever1:render()
 
 	--[[ This will render the bubble UI for the treasure icons. I need to render this on a layer behind the treasure sprites
 	from treasure.lua. ]]

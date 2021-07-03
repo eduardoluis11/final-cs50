@@ -15,8 +15,13 @@ local TREASURE_2_IMAGE = love.graphics.newImage('graphics/treasures/bronze-armor
 local TREASURE_3_IMAGE = love.graphics.newImage('graphics/treasures/ruby.png')
 local TREASURE_4_IMAGE = love.graphics.newImage('graphics/treasures/gold-ingot.png')
 local TREASURE_5_IMAGE = love.graphics.newImage('graphics/treasures/diamond.png')
-
 local BUBBLE_IMAGE = love.graphics.newImage('graphics/treasure-bubble-empty.png')
+local DEACTIVATED_LEVER_IMAGE = love.graphics.newImage('graphics/deactivated-lever.png')
+local ACTIVATED_LEVER_IMAGE = love.graphics.newImage('graphics/activated-lever.png')
+
+local CAGE_IMAGE = love.graphics.newImage('graphics/cage.png')
+
+
 
 
 
@@ -119,6 +124,11 @@ function Chest:render()
 	
 	DELETE LATER.
 	]]
+	-- love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 55, -80 + VIRTUAL_HEIGHT - 100)
+
+	-- love.graphics.draw(ACTIVATED_LEVER_IMAGE, 200, -160 + VIRTUAL_HEIGHT)
+	-- love.graphics.draw(DEACTIVATED_LEVER_IMAGE, 100, -170 + VIRTUAL_HEIGHT)
+
 	-- love.graphics.draw(BUBBLE_IMAGE, self.x + 5, self.y - 90)
 
 	-- love.graphics.draw(TREASURE_5_IMAGE, self.x + 20, self.y - 50)
