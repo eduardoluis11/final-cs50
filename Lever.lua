@@ -22,6 +22,10 @@ instance of the lever.
 	
 I will use "self." so that only the current instance of the lever will be activated after pressing “E”. That is, “self.” 
 will prevent the multiple levers from opening at the same time if I activate 1 lever.
+
+I will also add a variable that will keep track on whether or not to render a cage on top of a chest. The cage will prevent 
+the player from opening a chest. So, to open that chest, the player should activate a lever to remove the cage that is locking 
+that chest. By default, that cage will be rendered. It will stop being rendered once the player activates its respective lever.
 ]]
 function Lever:init(lever_x, lever_y)
 	self.width = DEACTIVATED_LEVER_IMAGE:getWidth()
@@ -31,10 +35,13 @@ function Lever:init(lever_x, lever_y)
     self.y = lever_y 
 
 	self.activatedLever = false
+
+	self.showCage = true
 end
 
---[[ The update() function will make the lever change from being deactivated to being activated. To do so, update() will make
-the user activate a lever by pressing the “E” key.
+--[[ The update() function will make the lever change from being deactivated to being activated, and will make its 
+respective cage disappear from the chest that is locking. To do so, update() will make the user activate a lever by 
+pressing the “E” key.
 
 It will accept a parameter from main.lua that should have the value "true". If this function receives that value, it means that 
 the player is touching a lever, and that, if they press the "E" key, the lever should become activated.
@@ -44,22 +51,44 @@ of the lever will be activated in the Lever:render() function (that is, so that 
 I only activate 1 lever.)
 
 The parameter inside of lever:update() tells me if the player is touching the lever.
+
+This is also where I need to specify that the variable that keeps track on whether or not to render the cage should be 
+deactivated to make the cage disappear.
 --]]
 function Lever:update(isTouchingLever)
 	if love.keyboard.wasPressed('e') then
 		if isTouchingLever == true then
 			if self.activatedLever == false then
 			    self.activatedLever = true
+				self.showCage = false
 		    end
 		end
 	end
 end
 
---[[ This will render the lever sprite. ]]
+--[[ This will render the lever sprite and the cage sprites. 
+
+The levers will work differently on room 5 than on the other rooms. In room 5, I will need to activate 4 or 5 levers in a 
+specific order to make the cage disappear. Otherwise, all 4 or 5 levers will be reset.
+
+Meanwhile, in the rest of the rooms, by activating a lever, the cage locking a chest will immediately disappear. The cage 
+should be rendered by default when entering rooms such as room 2 or 5.
+
+The cages will be rendered on different positions depending on the room number (they will be rendered on top of the chests 
+of their respective rooms.)
+]]
 function Lever:render()
+	-- This renders the lever
 	if self.activatedLever == false then
 		love.graphics.draw(DEACTIVATED_LEVER_IMAGE, self.x, self.y)
 	else
 		love.graphics.draw(ACTIVATED_LEVER_IMAGE, self.x - 25, self.y + 10)
+	end
+
+	-- This renders the cage on top of a chest
+	if self.showCage == true then
+		if currentRoom == 2 then
+			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 60, VIRTUAL_HEIGHT - 368)
+		end
 	end
 end

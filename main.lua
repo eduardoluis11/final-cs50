@@ -117,6 +117,7 @@ local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT
 
 --[[ This will create the levers by calling the lever{} class ]]
 local lever1 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
+-- local lever2 = Lever(250, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -268,6 +269,12 @@ function love.update(dt)
 		lever1:update(false)
 	end
 
+	-- if player:collides(lever2) then
+	-- 	lever2:update(true)
+	-- else
+	-- 	lever2:update(false)
+	-- end
+
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
 	love.keyboard.keysPressed = {}
@@ -305,6 +312,7 @@ function love.draw()
 
 	-- This will render the levers
 	lever1:render()
+	-- lever2:render()
 
 	--[[ This will render the bubble UI for the treasure icons. I need to render this on a layer behind the treasure sprites
 	from treasure.lua. ]]
