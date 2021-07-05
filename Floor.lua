@@ -23,12 +23,14 @@
       What I could to is to add a variable that keeps track of the current room. If the room changes (I will only have 
       6 rooms), I will change the x position and the width of the floor sprite. 
   
-      Then, I would use an “if” statement. --]]
-      if currentRoom == 1 then
-          self.x = floor_x
-          self.width = FLOOR_IMAGE:getWidth()
-          self.height = FLOOR_IMAGE:getHeight()
-      end
+      Then, I would use an “if” statement. 
+      
+      I no longer need this since I will render the floor by using coordinates taken as parameters from main.lua. 
+      Besides, this gives a bug in my code, since, If I start the game from any other room other than Room 1, I will
+      get an error message and the game won't render.--]]
+        self.x = floor_x
+        self.width = FLOOR_IMAGE:getWidth()
+        self.height = FLOOR_IMAGE:getHeight()
   end
   
   --[[ I WON’T add the update() function for the floor yet since I don’t want to change the room nor make the floor 

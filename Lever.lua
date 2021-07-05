@@ -26,6 +26,9 @@ will prevent the multiple levers from opening at the same time if I activate 1 l
 I will also add a variable that will keep track on whether or not to render a cage on top of a chest. The cage will prevent 
 the player from opening a chest. So, to open that chest, the player should activate a lever to remove the cage that is locking 
 that chest. By default, that cage will be rendered. It will stop being rendered once the player activates its respective lever.
+
+Some of the chests, like the one on Room 2, will be locked. So, I will create global variables that store which chests 
+will be locked by default. Then, after activating the lever from that room, its corresponding chest will be unlocked.
 ]]
 function Lever:init(lever_x, lever_y)
 	self.width = DEACTIVATED_LEVER_IMAGE:getWidth()
@@ -37,6 +40,8 @@ function Lever:init(lever_x, lever_y)
 	self.activatedLever = false
 
 	self.showCage = true
+
+	unlockChest_2 = false
 end
 
 --[[ The update() function will make the lever change from being deactivated to being activated, and will make its 
@@ -54,6 +59,9 @@ The parameter inside of lever:update() tells me if the player is touching the le
 
 This is also where I need to specify that the variable that keeps track on whether or not to render the cage should be 
 deactivated to make the cage disappear.
+
+Also, I will change the global variable that keeps track of the locked chests so that, if the player pulls the lever, 
+the corresponding treasure of that room becomes unlocked.
 --]]
 function Lever:update(isTouchingLever)
 	if love.keyboard.wasPressed('e') then
@@ -61,6 +69,10 @@ function Lever:update(isTouchingLever)
 			if self.activatedLever == false then
 			    self.activatedLever = true
 				self.showCage = false
+				
+				if currentRoom == 2 then
+					unlockChest_2 = true
+				end
 		    end
 		end
 	end

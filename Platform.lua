@@ -44,12 +44,14 @@ function Platform:init(platform_width, platform_height)
     
     I need to put a value for self.x, or I’ll get an error when trying to render the sprite in the Platform:render() function.
     
-    For the image with the 3 platform sprites, the platforms render perfectly in plce at self.x = 0 px.    --]]
-	if currentRoom == 1 then
-        self.x = platform_width
-		self.width = PLATFORM_IMAGE:getWidth()
-		self.height = PLATFORM_IMAGE:getHeight()
-	end
+    For the image with the 3 platform sprites, the platforms render perfectly in plce at self.x = 0 px.  
+	
+	I will get rid of this code, since I need to get the platform's positions from parameters taken from main.lua, 
+	NOT from putting the room number. Besides, I think this is causing me the bug where the whole game crashes 
+	if I start at any room other than Room 1.--]]
+	self.x = platform_width
+	self.width = PLATFORM_IMAGE:getWidth()
+	self.height = PLATFORM_IMAGE:getHeight()
 end
 
 --[[ I will add the update() function later to make the platforms scroll horizontally if the user moves past the 

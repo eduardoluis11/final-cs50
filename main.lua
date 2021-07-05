@@ -46,7 +46,7 @@ VIRTUAL_HEIGHT = 600
 
 --[[ This global variable will store the current room where the player currently is. Temporarily, for debugging 
 purposes, the current room will be Room 1. --]]
-currentRoom = 1
+currentRoom = 2
 
 --[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one.
 

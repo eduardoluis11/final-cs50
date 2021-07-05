@@ -40,6 +40,7 @@ function Chest:init(chest_x, chest_y)
 	self.height = CLOSED_CHEST_IMAGE:getHeight()
 
 	--[[ The position of each chest will be rendered depending on the room where the player is currently located.
+	
 	However, that will be specified on the render() function, not here. ]]
 	self.y = chest_y 
 	self.x = chest_x
@@ -66,26 +67,46 @@ I may remove the "timerOn" variable from here since, right now, it's a global va
 of the chest{} class (that is, the timer is affecting ALL the chests at the same time).
 
 I had an error that I had to fix. The parameter inside of chest:update() doesn’t tell me if the chest is open. 
-It tells me if the player is touching the chest. So, I will rename the parameter “isTouchingChest”.--]]
-function Chest:update(isTouchingChest)
-	--[[ This will make the user open a chest by pressing the “E” key.
-	
-	I will add an extra variable to check whether the player is colliding with the chest. This way, I’ll only be 
-	able to open the chest if I’m touching it.
-	
-	From here, I will also call the treasure.lua script via the treasure:render() function, and I will pass “false” 
-	as a parameter to indicate that the chest has been opened, so it’s ok to render the treasure. BUT it may give me an error, 
-	since I think I need to specify if it’s treasure1.
-	
-	I need to activate the timer ONLY ONCE. The timer should only activate the 1st time that I open the current chest. 
+It tells me if the player is touching the chest. So, I will rename the parameter “isTouchingChest”.
 
-	To do that, I may put another “if” statement inside of “isTouchingChest” to say that, if the chest is closed, to 
-	activate the timer. It SHOULDN’T activate the timer if the chest is already open. ]]
+This will make the user open a chest by pressing the “E” key.
+	
+I will add an extra variable to check whether the player is colliding with the chest. This way, I’ll only be 
+able to open the chest if I’m touching it.
+	
+From here, I will also call the treasure.lua script via the treasure:render() function, and I will pass “false” 
+as a parameter to indicate that the chest has been opened, so it’s ok to render the treasure. BUT it may give me an error, 
+since I think I need to specify if it’s treasure1.
+	
+I need to activate the timer ONLY ONCE. The timer should only activate the 1st time that I open the current chest. 
+
+To do that, I may put another “if” statement inside of “isTouchingChest” to say that, if the chest is closed, to 
+activate the timer. It SHOULDN’T activate the timer if the chest is already open. 
+
+I will at 1st check if I’m in a room with a locked chest (like room 2). If I do, I will specify that, to open that chest, 
+its corresponding global variable (like unlockChest_2) should be “true”. If that room doesn’t have any levers nor locked 
+chests, I will just let the user open the chest without requiring the “unlockChest_NUMBER” variable.
+
+To avoid any possible bugs, I will specify that I want to keep a chest locked (like the one in room 2) if its 
+corresponding “unlockChest_NUMBER” variable is not yet set to “true”.
+--]]
+function Chest:update(isTouchingChest)
 	if love.keyboard.wasPressed('e') then
 		if isTouchingChest == true then
 			if self.closedChest == true then
-				self.closedChest = false
-				timerOn = true
+				if currentRoom == 2 then
+					if unlockChest_2 == true then
+						self.closedChest = false
+						timerOn = true
+					-- I may not need this
+					--[[else
+						self.closedChest = true
+						timerOn = false]]
+					end
+				else
+					self.closedChest = false
+					timerOn = true
+				end
 			end
 		end
 	end
