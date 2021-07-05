@@ -84,7 +84,7 @@ I will add an extra condition to say that, for instance, if I’m in room 1 and 
 should be permanently rendered on the bubble UI.
 --]]
 function Treasure:update(dt)
-    if timerOn == true and self.timer < 2 then
+    if timerOn == true and self.timer < 1 then
         self.timer = self.timer + dt
 
         self.showTreasure = true

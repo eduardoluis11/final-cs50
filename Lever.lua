@@ -74,6 +74,8 @@ function Lever:update(isTouchingLever)
 				
 				if currentRoom == 2 then
 					unlockChest_2 = true
+				elseif currentRoom == 3 then
+					unlockChest_3 = true
 				end
 		    end
 		end
@@ -92,6 +94,10 @@ The cages will be rendered on different positions depending on the room number (
 of their respective rooms.)
 
 Rooms 2, 3 and 5 will have levers.
+
+Each room needs to have its own lever. However, I think that needs to be done in main.lua with an “if” statement. 
+I need to check main.lua and the code for chest.lua to see what I did in order to prevent all chests from opening 
+whenever I opened 1 chest. 
 ]]
 function Lever:render()
 	-- This renders the lever

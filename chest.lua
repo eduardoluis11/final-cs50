@@ -103,6 +103,11 @@ function Chest:update(isTouchingChest)
 						self.closedChest = true
 						timerOn = false]]
 					end
+				elseif currentRoom == 3 then
+					if unlockChest_3 == true then
+						self.closedChest = false
+						timerOn = true
+					end
 				else
 					self.closedChest = false
 					timerOn = true
