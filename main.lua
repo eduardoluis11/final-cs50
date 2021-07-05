@@ -116,8 +116,8 @@ local treasure4 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT 
 local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
 
 --[[ This will create the levers by calling the lever{} class ]]
-local lever1 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
--- local lever2 = Lever(250, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_2 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -263,17 +263,17 @@ function love.update(dt)
 
 	--[[ This will check if the player is touching a lever. If they do, the player will be able to activate the lever 
 	by pressing E. ]]
-	if player:collides(lever1) then
-		lever1:update(true)
+	if player:collides(leverRoom_2) then
+		leverRoom_2:update(true)
 	else
-		lever1:update(false)
+		leverRoom_2:update(false)
 	end
 
-	-- if player:collides(lever2) then
-	-- 	lever2:update(true)
-	-- else
-	-- 	lever2:update(false)
-	-- end
+	if player:collides(leverRoom_3) then
+		leverRoom_3:update(true)
+	else
+		leverRoom_3:update(false)
+	end
 
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
@@ -310,9 +310,13 @@ function love.draw()
 	chest4:render()
 	chest5:render()
 
-	-- This will render the levers
-	lever1:render()
-	-- lever2:render()
+	--[[ This will render the levers. Only rooms 2, 3, and 5 have levers. Each one of those rooms should have their own lever. ]]
+	if currentRoom == 2 then
+		leverRoom_2:render()
+	elseif currentRoom == 3 then
+		leverRoom_3:render()
+	end
+	
 
 	--[[ This will render the bubble UI for the treasure icons. I need to render this on a layer behind the treasure sprites
 	from treasure.lua. ]]
