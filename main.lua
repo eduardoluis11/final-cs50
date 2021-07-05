@@ -118,6 +118,7 @@ local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT
 --[[ This will create the levers by calling the lever{} class ]]
 local leverRoom_2 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
 local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_5_1 = Lever(120, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -277,6 +278,11 @@ function love.update(dt)
 	else
 		leverRoom_3:update(false)
 	end
+	if currentRoom == 5 and player:collides(leverRoom_5_1) then
+		leverRoom_5_1:update(true)
+	else
+		leverRoom_5_1:update(false)
+	end
 
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
@@ -318,6 +324,8 @@ function love.draw()
 		leverRoom_2:render()
 	elseif currentRoom == 3 then
 		leverRoom_3:render()
+	elseif currentRoom == 5 then
+		leverRoom_5_1:render()		
 	end
 	
 
