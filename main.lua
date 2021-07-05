@@ -262,14 +262,17 @@ function love.update(dt)
 	end
 
 	--[[ This will check if the player is touching a lever. If they do, the player will be able to activate the lever 
-	by pressing E. ]]
-	if player:collides(leverRoom_2) then
+	by pressing E.
+	
+	I will add the extra condition that the player needs to be in a specific room to make a specific lever appear 
+	(for instance, the lever for room 2 will only render in room 2.)]]
+	if currentRoom == 2 and player:collides(leverRoom_2) then
 		leverRoom_2:update(true)
 	else
 		leverRoom_2:update(false)
 	end
 
-	if player:collides(leverRoom_3) then
+	if currentRoom == 3 and player:collides(leverRoom_3) then
 		leverRoom_3:update(true)
 	else
 		leverRoom_3:update(false)
