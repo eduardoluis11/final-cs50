@@ -42,6 +42,8 @@ function Lever:init(lever_x, lever_y)
 	self.showCage = true
 
 	unlockChest_2 = false
+	unlockChest_3 = false
+	unlockChest_5 = false
 end
 
 --[[ The update() function will make the lever change from being deactivated to being activated, and will make its 
@@ -88,6 +90,8 @@ should be rendered by default when entering rooms such as room 2 or 5.
 
 The cages will be rendered on different positions depending on the room number (they will be rendered on top of the chests 
 of their respective rooms.)
+
+Rooms 2, 3 and 5 will have levers.
 ]]
 function Lever:render()
 	-- This renders the lever
@@ -101,6 +105,8 @@ function Lever:render()
 	if self.showCage == true then
 		if currentRoom == 2 then
 			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 60, VIRTUAL_HEIGHT - 368)
+		elseif currentRoom == 3 then
+			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 60, VIRTUAL_HEIGHT - 180)
 		end
 	end
 end
