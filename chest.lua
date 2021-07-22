@@ -91,6 +91,11 @@ To avoid any possible bugs, I will specify that I want to keep a chest locked (l
 corresponding “unlockChest_NUMBER” variable is not yet set to “true”.
 --]]
 function Chest:update(isTouchingChest)
+	if currentRoom == 2 then
+		unlockChest_3 = false
+		unlockChest_5 = false
+	end
+
 	if love.keyboard.wasPressed('e') then
 		if isTouchingChest == true then
 			if self.closedChest == true then

@@ -233,30 +233,35 @@ function love.update(dt)
 	to opened only of the user touches them (and also presses "E"). 
 	
 	I will send a "true" value to the chest:render() function to indicate the chest.lua script that the player is touching
-	the chest. So, if the player touches "E" right now, the chest should be opened.]]
-	if player:collides(chest1) then
+	the chest. So, if the player touches "E" right now, the chest should be opened.
+	
+	I will specify that, in order to be able to open a chest (by updating it), I need to be in that chest's respective
+	room (as well as be colliding with that chest). THIS FIXED THE BUG THAT ALLOWED ME TO OPEN ALL CHESTS IN A SINGLE
+	ROOM.
+	]]
+	if currentRoom == 1 and player:collides(chest1) then
 		chest1:update(true)
 		-- canOpenChest = true
 	else
 		chest1:update(false)
 	end
 	
-	if player:collides(chest2) then
+	if currentRoom == 2 and player:collides(chest2) then
 		chest2:update(true)
 	else
 		chest2:update(false)
 	end
-	if player:collides(chest3) then
+	if currentRoom == 3 and player:collides(chest3) then
 		chest3:update(true)
 	else
 		chest3:update(false)
 	end
-	if player:collides(chest4) then
+	if currentRoom == 4 and player:collides(chest4) then
 		chest4:update(true)
 	else
 		chest4:update(false)
 	end
-	if player:collides(chest5) then
+	if currentRoom == 5 and player:collides(chest5) then
 		chest5:update(true)
 	else
 		chest5:update(false)
