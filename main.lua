@@ -41,12 +41,15 @@ require 'TreasureList'
 -- Lever’s script
 require 'Lever'
 
+-- Stalactite’s script
+require 'Stalactite'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
 --[[ This global variable will store the current room where the player currently is. Temporarily, for debugging 
 purposes, the current room will be Room 1. --]]
-currentRoom = 2
+currentRoom = 3
 
 --[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one.
 
@@ -119,6 +122,9 @@ local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT
 local leverRoom_2 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
 local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
 local leverRoom_5_1 = Lever(120, -80 + VIRTUAL_HEIGHT - 90)
+
+--[[ This will create the stalactites. ]]
+local stalactiteRoom_3 = Stalactite(200, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -361,6 +367,9 @@ function love.draw()
 		treasure5:render()	
 	end
 	
+	--[[ This renders the stalactites ]]
+	stalactiteRoom_3:render()
+
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
 
