@@ -124,7 +124,7 @@ local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
 local leverRoom_5_1 = Lever(120, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will create the stalactites. ]]
-local stalactiteRoom_3 = Stalactite(200, -80 + VIRTUAL_HEIGHT - 90)
+local stalactiteRoom_3 = Stalactite(200, 0)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -299,6 +299,12 @@ function love.update(dt)
 		leverRoom_5_1:update(false)
 	end
 
+	--[[ This will make the stalactites fall and respawn after they fall to the bottom of the screen. This should ideally 
+	only be executed if I’m on Room 3 or 5 (where the stalactites should be.) ]]
+	if currentRoom == 3 then
+		stalactiteRoom_3:update()
+	end
+	
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
 	love.keyboard.keysPressed = {}
