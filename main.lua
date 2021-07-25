@@ -302,7 +302,7 @@ function love.update(dt)
 	--[[ This will make the stalactites fall and respawn after they fall to the bottom of the screen. This should ideally 
 	only be executed if I’m on Room 3 or 5 (where the stalactites should be.) ]]
 	if currentRoom == 3 then
-		stalactiteRoom_3:update()
+		stalactiteRoom_3:update(dt)
 	end
 	
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
