@@ -133,12 +133,16 @@ local treasure_list = TreasureList()
 “for” loop so that I can check collision for the floor and all of the platforms (so that I can reuse the collides() 
 and resolveCollision() functions efficiently) (source: https://sheepolution.com/learn/book/23 .) 
 
-Remember to insert each instance of the floor in here to prevent the player from falling through the floor. ]]
+Remember to insert each instance of the floor in here to prevent the player from falling through the floor.
+
+I will add the stalactite so that the player is able to jump on top of them and use them as a platform.
+]]
 objects = {}
 table.insert(objects, floor1)
 table.insert(objects, platform1)
 table.insert(objects, platform2)
 table.insert(objects, platform3)
+table.insert(objects, stalactiteRoom_3)
 
 
 -- Here’s the love.load() function, which will load the variables.
