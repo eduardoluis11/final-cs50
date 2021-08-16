@@ -9,7 +9,25 @@ local STALACTITE_IMAGE = love.graphics.newImage('graphics/stalactite.png')
 -- This will store the stalactite's grvity.
 local STALACTITE_GRAVITY = 90
 
---[[ These are the initial properties of the stalactites ]]
+--[[ These are the initial properties of the stalactites.
+
+I want to store the initial position of the stalactites so that, after they fall below the screen, I can reset 
+their position to their original position. To do that, I’ll use a temporary global variable. It’s only the y coordinate 
+that I want to store in the temporary variable (the x position never changes.)
+
+I need to use “self.” for the temporary variable since that variable will be a global variable, and I want each stalactite 
+to have their own y coordinates and fall at different times.
+
+I will also store the initial value for the speed for the current instance of the stalactite (it will also be a temporary 
+variable, which will be reset once the stalactite respawns.)
+
+I will also specify the stalactite’s acceleration in a variable. This way, the stalactite’s “gravity” will be reset after 
+it respawns. 
+
+After further consideration, I decided that the stalactite should have a constant speed. Therefore, it won’t 
+have any acceleration whatsoever (the gravity will be equal to the stalactite's speed. The stalactite's gravity won't be 
+an acceleration).
+]]
 function Stalactite:init(stalactite_x, stalactite_y)
 	self.width = STALACTITE_IMAGE:getWidth()
 	self.height = STALACTITE_IMAGE:getHeight()
@@ -18,6 +36,9 @@ function Stalactite:init(stalactite_x, stalactite_y)
     self.y = stalactite_y 
 
 	self.dy = 0
+
+	-- Temporary variable
+	self.initial_y = stalactite_y
 end
 
 --[[ This will make the stalactites fall and respawn once they fall to the bottom of the screen.
@@ -40,10 +61,18 @@ is easily able to jump on top of the stalactite and use it as a platform.
 At really slow speeds (like "1 * dt"), the top of the stalactite sprite looks like it's shrinking, and then stretches again if
 I use "dt". However, at faster speeds, this visual bug isn't noticeable.
 
+If a stalactite falls below the bottom of the screen, I will respawn that stalactite to its original position. I 
+will also reset that stalactite’s gravity (so it doesn’t fall way too fast after respawning.)
+
 ]]
 function Stalactite:update(dt)
 	self.dy = STALACTITE_GRAVITY * dt
+
 	self.y = self.y + self.dy
+
+	if self.y > VIRTUAL_HEIGHT then
+		self.y = self.initial_y
+	end
 end
 
 
