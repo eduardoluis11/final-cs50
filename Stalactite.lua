@@ -7,7 +7,7 @@ Stalactite = Class{}
 local STALACTITE_IMAGE = love.graphics.newImage('graphics/stalactite.png')
 
 -- This will store the stalactite's grvity.
-local STALACTITE_GRAVITY = 90
+local STALACTITE_GRAVITY = 150
 
 --[[ These are the initial properties of the stalactites.
 
@@ -64,13 +64,18 @@ I use "dt". However, at faster speeds, this visual bug isn't noticeable.
 If a stalactite falls below the bottom of the screen, I will respawn that stalactite to its original position. I 
 will also reset that stalactite’s gravity (so it doesn’t fall way too fast after respawning.)
 
+I don't want the stalactite to respawn immediately after it falls below the bottom of the screen. I want a delay of at least
+a second before it respawns at the top of the screen. So, I will make it so that the stalactite needs to fall some pixels
+below the bottom of the screen before respawning (that way, I won't have to use a timer, so I won't have to worry too much
+about possible bugs.)
+
 ]]
 function Stalactite:update(dt)
 	self.dy = STALACTITE_GRAVITY * dt
 
 	self.y = self.y + self.dy
 
-	if self.y > VIRTUAL_HEIGHT then
+	if self.y > (VIRTUAL_HEIGHT + 100) then
 		self.y = self.initial_y
 	end
 end
