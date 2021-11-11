@@ -74,13 +74,18 @@ end
 
 --[[ This will make the player do any actions (run, throw blocks, fall due to gravity, etc) --]]
 function Player:update(dt)
-	-- This is the speed that the player will gain due to gravity
-	self.dy = self.dy + GRAVITY * dt
+	-- This is the speed that the player will gain due to gravity when falling
+	self.dy = self.dy + GRAVITY * dt / 2
 
 	--[[ This makes the player jump. This is where the keysPressed table from main.lua is being used. 
 	
 	I will also prevent the player from jumping again mid-jump (source: https://sheepolution.com/learn/book/24 ).
-	I need to specify that, besides pressing the spacebar, you also need the canJump variable to be “true” to be able to jump. --]]
+	I need to specify that, besides pressing the spacebar, you also need the canJump variable to be “true” to be able to jump.
+	
+	I added "+ dt" so the character jumps at the same height in every computer, be it a powerful one, a weak one, 
+	or regardless of whether or not vsync is on (source: https://love2d.org/forums/viewtopic.php?t=76758 )
+	
+	It seems that the solution was using "dt / 2" (source: http://openarena.ws/board/index.php?topic=5100.0)--]]
 	if love.keyboard.wasPressed('space') and self.canJump then
 		self.dy = -6
 		self.canJump = false 
@@ -130,9 +135,13 @@ function Player:update(dt)
 	They can still jump, but it's still a bug. However, I would need a better collision detector  
 	to fix that, so I may leave that as is. 
 	
-	Now, I need to find a way to jump only once. Right now, I can jump infinitely. --]]
+	Now, I need to find a way to jump only once. Right now, I can jump infinitely.
+	
+	It seems that the solution was using "dt / 2" so that the character jumps at the same height
+	in any computer, no matter how powerful lthe computer is or if vsync is on or off. (source: http://openarena.ws/board/index.php?topic=5100.0)--]]
 	if playerCollision == false or love.keyboard.wasPressed('space') then
 		self.y = self.y + self.dy
+		self.dy = self.dy + GRAVITY * dt / 2
 	end
 
 	--[[ This will store the previous position of the player into the last{} table (source: 
