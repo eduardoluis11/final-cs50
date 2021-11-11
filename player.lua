@@ -10,8 +10,12 @@ END OF COMMENT --]]
 -- This creates the class that will create the main character
 Player = Class{}
 
--- This adds the value for gravity
-local GRAVITY = 19
+--[[ This adds the value for gravity. It seems that, by increasing gravity and self.dy, I can make the character 
+fall faster and jump higher by using "self.dy = Number * dt" (that is, by using dt, so that the game runs
+the same on fast and slow computers, with vsync actvated or not.) 
+
+The original value for gravity was "19", and the original value for self.dy (without dt) was of "-6". ]]
+local GRAVITY = 3300
 
 -- Initializing function, which will contain many of the properties of the main character’s class.
 function Player:init()
@@ -74,7 +78,16 @@ end
 
 --[[ This will make the player do any actions (run, throw blocks, fall due to gravity, etc) --]]
 function Player:update(dt)
-	-- This is the speed that the player will gain due to gravity when falling
+	--[[ This is the speed that the player will gain due to gravity when falling
+
+	It seems that the solution was using "dt / 2" (source: http://openarena.ws/board/index.php?topic=5100.0)
+
+	IT DIDN'T WORK. FIX THIS BUG before continuing. 
+
+	BUG: My character is falling too slow after jumping, and jumps lower and slower in powerful desktop computers, 
+	instead of jumping and falling as they should like it does on my laptop. FIX THIS BUG.
+	--]]
+
 	self.dy = self.dy + GRAVITY * dt / 2
 
 	--[[ This makes the player jump. This is where the keysPressed table from main.lua is being used. 
@@ -85,9 +98,11 @@ function Player:update(dt)
 	I added "+ dt" so the character jumps at the same height in every computer, be it a powerful one, a weak one, 
 	or regardless of whether or not vsync is on (source: https://love2d.org/forums/viewtopic.php?t=76758 )
 	
-	It seems that the solution was using "dt / 2" (source: http://openarena.ws/board/index.php?topic=5100.0)--]]
+	I had to increase the values for the self.dy and the gravity so that I could use "dt" in the vertical speed calculation
+	and I could still fall fast and jump high.
+	--]]
 	if love.keyboard.wasPressed('space') and self.canJump then
-		self.dy = -6
+		self.dy = -1300
 		self.canJump = false 
 	end
 	
@@ -138,9 +153,14 @@ function Player:update(dt)
 	Now, I need to find a way to jump only once. Right now, I can jump infinitely.
 	
 	It seems that the solution was using "dt / 2" so that the character jumps at the same height
-	in any computer, no matter how powerful lthe computer is or if vsync is on or off. (source: http://openarena.ws/board/index.php?topic=5100.0)--]]
+	in any computer, no matter how powerful lthe computer is or if vsync is on or off. (source: http://openarena.ws/board/index.php?topic=5100.0)
+	
+	I used "(self.dy * dt)" so that the vertical speed is calculated with "dt", and so that the character could
+	fall fast and jump high on powerful computers, as well as in my laptop. SEE IF IT WORKS.
+	
+	--]]
 	if playerCollision == false or love.keyboard.wasPressed('space') then
-		self.y = self.y + self.dy
+		self.y = self.y + (self.dy * dt)
 		self.dy = self.dy + GRAVITY * dt / 2
 	end
 
