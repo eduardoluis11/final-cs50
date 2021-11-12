@@ -178,8 +178,16 @@ end
 or the rooms, I need ot first call this function, and then I will render it with love.draw().
 
 I use dt so that, if 2 computers can run the game at 60 FPS, that both computers can make the player run at 200 px/s horizontally. 
-That is, a faster computer won’t make the player run at 600 px/s. --]]
+That is, a faster computer won’t make the player run at 600 px/s. 
+
+BUG FIX: I put the line "dt = math.min(dt, 0.07)" at the top of the update() function to fix a bug which made the 
+player character's sprite to disappear if I dragged the game's Window on PCs. What this does is that the game 
+will only be updated if the game's running at above 15 FPS. If it pauses (such as when the user drags the game's
+window,) the game will stop updating, preventing the player's sprite to disappear  (source: Jasoco's reply on 
+https://love2d.org/forums/viewtopic.php?t=8740)
+--]]
 function love.update(dt)
+	dt = math.min(dt, 0.07)
 	--[[ This will update any changes on the player’s script (before rendering them into player:render().) --]]
 	player:update(dt)
 
