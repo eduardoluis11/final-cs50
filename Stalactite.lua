@@ -37,8 +37,10 @@ function Stalactite:init(stalactite_x, stalactite_y)
 
 	self.dy = 0
 
-	-- Temporary variable
+	--[[ Temporary variables. These are used for resetting the stalactite's position after the user exits and 
+	reenters the rooms with stalactites ]]
 	self.initial_y = stalactite_y
+	self.initial_x = stalactite_x
 end
 
 --[[ This will make the stalactites fall and respawn once they fall to the bottom of the screen.
@@ -69,25 +71,52 @@ a second before it respawns at the top of the screen. So, I will make it so that
 below the bottom of the screen before respawning (that way, I won't have to use a timer, so I won't have to worry too much
 about possible bugs.)
 
+BUG FIX: I will check the current room number here, not in main.lua. Then, if I'm on Room 3 or any other room with a 
+stalactite, I will render the stalactite and make it fall. Otherwise, I will render the stalactite below the height
+of the screen. This way, even though the stalactite will be invisible on rooms where there shouldn't be any stalactite,
+the player will never be able to touch them nor be on top of them. This is a similar approach that the Paper Mario devs
+did while mking the game.
+
+The reason why I'm modifiying the x position is because some rooms have a bottomless pit. If the user falls down a 
+pit, and there's an invisible stalactite below them, the player will never re-spawn, since the will be on top
+of a stalactite. Also, I want the player to fall for a few seconds before re-spawning, so the player will have 
+to fall a long distance below the screen. Since I won't have any bottomless pit that is at the left edge of the 
+screen, the user will never fall on top of a stalactite ifthe stalactite has an x coordinate of 0 in rooms without
+stalactites.
+
 ]]
 function Stalactite:update(dt)
-	self.dy = STALACTITE_GRAVITY * dt
+	if currentRoom == 3 then
+		self.dy = STALACTITE_GRAVITY * dt
 
-	self.y = self.y + self.dy
+		self.y = self.y + self.dy
+		self.x = self.initial_x
 
-	if self.y > (VIRTUAL_HEIGHT + 100) then
-		self.y = self.initial_y
+		if self.y > (VIRTUAL_HEIGHT + 100) then
+			self.y = self.initial_y
+		end
+	else 
+		self.y = VIRTUAL_HEIGHT + 100
+		self.x = 0
 	end
 end
 
-
 --[[ This will render the stalactites.
 
-They will only render in rooms 3 and 5.
+They will only render in rooms 3, 4 and 5.
+
+I have a BUG in which, if I'm on rooms that aren't supposed to have stalactites, the stalactites will be invisible, and 
+the player will be able to jump on top of them, even if they are invisible.
+
+To fix this bug, I will render the stalactites to the lower left corner of the rooms without stalactites, that is, 
+below the floor. THIS DIDN'T WORK, since the stalactite is still invisible and I can still jump on top of it 
+while it's invisible.
 
 ]]
 function Stalactite:render()
-	if currentRoom == 3 then
+	if currentRoom == 3 or currentRoom == 4 or currentRoom == 5  then
 		love.graphics.draw(STALACTITE_IMAGE, self.x, self.y)
+	-- else
+	-- 	love.graphics.draw(STALACTITE_IMAGE, 0, 0)
 	end
 end

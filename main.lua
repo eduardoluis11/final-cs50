@@ -300,10 +300,16 @@ function love.update(dt)
 	end
 
 	--[[ This will make the stalactites fall and respawn after they fall to the bottom of the screen. This should ideally 
-	only be executed if I’m on Room 3 or 5 (where the stalactites should be.) ]]
-	if currentRoom == 3 then
-		stalactiteRoom_3:update(dt)
-	end
+	only be executed if I’m on Room 3 or 5 (where the stalactites should be.)
+	
+	To fix a bug, I will make it so that the stalactites are ALWAYS being updated. This way, I will be able to make
+	the stalatite render offscreen (or to the lower left corner of the screen) so that the player isn't able
+	to jump on top of the stalactite in rooms where the stalactite isn't supposed to be rendered. 
+	
+	I will check the current room where I'm located inthe stalactite script, NOT here in main.lua.]]
+	-- if currentRoom == 3 then
+	stalactiteRoom_3:update(dt)
+	-- end
 	
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
