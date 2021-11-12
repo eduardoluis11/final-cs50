@@ -29,6 +29,9 @@ that chest. By default, that cage will be rendered. It will stop being rendered 
 
 Some of the chests, like the one on Room 2, will be locked. So, I will create global variables that store which chests 
 will be locked by default. Then, after activating the lever from that room, its corresponding chest will be unlocked.
+
+I will create a global variable that will tell the game whether room 4's lever has been pulled, which, if it is, 
+a falling stalactite will spawn.
 ]]
 function Lever:init(lever_x, lever_y)
 	self.width = DEACTIVATED_LEVER_IMAGE:getWidth()
@@ -44,6 +47,9 @@ function Lever:init(lever_x, lever_y)
 	unlockChest_2 = false
 	unlockChest_3 = false
 	unlockChest_5 = false
+
+	-- This will spawn a stalactite in room 4 once it changes to "true"
+	spawnStalactite_Room4 = false
 end
 
 --[[ The update() function will make the lever change from being deactivated to being activated, and will make its 
@@ -64,6 +70,8 @@ deactivated to make the cage disappear.
 
 Also, I will change the global variable that keeps track of the locked chests so that, if the player pulls the lever, 
 the corresponding treasure of that room becomes unlocked.
+
+If the player pulls the lever in room 4, a stalactite will spawn in that room.
 --]]
 function Lever:update(isTouchingLever)
 	if love.keyboard.wasPressed('e') then
@@ -76,6 +84,8 @@ function Lever:update(isTouchingLever)
 					unlockChest_2 = true
 				elseif currentRoom == 3 then
 					unlockChest_3 = true
+				elseif currentRoom == 4 then
+					spawnStalactite_Room4 = true
 				elseif currentRoom == 5 then
 					unlockChest_5 = true
 				end

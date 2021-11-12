@@ -84,9 +84,19 @@ to fall a long distance below the screen. Since I won't have any bottomless pit 
 screen, the user will never fall on top of a stalactite ifthe stalactite has an x coordinate of 0 in rooms without
 stalactites.
 
+Also, I will make it so that a stalactite spawns in Room 4 only after the player pulls room 4's lever.
 ]]
 function Stalactite:update(dt)
 	if currentRoom == 3 then
+		self.dy = STALACTITE_GRAVITY * dt
+
+		self.y = self.y + self.dy
+		self.x = self.initial_x
+
+		if self.y > (VIRTUAL_HEIGHT + 100) then
+			self.y = self.initial_y
+		end
+	elseif currentRoom == 4 and spawnStalactite_Room4 == true then
 		self.dy = STALACTITE_GRAVITY * dt
 
 		self.y = self.y + self.dy

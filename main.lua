@@ -121,6 +121,7 @@ local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT
 --[[ This will create the levers by calling the lever{} class ]]
 local leverRoom_2 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
 local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_4 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
 local leverRoom_5_1 = Lever(120, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will create the stalactites. ]]
@@ -301,6 +302,11 @@ function love.update(dt)
 	else
 		leverRoom_3:update(false)
 	end
+	if currentRoom == 4 and player:collides(leverRoom_4) then
+		leverRoom_4:update(true)
+	else
+		leverRoom_4:update(false)
+	end
 	if currentRoom == 5 and player:collides(leverRoom_5_1) then
 		leverRoom_5_1:update(true)
 	else
@@ -354,11 +360,14 @@ function love.draw()
 	chest4:render()
 	chest5:render()
 
-	--[[ This will render the levers. Only rooms 2, 3, and 5 have levers. Each one of those rooms should have their own lever. ]]
+	--[[ This will render the levers. Only rooms 2, 3, 4 and 5 have levers. Each one of those rooms should have their own
+	levers. ]]
 	if currentRoom == 2 then
 		leverRoom_2:render()
 	elseif currentRoom == 3 then
 		leverRoom_3:render()
+	elseif currentRoom == 4 then
+		leverRoom_4:render()
 	elseif currentRoom == 5 then
 		leverRoom_5_1:render()		
 	end
