@@ -122,7 +122,12 @@ local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT
 local leverRoom_2 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
 local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
 local leverRoom_4 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
+
+--[[ These are Room 5's four levers ]]
 local leverRoom_5_1 = Lever(120, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_5_2 = Lever(180, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_5_3 = Lever(240, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_5_4 = Lever(300, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will create the stalactites. ]]
 local stalactiteRoom_3 = Stalactite(200, 0)
@@ -307,10 +312,27 @@ function love.update(dt)
 	else
 		leverRoom_4:update(false)
 	end
+
+	--[[ This will check the player has pulled any of room 5's levers ]]
 	if currentRoom == 5 and player:collides(leverRoom_5_1) then
 		leverRoom_5_1:update(true)
 	else
 		leverRoom_5_1:update(false)
+	end
+	if currentRoom == 5 and player:collides(leverRoom_5_2) then
+		leverRoom_5_2:update(true)
+	else
+		leverRoom_5_2:update(false)
+	end
+	if currentRoom == 5 and player:collides(leverRoom_5_3) then
+		leverRoom_5_3:update(true)
+	else
+		leverRoom_5_3:update(false)
+	end
+	if currentRoom == 5 and player:collides(leverRoom_5_4) then
+		leverRoom_5_4:update(true)
+	else
+		leverRoom_5_4:update(false)
 	end
 
 	--[[ This will make the stalactites fall and respawn after they fall to the bottom of the screen. This should ideally 
@@ -369,7 +391,10 @@ function love.draw()
 	elseif currentRoom == 4 then
 		leverRoom_4:render()
 	elseif currentRoom == 5 then
-		leverRoom_5_1:render()		
+		leverRoom_5_1:render()
+		leverRoom_5_2:render()
+		leverRoom_5_3:render()
+		leverRoom_5_4:render()		
 	end
 	
 
