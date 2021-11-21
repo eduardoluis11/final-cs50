@@ -206,9 +206,9 @@ function Treasure:render()
     
     --[[ This will render the 4 treasure icons above theri respective levers for Room 5's puzzle ]]
     if currentRoom == 5 then
-        love.graphics.draw(TREASURE_2_IMAGE, 170, 300)
-        love.graphics.draw(TREASURE_1_IMAGE, 220, 300)
-        love.graphics.draw(TREASURE_4_IMAGE, 270, 300)
-        love.graphics.draw(TREASURE_3_IMAGE, 320, 300)
+        love.graphics.draw(TREASURE_2_IMAGE, 120, 330)
+        love.graphics.draw(TREASURE_1_IMAGE, 200, 330)
+        love.graphics.draw(TREASURE_4_IMAGE, 280, 330)
+        love.graphics.draw(TREASURE_3_IMAGE, 360, 330)
     end
 end

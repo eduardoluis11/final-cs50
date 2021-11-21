@@ -72,22 +72,32 @@ Also, I will change the global variable that keeps track of the locked chests so
 the corresponding treasure of that room becomes unlocked.
 
 If the player pulls the lever in room 4, a stalactite will spawn in that room.
+
+In Room 5, the player will only be able to open the chest if the 4 levers are pulled in a specific order. That is, after solving
+the lever puzzle, the "unlock chest 5" variable will be set to "true".
+
+The variable that makes the cage appear should change to "false" (that is, the cage should disappear) ONLY if their 
+respective lever has been pulled. I shouldn't make the cages disappear immediately after pulling a lever, since the player
+needs to pull 4 levers in room 5 to make the cage around chest 5 disappear. If I make any cage disappear immediately after
+pulling just 1 lever, this will render 4 cages on top of chest 5 (which would be a bug.)
 --]]
 function Lever:update(isTouchingLever)
 	if love.keyboard.wasPressed('e') then
 		if isTouchingLever == true then
 			if self.activatedLever == false then
 			    self.activatedLever = true
-				self.showCage = false
 				
 				if currentRoom == 2 then
 					unlockChest_2 = true
+					self.showCage = false
 				elseif currentRoom == 3 then
 					unlockChest_3 = true
+					self.showCage = false
 				elseif currentRoom == 4 then
 					spawnStalactite_Room4 = true
 				elseif currentRoom == 5 then
 					unlockChest_5 = true
+					self.showCage = false
 				end
 		    end
 		end

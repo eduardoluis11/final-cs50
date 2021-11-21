@@ -125,9 +125,9 @@ local leverRoom_4 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ These are Room 5's four levers ]]
 local leverRoom_5_1 = Lever(120, -80 + VIRTUAL_HEIGHT - 90)
-local leverRoom_5_2 = Lever(180, -80 + VIRTUAL_HEIGHT - 90)
-local leverRoom_5_3 = Lever(240, -80 + VIRTUAL_HEIGHT - 90)
-local leverRoom_5_4 = Lever(300, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_5_2 = Lever(200, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_5_3 = Lever(280, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_5_4 = Lever(360, -80 + VIRTUAL_HEIGHT - 90)
 
 --[[ This will create the stalactites. ]]
 local stalactiteRoom_3 = Stalactite(200, 0)
