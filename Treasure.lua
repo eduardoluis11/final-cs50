@@ -148,7 +148,11 @@ an icon at the top of the screen. This will fix the bug that automatically rende
 I just need to modify the code snippet that permanently renders the treasure icons.
 
 However, to fix a bug, I also had to remove "showTreasureNUMBER = true" from the code that temporarily renders the
-treasures. 
+treasures.
+
+For Room 5, I will permanently render 4 of the treasure icons above the room's 4 levers for that room's puzzle.
+These treasure sprites should ideally be smaller than the sprites used on the treasure bubble UI. However, I may 
+keep them the same size as they appear on the bubble UI.
 ]]
 function Treasure:render()
     -- This will temporarily render the treasure above its respective chest
@@ -198,5 +202,13 @@ function Treasure:render()
     end
     if showTreasure_5 == true then
         love.graphics.draw(TREASURE_5_IMAGE, 570, 10)
-    end    
+    end
+    
+    --[[ This will render the 4 treasure icons above theri respective levers for Room 5's puzzle ]]
+    if currentRoom == 5 then
+        love.graphics.draw(TREASURE_2_IMAGE, 170, 300)
+        love.graphics.draw(TREASURE_1_IMAGE, 220, 300)
+        love.graphics.draw(TREASURE_4_IMAGE, 270, 300)
+        love.graphics.draw(TREASURE_3_IMAGE, 320, 300)
+    end
 end
