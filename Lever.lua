@@ -32,8 +32,12 @@ will be locked by default. Then, after activating the lever from that room, its 
 
 I will create a global variable that will tell the game whether room 4's lever has been pulled, which, if it is, 
 a falling stalactite will spawn.
+
+For room 5, I ned to be able to differentiate between each of the 4 levers that will be used for the room's puzzle.
+So, to differentiate between the "ring", "armor", "ruby", and "gold" levers, I will pass a 3rd parameter to each
+lever from main.lua. If the lever's not located in room 5, the parameter will have a default value of "regular".
 ]]
-function Lever:init(lever_x, lever_y)
+function Lever:init(lever_x, lever_y, leverType)
 	self.width = DEACTIVATED_LEVER_IMAGE:getWidth()
 	self.height = DEACTIVATED_LEVER_IMAGE:getHeight()
 
@@ -50,6 +54,10 @@ function Lever:init(lever_x, lever_y)
 
 	-- This will spawn a stalactite in room 4 once it changes to "true"
 	spawnStalactite_Room4 = false
+
+	--[[ This will check whether the lever belongs to room 5 or not, and if so, it will check if the 
+	treasure icon associated with the lever is "ring", "armor", "ruby" or "gold". ]]
+	self.leverType = leverType
 end
 
 --[[ The update() function will make the lever change from being deactivated to being activated, and will make its 

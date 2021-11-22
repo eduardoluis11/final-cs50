@@ -119,15 +119,15 @@ local treasure4 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT 
 local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
 
 --[[ This will create the levers by calling the lever{} class ]]
-local leverRoom_2 = Lever(100, -80 + VIRTUAL_HEIGHT - 90)
-local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
-local leverRoom_4 = Lever(110, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_2 = Lever(100, -80 + VIRTUAL_HEIGHT - 90, 'regular')
+local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90, 'regular')
+local leverRoom_4 = Lever(110, -80 + VIRTUAL_HEIGHT - 90, 'regular')
 
 --[[ These are Room 5's four levers ]]
-local leverRoom_5_1 = Lever(120, -80 + VIRTUAL_HEIGHT - 90)
-local leverRoom_5_2 = Lever(200, -80 + VIRTUAL_HEIGHT - 90)
-local leverRoom_5_3 = Lever(280, -80 + VIRTUAL_HEIGHT - 90)
-local leverRoom_5_4 = Lever(360, -80 + VIRTUAL_HEIGHT - 90)
+local leverRoom_5_1 = Lever(120, -80 + VIRTUAL_HEIGHT - 90, 'armor')
+local leverRoom_5_2 = Lever(200, -80 + VIRTUAL_HEIGHT - 90, 'ring')
+local leverRoom_5_3 = Lever(280, -80 + VIRTUAL_HEIGHT - 90, 'gold')
+local leverRoom_5_4 = Lever(360, -80 + VIRTUAL_HEIGHT - 90, 'ruby')
 
 --[[ This will create the stalactites. ]]
 local stalactiteRoom_3 = Stalactite(200, 0)
