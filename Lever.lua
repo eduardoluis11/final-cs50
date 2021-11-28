@@ -198,7 +198,8 @@ function Lever:update(isTouchingLever)
 					end
 
 					if resetLevers == true then
-						for i,v in ipairs(listOfLevers[i + 3]) do
+						--[[ I will try to use a loop without using ipairs (source: https://sheepolution.com/learn/book/7)]]
+						for i=4,#listOfLevers do
 							listOfLevers[i].activatedLever = false
 						end
 						resetLevers = false
