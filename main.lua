@@ -153,12 +153,27 @@ table.insert(objects, stalactiteRoom_3)
 
 -- Here’s the love.load() function, which will load the variables.
 function love.load()
+	--[[ This table will store all of the game's 7 levers ]]
+	listOfLevers = {}
+
+	--[[ I will insert all 7 levers into the "listOfLevers" table here in the load() function. Otherwise, 
+	I will get an error saying that I'm isnerting "nil" into the listOfLevers{} table, and the game won't run. ]]
+	table.insert(listOfLevers, leverRoom_2)
+	table.insert(listOfLevers, leverRoom_3)
+	table.insert(listOfLevers, leverRoom_4)
+	table.insert(listOfLevers, leverRoom_5_1)
+	table.insert(listOfLevers, leverRoom_5_2)
+	table.insert(listOfLevers, leverRoom_5_3)
+	table.insert(listOfLevers, leverRoom_5_4)
+
 	--[[ This will give a name to the window that runs my game (source: https://youtu.be/3IdOCxHGMIo )  --]]
 	love.window.setTitle('Final Project')
 
     -- This table will detect all of my previous inputs from the keyboard
 	love.keyboard.keysPressed = {}
 end
+
+
 
 --[[ This will check if the user has pressed any keys on their keyboard (source: https://youtu.be/3IdOCxHGMIo) --]]
 function love.keypressed(key)
