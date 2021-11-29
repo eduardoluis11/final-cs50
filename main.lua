@@ -118,7 +118,7 @@ respective chest, so I don’t need to modify the y coordinate in here. ]]
 local treasure1 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 local treasure2 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
 local treasure3 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
-local treasure4 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT - 62)
+local treasure4 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
 
 --[[ This will create the levers by calling the lever{} class ]]
@@ -157,7 +157,7 @@ table.insert(objects, floor1)	-- This inserts the floor into Room 1's table
 table.insert(objects, platform1)
 table.insert(objects, platform2)
 table.insert(objects, platform3)
-table.insert(objects, stalactiteRoom_3)
+-- table.insert(objects, stalactiteRoom_3)
 
 roomTwosCollisionTable = {}	-- Room 2's table
 table.insert(roomTwosCollisionTable, floor1)	
