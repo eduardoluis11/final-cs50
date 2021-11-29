@@ -90,6 +90,28 @@ function Player:update(dt)
 
 	self.dy = self.dy + GRAVITY * dt / 2
 
+	--[[ I would need to first check if the player’s position is higher than the viewport’s height (that is, if the 
+	player has fallen below the bottom of the screen). If it does, I would have to change the player’s position so 
+	that it reappears on the left side of the screen (really close to the room’s door).
+
+    I could put an “if” statement on either main.lua or Player.lua to check for the player’s position to check if they 
+	are below the bottom of the screen.
+
+    I may use the Player.lua script since it already has a table that stores each position of the player when the 
+	player moves (each x and y coordinate). So, I could use that table to check if the last y position of the player 
+	was way below the bottom of the screen (something like “VIRTUAL_WIDTH + 1000”). If it is, I would reset the player’s
+	position to the left side of the room (something like “VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62”, 
+	which is where one of the treasure chests is located.)
+
+    I would use something like the code that I’m using for collision detection on Player.lua, but, instead of preventing 
+	the player from falling through the floor, it would make the player respawn at the beginning of the room. 
+	]]
+	if self.y > VIRTUAL_HEIGHT + 1000 then
+        self.y =  -80 + VIRTUAL_HEIGHT - 62
+        self.x = VIRTUAL_WIDTH - (141 * 3) - 150
+    end
+
+
 	--[[ This makes the player jump. This is where the keysPressed table from main.lua is being used. 
 	
 	I will also prevent the player from jumping again mid-jump (source: https://sheepolution.com/learn/book/24 ).
