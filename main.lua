@@ -49,7 +49,7 @@ VIRTUAL_HEIGHT = 600
 
 --[[ This global variable will store the current room where the player currently is. Temporarily, for debugging 
 purposes, the current room will be Room 1. --]]
-currentRoom = 3
+currentRoom = 4
 
 --[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one.
 
@@ -107,7 +107,7 @@ local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 270)
 local chest1 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 local chest2 = Chest(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
 local chest3 = Chest(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
-local chest4 = Chest(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT - 62)
+local chest4 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 local chest5 = Chest(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
 
 --[[ I will call the instances of the treasures here rather than on chest.lua. I will have to repeat the x and y 
@@ -134,6 +134,7 @@ local leverRoom_5_4 = Lever(360, -80 + VIRTUAL_HEIGHT - 90, 'ruby')
 
 --[[ This will create the stalactites. ]]
 local stalactiteRoom_3 = Stalactite(475, 0)
+local stalactiteRoom_4 = Stalactite(475, 0)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -165,6 +166,11 @@ roomThreesCollisionTable = {}	-- Room 3's table
 table.insert(roomThreesCollisionTable, room3_leftFloor)
 table.insert(roomThreesCollisionTable, room3_rightFloor)
 table.insert(roomThreesCollisionTable, stalactiteRoom_3)
+
+roomFoursCollisionTable = {}	-- Room 4's table
+table.insert(roomFoursCollisionTable, floor1)
+table.insert(roomFoursCollisionTable, platform1)
+table.insert(roomFoursCollisionTable, stalactiteRoom_4)
 
 
 
@@ -315,21 +321,16 @@ function love.update(dt)
 	end
 
 	if currentRoom == 4 then
-		for i=1,#objects do
-			if player:collides(objects[i]) then
-				-- DEBUGGING MESSAGE. DELETE LATER
-				-- print("There is collision")
-
+		for i=1,#roomFoursCollisionTable do
+			if player:collides(roomFoursCollisionTable[i]) then
 				playerCollision = true
 				player.canJump = true
-				
-				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
-				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
-				player:resolveCollision(objects[i])
+			
+				player:resolveCollision(roomFoursCollisionTable[i])
 			else
 				playerCollision = false
 			end
-		end -- End of Room 1's "for" loop
+		end -- End of Room 4's "for" loop
 	end
 
 	if currentRoom == 5 then
@@ -466,10 +467,13 @@ function love.update(dt)
 	the stalatite render offscreen (or to the lower left corner of the screen) so that the player isn't able
 	to jump on top of the stalactite in rooms where the stalactite isn't supposed to be rendered. 
 	
-	I will check the current room where I'm located inthe stalactite script, NOT here in main.lua.]]
-	-- if currentRoom == 3 then
-	stalactiteRoom_3:update(dt)
-	-- end
+	I will check the current room where I'm located in the stalactite script, NOT here in main.lua.]]
+	if currentRoom == 3 then
+		stalactiteRoom_3:update(dt)
+
+	elseif currentRoom == 4 then
+		stalactiteRoom_4:update(dt)
+	end
 	
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
@@ -496,6 +500,9 @@ function love.draw()
 		platform1:render()
 		platform2:render()
 		platform3:render()
+
+	elseif currentRoom == 4 then
+		platform1:render()
 	end
 
 	-- This will render all of the floors
@@ -555,8 +562,11 @@ function love.draw()
 		treasure2:render()
 	elseif currentRoom == 3 then
 		treasure3:render()
+		--[[ This renders the stalactites ]]
+		stalactiteRoom_3:render()
 	elseif currentRoom == 4 then
 		treasure4:render()
+		stalactiteRoom_4:render()
 	elseif currentRoom == 5 then
 		treasure5:render()
 	else
@@ -566,9 +576,6 @@ function love.draw()
 		treasure4:render()
 		treasure5:render()	
 	end
-	
-	--[[ This renders the stalactites ]]
-	stalactiteRoom_3:render()
 
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
