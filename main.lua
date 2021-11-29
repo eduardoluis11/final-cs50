@@ -77,8 +77,11 @@ local background = love.graphics.newImage('graphics/background_room_1.png')
 -- This variable will call the player script
 local player = Player()
 
--- This will store my floors
+-- These variables will store my floors
 local floor1 = Floor(0, -80 + VIRTUAL_HEIGHT)
+
+local room3_leftFloor = Floor(-460, -80 + VIRTUAL_HEIGHT)
+local room3_rightFloor = Floor(620, -80 + VIRTUAL_HEIGHT)
 
 --[[ This will call each instance of the platform script. I will assign its x and y coordinates to specify the 
 position of each platform I create. 
@@ -157,6 +160,12 @@ table.insert(objects, stalactiteRoom_3)
 
 roomTwosCollisionTable = {}	-- Room 2's table
 table.insert(roomTwosCollisionTable, floor1)	
+
+roomThreesCollisionTable = {}	-- Room 3's table
+table.insert(roomThreesCollisionTable, room3_leftFloor)
+table.insert(roomThreesCollisionTable, room3_rightFloor)
+table.insert(roomThreesCollisionTable, stalactiteRoom_3)
+
 
 
 -- Here’s the love.load() function, which will load the variables.
@@ -261,7 +270,7 @@ function love.update(dt)
 	For the time being, "objects" is the table with the platforms for Room 1. The rest of the rooms will have 
 	more intuitive names.
 	--]]
-	if currentRoom == 1 then
+	if currentRoom == 1 then	-- Room 1's collision check
 		for i=1,#objects do
 			if player:collides(objects[i]) then
 				-- DEBUGGING MESSAGE. DELETE LATER
@@ -279,7 +288,7 @@ function love.update(dt)
 		end -- End of Room 1's "for" loop
 	end
 
-	if currentRoom == 2 then
+	if currentRoom == 2 then	-- Room 2's collision check
 		for i=1,#roomTwosCollisionTable do
 			if player:collides(roomTwosCollisionTable[i]) then
 				playerCollision = true
@@ -292,22 +301,17 @@ function love.update(dt)
 		end -- End of Room 2's "for" loop
 	end
 
-	if currentRoom == 3 then
-		for i=1,#objects do
-			if player:collides(objects[i]) then
-				-- DEBUGGING MESSAGE. DELETE LATER
-				-- print("There is collision")
-
+	if currentRoom == 3 then -- Room 3's collision check
+		for i=1,#roomThreesCollisionTable do
+			if player:collides(roomThreesCollisionTable[i]) then
 				playerCollision = true
 				player.canJump = true
 				
-				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
-				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
-				player:resolveCollision(objects[i])
+				player:resolveCollision(roomThreesCollisionTable[i])
 			else
 				playerCollision = false
 			end
-		end -- End of Room 1's "for" loop
+		end -- End of Room 3's "for" loop
 	end
 
 	if currentRoom == 4 then
@@ -486,7 +490,7 @@ function love.draw()
 	love.graphics.draw(background, 0, 0)
 	-- love.graphics.draw(floor, 0, VIRTUAL_HEIGHT - 121)
 
-	--[[ This will render the platforms. I will render them 1st so that they are in a layer behind the player and the 
+	--[[ This will render the platforms and the floors. I will render them 1st so that they are in a layer behind the player and the 
 	floor sprite. I will render each platform on their respective room. ]]
 	if currentRoom == 1 then
 		platform1:render()
@@ -494,8 +498,16 @@ function love.draw()
 		platform3:render()
 	end
 
-	-- This will render the floor
-	floor1:render()
+	-- This will render all of the floors
+	if currentRoom ~= 3 then	-- For all rooms except room 3
+		floor1:render()
+
+	else	-- For room 3
+		room3_leftFloor:render()
+		room3_rightFloor:render()
+	end
+
+
 
 	--[[ This will render the levers and the chests. Only rooms 2, 3, 4 and 5 have levers. Each one of those rooms 
 	should have their own levers. 
