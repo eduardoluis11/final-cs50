@@ -142,13 +142,21 @@ and resolveCollision() functions efficiently) (source: https://sheepolution.com/
 Remember to insert each instance of the floor in here to prevent the player from falling through the floor.
 
 I will add the stalactite so that the player is able to jump on top of them and use them as a platform.
+
+"objects" will be the table with the platforms for Room 1.
+
+Each room will have its own table with its own platforms and stalactites. This way, there won't be invisible
+platforms on rooms that shouldn't have platforms (so the player won't float in the air.)
 ]]
-objects = {}
-table.insert(objects, floor1)
+objects = {}	-- This creates Room 1's table
+table.insert(objects, floor1)	-- This inserts the floor into Room 1's table
 table.insert(objects, platform1)
 table.insert(objects, platform2)
 table.insert(objects, platform3)
 table.insert(objects, stalactiteRoom_3)
+
+roomTwosCollisionTable = {}	-- Room 2's table
+table.insert(roomTwosCollisionTable, floor1)	
 
 
 -- Here’s the love.load() function, which will load the variables.
@@ -243,22 +251,119 @@ function love.update(dt)
 	
 	Since I can only use (key, value) pairs for “for” loops in Lua (as far as I’m aware), I need to specify where does 
 	the loop begin and where does it end. So, I will begin at 1, and end it at the last object (source: 
-	https://sheepolution.com/learn/book/23 .)--]]
-	for i=1,#objects do
-		if player:collides(objects[i]) then
-			-- DEBUGGING MESSAGE. DELETE LATER
-			-- print("There is collision")
+	https://sheepolution.com/learn/book/23 .)
+	
+	To make it so that the collision detection for the platforms and floors only work for the floors and platforms 
+	of their respective rooms, I will only detect for collision detection for each specific room. Also, each room
+	will have their own table with the platforms and floors for that specific room. Then, I will execute the 
+	"for" loop for the table of each specific room.
 
-			playerCollision = true
-			player.canJump = true
-			
-			--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
-			player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
-			player:resolveCollision(objects[i])
-		else
-			playerCollision = false
-		end
-	end -- End of "for" loop
+	For the time being, "objects" is the table with the platforms for Room 1. The rest of the rooms will have 
+	more intuitive names.
+	--]]
+	if currentRoom == 1 then
+		for i=1,#objects do
+			if player:collides(objects[i]) then
+				-- DEBUGGING MESSAGE. DELETE LATER
+				-- print("There is collision")
+
+				playerCollision = true
+				player.canJump = true
+				
+				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
+				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
+				player:resolveCollision(objects[i])
+			else
+				playerCollision = false
+			end
+		end -- End of Room 1's "for" loop
+	end
+
+	if currentRoom == 2 then
+		for i=1,#roomTwosCollisionTable do
+			if player:collides(roomTwosCollisionTable[i]) then
+				playerCollision = true
+				player.canJump = true
+				
+				player:resolveCollision(roomTwosCollisionTable[i])
+			else
+				playerCollision = false
+			end
+		end -- End of Room 2's "for" loop
+	end
+
+	if currentRoom == 3 then
+		for i=1,#objects do
+			if player:collides(objects[i]) then
+				-- DEBUGGING MESSAGE. DELETE LATER
+				-- print("There is collision")
+
+				playerCollision = true
+				player.canJump = true
+				
+				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
+				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
+				player:resolveCollision(objects[i])
+			else
+				playerCollision = false
+			end
+		end -- End of Room 1's "for" loop
+	end
+
+	if currentRoom == 4 then
+		for i=1,#objects do
+			if player:collides(objects[i]) then
+				-- DEBUGGING MESSAGE. DELETE LATER
+				-- print("There is collision")
+
+				playerCollision = true
+				player.canJump = true
+				
+				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
+				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
+				player:resolveCollision(objects[i])
+			else
+				playerCollision = false
+			end
+		end -- End of Room 1's "for" loop
+	end
+
+	if currentRoom == 5 then
+		for i=1,#objects do
+			if player:collides(objects[i]) then
+				-- DEBUGGING MESSAGE. DELETE LATER
+				-- print("There is collision")
+
+				playerCollision = true
+				player.canJump = true
+				
+				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
+				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
+				player:resolveCollision(objects[i])
+			else
+				playerCollision = false
+			end
+		end -- End of Room 1's "for" loop
+	end
+
+	-- This detects collision for the main hub
+	if currentRoom == 0 then
+		for i=1,#objects do
+			if player:collides(objects[i]) then
+				-- DEBUGGING MESSAGE. DELETE LATER
+				-- print("There is collision")
+
+				playerCollision = true
+				player.canJump = true
+				
+				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
+				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
+				player:resolveCollision(objects[i])
+			else
+				playerCollision = false
+			end
+		end -- End of Room 1's "for" loop
+	end
 
 	--[[ This will check if the user is touching a treasure chest.
 	
@@ -382,10 +487,12 @@ function love.draw()
 	-- love.graphics.draw(floor, 0, VIRTUAL_HEIGHT - 121)
 
 	--[[ This will render the platforms. I will render them 1st so that they are in a layer behind the player and the 
-	floor sprite. ]]
-	platform1:render()
-	platform2:render()
-	platform3:render()
+	floor sprite. I will render each platform on their respective room. ]]
+	if currentRoom == 1 then
+		platform1:render()
+		platform2:render()
+		platform3:render()
+	end
 
 	-- This will render the floor
 	floor1:render()
