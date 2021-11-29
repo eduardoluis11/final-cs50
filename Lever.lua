@@ -191,7 +191,16 @@ function Lever:update(isTouchingLever)
 					if roomFiveLeverCounter == 4 then
 						if roomFiveCorrectOrderLeverCounter == 4 then
 							unlockChest_5 = true
-							self.showCage = false
+							-- self.showCage = false
+
+							--[[ This will make the cage disappear from Room 5's chest. Currently, my code renders
+							a cage per lever. So, since I have 4 levers in Room 5, I have 4 cage sprites on the exact
+							same position in Room 5, but they all look like a single cage sprite. So, if I deactivate
+							the "showCage" property for the 4 levers in Room 5, the cage sprite should disappear
+							from Room 5's chest. ]]
+							for i=4,#listOfLevers do
+								listOfLevers[i].showCage = false
+							end
 						else
 							resetLevers = true
 						end
