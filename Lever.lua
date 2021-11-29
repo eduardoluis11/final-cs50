@@ -251,7 +251,7 @@ function Lever:render()
 		if currentRoom == 2 then
 			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 170, VIRTUAL_HEIGHT - 180)
 		elseif currentRoom == 3 then
-			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 60, VIRTUAL_HEIGHT - 180)
+			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 170, VIRTUAL_HEIGHT - 180)
 		elseif currentRoom == 5 then
 			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) + 180, VIRTUAL_HEIGHT - 180)
 		end
