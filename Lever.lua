@@ -249,7 +249,7 @@ function Lever:render()
 	-- This renders the cage on top of a chest
 	if self.showCage == true then
 		if currentRoom == 2 then
-			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 60, VIRTUAL_HEIGHT - 368)
+			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 170, VIRTUAL_HEIGHT - 180)
 		elseif currentRoom == 3 then
 			love.graphics.draw(CAGE_IMAGE, VIRTUAL_WIDTH - (141 * 3) - 60, VIRTUAL_HEIGHT - 180)
 		elseif currentRoom == 5 then

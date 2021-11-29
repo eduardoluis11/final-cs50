@@ -49,7 +49,7 @@ VIRTUAL_HEIGHT = 600
 
 --[[ This global variable will store the current room where the player currently is. Temporarily, for debugging 
 purposes, the current room will be Room 1. --]]
-currentRoom = 3
+currentRoom = 2
 
 --[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one.
 
@@ -102,7 +102,7 @@ local platform3 = Platform(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 270)
 
 --[[ This will create each instance of the chests. I need to specify their x and y coordinates in here as parameters. ]]
 local chest1 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
-local chest2 = Chest(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 330)
+local chest2 = Chest(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
 local chest3 = Chest(VIRTUAL_WIDTH - (141 * 3) - 40, -80 + VIRTUAL_HEIGHT - 62)
 local chest4 = Chest(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT - 62)
 local chest5 = Chest(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
@@ -113,13 +113,13 @@ coordinates of the chest for their corresponding treasures, but, right now, I do
 In the treasure.lua script, I’m already subtracting a number of pixels to the y coordinate to put the treasure above its 
 respective chest, so I don’t need to modify the y coordinate in here. ]]
 local treasure1 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
-local treasure2 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 40, VIRTUAL_HEIGHT - 330)
+local treasure2 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
 local treasure3 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 40, -80 + VIRTUAL_HEIGHT - 62)
 local treasure4 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 90, -80 + VIRTUAL_HEIGHT - 62)
 local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
 
 --[[ This will create the levers by calling the lever{} class ]]
-local leverRoom_2 = Lever(100, -80 + VIRTUAL_HEIGHT - 90, 'regular')
+local leverRoom_2 = Lever(VIRTUAL_WIDTH - (141 * 3) + 270, -80 + VIRTUAL_HEIGHT - 90, 'regular')
 local leverRoom_3 = Lever(110, -80 + VIRTUAL_HEIGHT - 90, 'regular')
 local leverRoom_4 = Lever(110, -80 + VIRTUAL_HEIGHT - 90, 'regular')
 
