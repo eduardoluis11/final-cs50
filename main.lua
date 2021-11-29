@@ -133,7 +133,7 @@ local leverRoom_5_3 = Lever(280, -80 + VIRTUAL_HEIGHT - 90, 'gold')
 local leverRoom_5_4 = Lever(360, -80 + VIRTUAL_HEIGHT - 90, 'ruby')
 
 --[[ This will create the stalactites. ]]
-local stalactiteRoom_3 = Stalactite(200, 0)
+local stalactiteRoom_3 = Stalactite(475, 0)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
