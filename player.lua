@@ -90,9 +90,10 @@ function Player:update(dt)
 
 	self.dy = self.dy + GRAVITY * dt / 2
 
-	--[[ I would need to first check if the player’s position is higher than the viewport’s height (that is, if the 
-	player has fallen below the bottom of the screen). If it does, I would have to change the player’s position so 
-	that it reappears on the left side of the screen (really close to the room’s door).
+	--[[ Thsi will make the player rewspan if the fall into a bottomless pit. I would need to first check if the 
+	player’s position is higher than the viewport’s height (that is, if the player has fallen below the bottom of 
+	the screen). If it does, I would have to change the player’s position so that it reappears on the left side of 
+	the screen (really close to the room’s door).
 
     I could put an “if” statement on either main.lua or Player.lua to check for the player’s position to check if they 
 	are below the bottom of the screen.
@@ -106,9 +107,9 @@ function Player:update(dt)
     I would use something like the code that I’m using for collision detection on Player.lua, but, instead of preventing 
 	the player from falling through the floor, it would make the player respawn at the beginning of the room. 
 	]]
-	if self.y > VIRTUAL_HEIGHT + 1000 then
-        self.y =  -80 + VIRTUAL_HEIGHT - 62
-        self.x = VIRTUAL_WIDTH - (141 * 3) - 150
+	if self.y > VIRTUAL_HEIGHT + 1500 then
+        self.y = 300
+        self.x = 100
     end
 
 
