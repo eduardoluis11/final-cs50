@@ -56,6 +56,17 @@ https://sheepolution.com/learn/book/23
 6) Breakout - Lecture 2 - CS50's Introduction to Game Development 2018
 https://youtu.be/F86edI_EF3s
 
+7) Sheepolution, Chapter 7 - Tables and for-loops:
+https://sheepolution.com/learn/book/7
+
+8) Sheepolution, Chapter 8 - Objects:
+https://sheepolution.com/learn/book/8
+
+
+
+
+
+
 And more (check the code. I included each snippet of code that
 I used as a references in comments that I added in the code
 of my scripts.)
