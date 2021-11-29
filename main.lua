@@ -390,22 +390,30 @@ function love.draw()
 	-- This will render the floor
 	floor1:render()
 
-	-- This will render the chests
-	chest1:render()
-	chest2:render()
-	chest3:render()
-	chest4:render()
-	chest5:render()
+	--[[ This will render the levers and the chests. Only rooms 2, 3, 4 and 5 have levers. Each one of those rooms 
+	should have their own levers. 
+	
+	I rendered the chests first so that they are on a layer below the cage if the 
+	chest is locked. This happens because the cages are being rendered by the Lever() class. So, the levers
+	should be rendered AFTER the chests so that the chests are on a layer behind the levers and theri respective 
+	cages. ]]
+	if currentRoom == 1 then
+		chest1:render()
 
-	--[[ This will render the levers. Only rooms 2, 3, 4 and 5 have levers. Each one of those rooms should have their own
-	levers. ]]
-	if currentRoom == 2 then
+	elseif currentRoom == 2 then
+		chest2:render()
 		leverRoom_2:render()
+
 	elseif currentRoom == 3 then
+		chest3:render()
 		leverRoom_3:render()
+
 	elseif currentRoom == 4 then
+		chest4:render()
 		leverRoom_4:render()
+
 	elseif currentRoom == 5 then
+		chest5:render()
 		leverRoom_5_1:render()
 		leverRoom_5_2:render()
 		leverRoom_5_3:render()
