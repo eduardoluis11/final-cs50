@@ -65,13 +65,13 @@ https://sheepolution.com/learn/book/8
 9) Kankaanpaa, H. (2015). Doing Game Gravity Right. OpenArena. 
 Retrieved November 29, 2021, from 
 http://openarena.ws/board/index.php?topic=5100.0. 
-GrosBedo's post citing Hannu Kankaanpaa about how to use delta 
-time.
+I used "delta time / 2" in my code thanks to GrosBedo's post citing 
+Hannu Kankaanpaa about how to use delta time.
 
 10) Jasoco. (2013). Game runs too fast on a laptop? 
 LÖVE - Free 2D Game Engine. Retrieved November 29, 2021, 
 from https://love2d.org/forums/viewtopic.php?t=76758. 
-Jasoco's post.
+I learned how to use delta time thanks to Jasoco's post.
 
 11)
 
