@@ -108,7 +108,7 @@ local chest1 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 local chest2 = Chest(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
 local chest3 = Chest(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
 local chest4 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
-local chest5 = Chest(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
+local chest5 = Chest(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 
 --[[ I will call the instances of the treasures here rather than on chest.lua. I will have to repeat the x and y 
 coordinates of the chest for their corresponding treasures, but, right now, I don’t know a more efficient way of doing this.
@@ -119,7 +119,7 @@ local treasure1 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 local treasure2 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
 local treasure3 = Treasure(VIRTUAL_WIDTH - (141 * 3) - 150, -80 + VIRTUAL_HEIGHT - 62)
 local treasure4 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
-local treasure5 = Treasure(VIRTUAL_WIDTH - (141 * 3) + 200, -80 + VIRTUAL_HEIGHT - 62)
+local treasure5 = Treasure(VIRTUAL_WIDTH - 120, VIRTUAL_HEIGHT - 490)
 
 --[[ This will create the levers by calling the lever{} class ]]
 local leverRoom_2 = Lever(VIRTUAL_WIDTH - (141 * 3) + 270, -80 + VIRTUAL_HEIGHT - 90, 'regular')
