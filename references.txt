@@ -73,7 +73,16 @@ LÖVE - Free 2D Game Engine. Retrieved November 29, 2021,
 from https://love2d.org/forums/viewtopic.php?t=76758. 
 I learned how to use delta time thanks to Jasoco's post.
 
-11)
+11) Ensayia. (2012). Default Screen Size. LÖVE - Free 2D Game 
+Engine. Retrieved November 30, 2021, 
+from https://love2d.org/forums/viewtopic.php?t=8995#:~:text=Re%3A%20Default%20Screen%20Size&amp;text=With%20no%20config%20file%20specifying,is%20the%201344x768%20widescreen%20variant. 
+I learned Love2D's default window resolution thanks to 
+Ensayia's post.
+
+12) Jasoco. (2012). Bugs When Window Is Moved. LÖVE - 
+Free 2D Game Engine. Retrieved November 30, 2021, 
+from https://love2d.org/forums/viewtopic.php?t=8740. 
+I used a code snippet from Jasoco's post.
 
 
 
