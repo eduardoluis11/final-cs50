@@ -178,6 +178,9 @@ table.insert(roomFivesCollisionTable, floor1)
 table.insert(roomFivesCollisionTable, platform1)
 table.insert(roomFivesCollisionTable, stalactiteRoom_5)
 
+HubsCollisionTable = {}	-- Hub's table
+table.insert(HubsCollisionTable, floor1)
+
 
 
 -- Here’s the love.load() function, which will load the variables.
@@ -353,21 +356,15 @@ function love.update(dt)
 
 	-- This detects collision for the main hub
 	if currentRoom == 0 then
-		for i=1,#objects do
-			if player:collides(objects[i]) then
-				-- DEBUGGING MESSAGE. DELETE LATER
-				-- print("There is collision")
-
+		for i=1,#HubsCollisionTable do
+			if player:collides(HubsCollisionTable[i]) then
 				playerCollision = true
 				player.canJump = true
-				
-				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
-				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
-				player:resolveCollision(objects[i])
+				player:resolveCollision(HubsCollisionTable[i])
 			else
 				playerCollision = false
 			end
-		end -- End of Room 1's "for" loop
+		end -- End of the hub's "for" loop
 	end
 
 	--[[ This will check if the user is touching a treasure chest.
