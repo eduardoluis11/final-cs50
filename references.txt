@@ -33,62 +33,51 @@ https://rottingpixels.itch.io/platformer-dungeon-tileset
 
 ===========================================================================
 
-Code: 
+Code references: 
 
-1)  (2018). Flappy Bird - Lecture 1 - CS50's Introduction to 
-Game Development 2018. Retrieved November 30, 2021, from 
-https://youtu.be/3IdOCxHGMIo. 
+(2018). Breakout - Lecture 2 - CS50's Introduction to Game Development 2018. 
+Retrieved November 30, 2021, from https://www.youtube.com/watch?v=F86edI_EF3s. 
 
-2) KeyConstant. LOVE. (2021, March 2). Retrieved November 30, 
-2021, from https://love2d.org/wiki/KeyConstant. I learned how 
-to access the space bar key in Love2D from here.
+(2018). Flappy Bird - Lecture 1 - CS50's Introduction to Game Development 2018. 
+Retrieved November 30, 2021, from https://youtu.be/3IdOCxHGMIo. 
 
-3) Richter, M. (2018). class.lua. CS50’s Introduction to Game 
-Development. computer software. Retrieved November 30, 2021, 
-from http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip.  
+Ensayia . (2012). Default Screen Size. LÖVE - Free 2D Game Engine. Retrieved 
+November 30, 2021, from 
+https://love2d.org/forums/viewtopic.php?t=8995#:~:text=Re%3A%20Default%20Screen%20Size&amp;text=With%20no%20config%20file%20specifying,is%20the%201344x768%20widescreen%20variant. I learned Love2D's default window resolution thanks to Ensayia's post.
 
-4) Sheepolution. (n.d.). Chapter 24 - Platformer. Sheepolution. 
-Retrieved November 30, 2021, from 
-https://sheepolution.com/learn/book/24. 
+Jasoco. (2012). Bugs When Window Is Moved. LÖVE - Free 2D Game Engine. Retrieved 
+November 30, 2021, from https://love2d.org/forums/viewtopic.php?t=8740. I used 
+a code snippet from Jasoco's post.
 
-5) Sheepolution. (n.d.). Chapter 23 - Resolving collision. 
-Sheepolution. Retrieved November 30, 2021, from 
-https://sheepolution.com/learn/book/23. 
+Jasoco. (2013, December 23). Game runs too fast on a laptop? LÖVE - Free 2D Game 
+Engine. Retrieved November 30, 2021, from 
+https://love2d.org/forums/viewtopic.php?t=76758. I learned how to use delta time 
+thanks to Jasoco's post.
 
-6)  (2018). Breakout - Lecture 2 - CS50's Introduction to Game 
-Development 2018. Retrieved November 30, 2021, from 
-https://www.youtube.com/watch?v=F86edI_EF3s. 
+Kankaanpaa, H. (2015). Doing game gravity right. OpenArena. Retrieved November 
+30, 2021, from http://openarena.ws/board/index.php?topic=5100.0. I used "delta 
+time / 2" in my code thanks to GrosBedo's post citing Hannu Kankaanpaa about 
+how to use delta time.
 
-7) Sheepolution. (n.d.). Chapter 7 - Tables and for-loops. 
-Sheepolution. Retrieved November 30, 2021, from 
-https://sheepolution.com/learn/book/7. 
+KeyConstant. LOVE. (2021, March 2). Retrieved November 30, 2021, from 
+https://love2d.org/wiki/KeyConstant. I learned how to access the space bar key 
+in Love2D from here.
 
-8) Sheepolution. (n.d.). Chapter 8 - Objects. Sheepolution. 
-Retrieved November 30, 2021, from 
-https://sheepolution.com/learn/book/8. 
+Richter, M. (2018). class.lua. CS50’s Introduction to Game Development. computer 
+software. Retrieved November 30, 2021, from 
+http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip. 
 
-9) Kankaanpaa, H. (2015). Doing Game Gravity Right. OpenArena. 
-Retrieved November 29, 2021, from 
-http://openarena.ws/board/index.php?topic=5100.0. 
-I used "delta time / 2" in my code thanks to GrosBedo's post citing 
-Hannu Kankaanpaa about how to use delta time.
+Sheepolution. (n.d.). Chapter 23 - Resolving collision. Sheepolution. Retrieved 
+November 30, 2021, from https://sheepolution.com/learn/book/23. 
 
-10) Jasoco. (2013). Game runs too fast on a laptop? 
-LÖVE - Free 2D Game Engine. Retrieved November 29, 2021, 
-from https://love2d.org/forums/viewtopic.php?t=76758. 
-I learned how to use delta time thanks to Jasoco's post.
+Sheepolution. (n.d.). Chapter 24 - Platformer. Sheepolution. Retrieved November 
+30, 2021, from https://sheepolution.com/learn/book/24. 
 
-11) Ensayia. (2012). Default Screen Size. LÖVE - Free 2D Game 
-Engine. Retrieved November 30, 2021, 
-from https://love2d.org/forums/viewtopic.php?t=8995#:~:text=Re%3A%20Default%20Screen%20Size&amp;text=With%20no%20config%20file%20specifying,is%20the%201344x768%20widescreen%20variant. 
-I learned Love2D's default window resolution thanks to 
-Ensayia's post.
+Sheepolution. (n.d.). Chapter 7 - Tables and for-loops. Sheepolution. Retrieved 
+November 30, 2021, from https://sheepolution.com/learn/book/7. 
 
-12) Jasoco. (2012). Bugs When Window Is Moved. LÖVE - 
-Free 2D Game Engine. Retrieved November 30, 2021, 
-from https://love2d.org/forums/viewtopic.php?t=8740. 
-I used a code snippet from Jasoco's post.
-
+Sheepolution. (n.d.). Chapter 8 - Objects. Sheepolution. Retrieved November 30, 
+2021, from https://sheepolution.com/learn/book/8. 
 
 
 
