@@ -49,7 +49,7 @@ VIRTUAL_HEIGHT = 600
 
 --[[ This global variable will store the current room where the player currently is. Temporarily, for debugging 
 purposes, the current room will be Room 1. --]]
-currentRoom = 4
+currentRoom = 5
 
 --[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one.
 
@@ -134,7 +134,8 @@ local leverRoom_5_4 = Lever(360, -80 + VIRTUAL_HEIGHT - 90, 'ruby')
 
 --[[ This will create the stalactites. ]]
 local stalactiteRoom_3 = Stalactite(475, 0)
-local stalactiteRoom_4 = Stalactite(475, 0)
+local stalactiteRoom_4 = Stalactite(550, 0)
+local stalactiteRoom_5 = Stalactite(550, 0)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
@@ -171,6 +172,11 @@ roomFoursCollisionTable = {}	-- Room 4's table
 table.insert(roomFoursCollisionTable, floor1)
 table.insert(roomFoursCollisionTable, platform1)
 table.insert(roomFoursCollisionTable, stalactiteRoom_4)
+
+roomFivesCollisionTable = {}	-- Room 5's table
+table.insert(roomFivesCollisionTable, floor1)
+table.insert(roomFivesCollisionTable, platform1)
+table.insert(roomFivesCollisionTable, stalactiteRoom_5)
 
 
 
@@ -334,21 +340,15 @@ function love.update(dt)
 	end
 
 	if currentRoom == 5 then
-		for i=1,#objects do
-			if player:collides(objects[i]) then
-				-- DEBUGGING MESSAGE. DELETE LATER
-				-- print("There is collision")
-
+		for i=1,#roomFivesCollisionTable do
+			if player:collides(roomFivesCollisionTable[i]) then
 				playerCollision = true
 				player.canJump = true
-				
-				--[[ This will call the resolveCollision() function to check if the player touched the floor. If yes, the 
-				player will go back to their previous position. (source: https://sheepolution.com/learn/book/23 )]]
-				player:resolveCollision(objects[i])
+				player:resolveCollision(roomFivesCollisionTable[i])
 			else
 				playerCollision = false
 			end
-		end -- End of Room 1's "for" loop
+		end -- End of Room 5's "for" loop
 	end
 
 	-- This detects collision for the main hub
@@ -473,6 +473,9 @@ function love.update(dt)
 
 	elseif currentRoom == 4 then
 		stalactiteRoom_4:update(dt)
+
+	elseif currentRoom == 5 then
+		stalactiteRoom_5:update(dt)
 	end
 	
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
@@ -501,7 +504,7 @@ function love.draw()
 		platform2:render()
 		platform3:render()
 
-	elseif currentRoom == 4 then
+	elseif currentRoom == 4 or currentRoom == 5 then
 		platform1:render()
 	end
 
@@ -569,6 +572,7 @@ function love.draw()
 		stalactiteRoom_4:render()
 	elseif currentRoom == 5 then
 		treasure5:render()
+		stalactiteRoom_5:render()
 	else
 		treasure1:render()
 		treasure2:render()

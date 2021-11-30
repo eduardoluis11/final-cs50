@@ -87,7 +87,7 @@ stalactites.
 Also, I will make it so that a stalactite spawns in Room 4 only after the player pulls room 4's lever.
 ]]
 function Stalactite:update(dt)
-	if currentRoom == 3 then
+	if currentRoom == 3 or currentRoom == 5 then
 		self.dy = STALACTITE_GRAVITY * dt
 
 		self.y = self.y + self.dy
