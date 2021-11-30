@@ -35,32 +35,37 @@ https://rottingpixels.itch.io/platformer-dungeon-tileset
 
 Code: 
 
-1) Flappy Bird - Lecture 1 - CS50's Introduction to Game Development 2018:
-https://youtu.be/3IdOCxHGMIo
+1)  (2018). Flappy Bird - Lecture 1 - CS50's Introduction to 
+Game Development 2018. Retrieved November 30, 2021, from 
+https://youtu.be/3IdOCxHGMIo. 
 
+2) KeyConstant. LOVE. (2021, March 2). Retrieved November 30, 
+2021, from https://love2d.org/wiki/KeyConstant. I learned how 
+to access the space bar key in Love2D from here.
 
-2) Love2D documentation, how to get the space bar key:
-https://love2d.org/wiki/KeyConstant
+3) Richter, M. (2018). class.lua. CS50’s Introduction to Game 
+Development. computer software. Retrieved November 30, 2021, 
+from http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip.  
 
+4) Sheepolution. (n.d.). Chapter 24 - Platformer. Sheepolution. 
+Retrieved November 30, 2021, from 
+https://sheepolution.com/learn/book/24. 
 
-3) Harvard, GD50, 2018 Lecture, Fifty Bird, class.lua file:
-http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip , 
-which comes from https://cs50.harvard.edu/games/2018/weeks/1/
+5) Sheepolution. (n.d.). Chapter 23 - Resolving collision. 
+Sheepolution. Retrieved November 30, 2021, from 
+https://sheepolution.com/learn/book/23. 
 
-4) Sheepolution, Chapter 24 - Platformer:
-https://sheepolution.com/learn/book/24
+6)  (2018). Breakout - Lecture 2 - CS50's Introduction to Game 
+Development 2018. Retrieved November 30, 2021, from 
+https://www.youtube.com/watch?v=F86edI_EF3s. 
 
-5) Sheepolution, Chapter 23 - Resolving collision:
-https://sheepolution.com/learn/book/23
+7) Sheepolution. (n.d.). Chapter 7 - Tables and for-loops. 
+Sheepolution. Retrieved November 30, 2021, from 
+https://sheepolution.com/learn/book/7. 
 
-6) Breakout - Lecture 2 - CS50's Introduction to Game Development 2018
-https://youtu.be/F86edI_EF3s
-
-7) Sheepolution, Chapter 7 - Tables and for-loops:
-https://sheepolution.com/learn/book/7
-
-8) Sheepolution, Chapter 8 - Objects:
-https://sheepolution.com/learn/book/8
+8) Sheepolution. (n.d.). Chapter 8 - Objects. Sheepolution. 
+Retrieved November 30, 2021, from 
+https://sheepolution.com/learn/book/8. 
 
 9) Kankaanpaa, H. (2015). Doing Game Gravity Right. OpenArena. 
 Retrieved November 29, 2021, from 
@@ -89,13 +94,12 @@ I used a code snippet from Jasoco's post.
 
 
 
-And more (check the code. I included each snippet of code that
-I used as a references in comments that I added in the code
-of my scripts.)
-
 
 
 =============================================================================
+
+*) You can download class.lua from here: 
+http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip
 
 OLD CODE:
 
