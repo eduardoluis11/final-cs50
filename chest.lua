@@ -117,31 +117,45 @@ function Chest:update(isTouchingChest)
 		if isTouchingChest == true then
 			if self.closedChest == true then
 				if currentRoom == 2 then
-					if unlockChest_2 == true then
+					if unlockChest_2 == true then	-- Room 2's treasure
 						self.closedChest = false
 						timerOn = true
-						treasureCounter = treasureCounter + 1
+
+						--[[ This will update the treasure counter to indicathe that I have grabbed the 1st treasure.
+						Once I pick up all 5 of them, this counter will reach 5, and the victory state will change
+						to "true". This will add Room 2's treasure to the counter. ]]
+						treasureCounter = treasureCounter + 1	
+
+						-- DEBUGGING message that prints the treasure counter
+						print(treasureCounter)	
 
 					-- I may not need this
 					--[[else
 						self.closedChest = true
 						timerOn = false]]
 					end
-				elseif currentRoom == 3 then
+				elseif currentRoom == 3 then	-- Room 3's treasure
 					if unlockChest_3 == true then
 						self.closedChest = false
 						timerOn = true
+						treasureCounter = treasureCounter + 1
+
+						print(treasureCounter)
 					end
-				elseif currentRoom == 5 then
+				elseif currentRoom == 5 then	-- Room 5's treasure
 					if unlockChest_5 == true then
 						self.closedChest = false
 						timerOn = true
 						treasureCounter = treasureCounter + 1
+
+						print(treasureCounter)
 					end
-				else
+				else	-- Rooms 1 and 4's treasure
 					self.closedChest = false
 					timerOn = true
 					treasureCounter = treasureCounter + 1
+
+					print(treasureCounter)
 				end
 			end
 		end
