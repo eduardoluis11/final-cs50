@@ -87,6 +87,14 @@ function Treasure:update(dt)
     if timerOn == true and self.timer < 1 then
         self.timer = self.timer + dt
 
+        --[[ This will make the timer to reach 1 second and break this loop if the user enters the hub. This will 
+        fix a bug in which, if the player opens a chest and immediately afterwards enters another treasure room, 
+        the treaure of that new room would be renderred, even though the player never opened the chest of that room.
+        ]]
+        if currentRoom == 0 then
+            self.timer = 1
+        end
+
         self.showTreasure = true
 
         if currentRoom == 1 then
