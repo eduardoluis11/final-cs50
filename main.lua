@@ -144,12 +144,12 @@ local stalactiteRoom_5 = Stalactite(550, 0)
 local treasure_list = TreasureList()
 
 --[[ Next, I would have to create each of the 6 instances of the door class ]]
-local door1 = Door(120, -80 + VIRTUAL_HEIGHT - 90, 1)
-local door2 = Door(160, -80 + VIRTUAL_HEIGHT - 90, 2)
-local door3 = Door(200, -80 + VIRTUAL_HEIGHT - 90, 3)
-local door4 = Door(240, -80 + VIRTUAL_HEIGHT - 90, 4)
-local door5 = Door(300, -80 + VIRTUAL_HEIGHT - 90, 5)
-local hubDoor = Door(120, -80 + VIRTUAL_HEIGHT - 90, 0)
+local door1 = Door(100, -80 + VIRTUAL_HEIGHT - 110, 1)
+local door2 = Door(200, -80 + VIRTUAL_HEIGHT - 110, 2)
+local door3 = Door(300, -80 + VIRTUAL_HEIGHT - 110, 3)
+local door4 = Door(400, -80 + VIRTUAL_HEIGHT - 110, 4)
+local door5 = Door(500, -80 + VIRTUAL_HEIGHT - 110, 5)
+local hubDoor = Door(0, -80 + VIRTUAL_HEIGHT - 110, 0)
 
 --[[ I will create a table where I will store every sprite or object that’s not the player. This will be called in a 
 “for” loop so that I can check collision for the floor and all of the platforms (so that I can reuse the collides() 
@@ -633,13 +633,19 @@ function love.draw()
 		treasure5:render()	
 	end
 
-	--[[ This will render all doors.]]
-	door1:render()
-	door2:render()
-	door3:render()
-	door4:render()
-	door5:render()
-	hubDoor:render()
+	--[[ This will render all doors.
+	
+	If the user is at the hub, 5 doors will render. Meanwhile, if the user is at any treasure room, 
+	only the exit door will be avialable, that is, only the door towards the hub will be visible. ]]
+	if currentRoom == 0 then
+		door1:render()
+		door2:render()
+		door3:render()
+		door4:render()
+		door5:render()
+	else
+		hubDoor:render()
+	end
 	
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
