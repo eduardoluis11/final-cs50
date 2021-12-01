@@ -142,7 +142,8 @@ function Player:update(dt)
 		self.x = self.x + 260 * dt
     end
 
-	--[[ DEBUGGING CODE. DELETE LATER. This will change the room number if I press any of the number keys (between 0 and 5.) ]]
+	--[[ DEBUGGING CODE. DELETE LATER. This will change the room number if I press any of the number keys (between 0 
+	and 5,) and tell me the current x and y coordinates of the player. ]]
 	if love.keyboard.wasPressed('1') then
 		currentRoom = 1
 		print("Room 1.")
@@ -161,6 +162,8 @@ function Player:update(dt)
 	elseif love.keyboard.wasPressed('0') then
 		currentRoom = 0
 		print("Main Hub.")
+	elseif love.keyboard.wasPressed('p') then
+		print(self.x, self.y)
 	end
 
 
