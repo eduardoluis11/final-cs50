@@ -59,11 +59,18 @@ If the player is able to touch the door and press the up arrow key at the same t
 I will change the currentRoom global variable to the room number stored into the 
 door that the player is touching. This way, the player will be able to change 
 rooms.
+
+I added a global variable from player.lua that will make the user start at the far left 
+side of the room if they room that they enter is a treasure room.
 ]]
 function Door:update(isTouchingDoor)
     if love.keyboard.wasPressed('up') then
         if isTouchingDoor == true then
             currentRoom = self.roomNumber
+
+            if currentRoom ~= 0 then
+                resetPlayerPositionToEntranceOfRoom = true
+            end
         end
     end
 end

@@ -10,6 +10,15 @@ END OF COMMENT --]]
 -- This creates the class that will create the main character
 Player = Class{}
 
+--[[ I will create a global variable that will check if the player is changing rooms, whic will allow me
+to reset the player's position to the far left side of the room if they enter into any treasure room. The variable by 
+default will be false. If the player enters any treasure room, the variable will temporarily change to "true"
+to have their position reset to the far left side of the room. 
+
+Then, the variable will change back to false to allow the player to move, that is, so that they aren't stuck in
+the far left side of the room when trying to move. ]]
+resetPlayerPositionToEntranceOfRoom = false
+
 --[[ This adds the value for gravity. It seems that, by increasing gravity and self.dy, I can make the character 
 fall faster and jump higher by using "self.dy = Number * dt" (that is, by using dt, so that the game runs
 the same on fast and slow computers, with vsync actvated or not.) 
@@ -25,9 +34,12 @@ function Player:init()
 	self.width = self.image:getWidth()
 	self.height = self.image:getHeight()
 
-	--[[ X and y coordinates of the player. Initially, I will put him on the (100, 100) coordinates.  --]]
+	--[[ X and y coordinates of the player. Initially, I will put him on the (100, 100) coordinates.
+	
+	I edited the y coordinate so it initially starts at 445 px, which is the height at which the player walks 
+	on the floor with the lowest height. --]]
 	self.x = 100
-	self.y = 100
+	self.y = 445
 
 	--[[ This is the player's initical vertical speed. If I don't initialize it here, I will get an error
 	once I try to apply gravity to the player. --]]
@@ -111,6 +123,16 @@ function Player:update(dt)
         self.y = 300
         self.x = 100
     end
+
+	--[[ This will make the player to be on the far left side of the room each time that they enter into a
+	treasure room. That is, the player will always start at the beginning of the treasure room, regardless
+	of the position that the door had back in the main hub. ]]
+	if currentRoom ~= 0 and resetPlayerPositionToEntranceOfRoom == true then 
+		self.x = 100
+		self.y = 445
+
+		resetPlayerPositionToEntranceOfRoom = false
+	end
 
 
 	--[[ This makes the player jump. This is where the keysPressed table from main.lua is being used. 
