@@ -44,6 +44,9 @@ require 'Lever'
 -- Stalactite’s script
 require 'Stalactite'
 
+-- Door's script
+require 'Door'
+
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
@@ -139,6 +142,14 @@ local stalactiteRoom_5 = Stalactite(550, 0)
 
 --[[ This will render the bubble UI that contains the treasure icons ]]
 local treasure_list = TreasureList()
+
+--[[ Next, I would have to create each of the 6 instances of the door class ]]
+local door1 = Door(120, -80 + VIRTUAL_HEIGHT - 90, 1)
+local door2 = Door(160, -80 + VIRTUAL_HEIGHT - 90, 2)
+local door3 = Door(200, -80 + VIRTUAL_HEIGHT - 90, 3)
+local door4 = Door(240, -80 + VIRTUAL_HEIGHT - 90, 4)
+local door5 = Door(300, -80 + VIRTUAL_HEIGHT - 90, 5)
+local hubDoor = Door(120, -80 + VIRTUAL_HEIGHT - 90, 0)
 
 --[[ I will create a table where I will store every sprite or object that’s not the player. This will be called in a 
 “for” loop so that I can check collision for the floor and all of the platforms (so that I can reuse the collides() 
@@ -474,6 +485,50 @@ function love.update(dt)
 	elseif currentRoom == 5 then
 		stalactiteRoom_5:update(dt)
 	end
+
+	--[[ Next, I would have to insert this code to update the door class script. 
+	Here, I would check for collisions between the player and the doors. If the 
+	player touches any of the door sprites, I will send a true or false value to 
+	Door.lua. Otherwise, it would tell Door.lua that there’s no collision.
+	]]
+	if currentRoom == 0 then
+		if player:collides(door1) then 
+				door1:update(true)
+		else
+			door1:update(false)
+		end
+		
+		if player:collides(door2) then 
+				door2:update(true)
+		else
+			door2:update(false)
+		end
+
+		if player:collides(door3) then 
+			door3:update(true)
+		else
+			door3:update(false)
+		end
+
+		if player:collides(door4) then 
+			door4:update(true)
+		else
+			door4:update(false)
+		end
+
+		if player:collides(door5) then 
+			door5:update(true)
+		else
+			door5:update(false)
+		end
+			
+	else
+		if player:collides(hubDoor) then 
+			hubDoor:update(true)
+		else
+			hubDoor:update(false)
+		end
+	end
 	
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]
@@ -578,7 +633,14 @@ function love.draw()
 		treasure5:render()	
 	end
 
+	--[[ This will render all doors.]]
+	door1:render()
+	door2:render()
+	door3:render()
+	door4:render()
+	door5:render()
+	hubDoor:render()
+	
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
-
 end
