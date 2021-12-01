@@ -50,6 +50,15 @@ require 'Door'
 VIRTUAL_WIDTH = 800
 VIRTUAL_HEIGHT = 600
 
+--[[ This is a boolean variable that checks if the 5 chests have 
+been opened. I will put it here since I don’t have a specific 
+script for checking if the victory conditions are met. The boolean 
+victory variable should start off as “false”. To update it from 
+“false” to “true”, this would be best put into the update() 
+function of main.lua. ]]
+victoryState = false
+
+
 --[[ This global variable will store the current room where the player currently is. Temporarily, for debugging 
 purposes, the current room will be Room 1. --]]
 currentRoom = 5
@@ -529,6 +538,23 @@ function love.update(dt)
 			hubDoor:update(false)
 		end
 	end
+
+	--[[ Now, this will check if the 5 chests have been opened. 
+	If it does, I will change the victory state to “true”. This 
+	will go in the update() function of main.lua.  ]]
+	if treasureCounter == 5 then
+		victoryState = true
+	end
+
+	--[[ This is a DEBUGGING message that tells me if the 
+	player has obtained all of the game's treasure. To show the 
+	text that congratulates the player for finding all of the 
+	game’s treasure, I will first print the victory message on 
+	Love’s console after opening all 5 chests. After that, I will 
+	print the text in the game itself. ]]
+	if victoryState == true then
+		print("Victory!")
+	end		
 	
     --[[ This will reset the table that keeps track of all of the keys pressed by the user on their keyboard, 
     so that it becomes empty. --]]

@@ -6,6 +6,23 @@ Chest = Class{}
 local CLOSED_CHEST_IMAGE = love.graphics.newImage('graphics/chest-closed.png')
 local OPENED_CHEST_IMAGE = love.graphics.newImage('graphics/chest-opened.png')
 
+--[[ I could show a victory message after opening all 5 chests by 
+using a counter that keeps track of the number of chests opened, 
+and using a boolean variable that turns to “true” once the counter 
+reaches 5.
+
+I could go go to the part where the script 
+checks if the player can open the chest. If they open the chest, 
+I will add one to the treasure counter. Since I need to constantly 
+check if I need to update the counter, this counter should go in 
+the update() function of Chest.lua. This counter should start at 
+0. I will declare it in the init() function of Chest.lua. 
+It may be best if I made this counter a global variable if I’m 
+going to call it in main.lua to change the boolean victory 
+variable into “true”.
+]]
+treasureCounter = 0
+
 --[[ DEBUGGING CODE: This will contain the sprites for the 5 treasures and of the treasure bubble to compare their 
 sizes to the chest sprites.
 
@@ -103,6 +120,8 @@ function Chest:update(isTouchingChest)
 					if unlockChest_2 == true then
 						self.closedChest = false
 						timerOn = true
+						treasureCounter = treasureCounter + 1
+
 					-- I may not need this
 					--[[else
 						self.closedChest = true
@@ -117,10 +136,12 @@ function Chest:update(isTouchingChest)
 					if unlockChest_5 == true then
 						self.closedChest = false
 						timerOn = true
+						treasureCounter = treasureCounter + 1
 					end
 				else
 					self.closedChest = false
 					timerOn = true
+					treasureCounter = treasureCounter + 1
 				end
 			end
 		end
