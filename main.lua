@@ -258,7 +258,7 @@ function love.load()
 
 	congratsMessagePart1FirstHalf = "Congrats! You have found all of the"
 	congratsMessagePart1SecondHalf = "treasure in the castle!"
-    congratsMessagePart2 = "Press Esc to exit the game"
+    congratsMessagePart2 = "Press Esc to exit the game."
 
 	--[[ This will prevent the screen from becoming black once the victory message 
 	renders (source: https://sheepolution.com/learn/book/12) ]]
@@ -749,7 +749,7 @@ function love.draw()
 	-- if victoryState == true then
 		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
 
-        love.graphics.rectangle("fill", VIRTUAL_WIDTH / 4, VIRTUAL_HEIGHT / 4, 400, 200) -- Draws rectangle
+        love.graphics.rectangle("fill", -50 + VIRTUAL_WIDTH / 4, VIRTUAL_HEIGHT / 4, 500, 200) -- Draws rectangle
 
 		--[[ Sets color to black. This caused a bug that made msot of the screen to go black, with the exception
 		of the background rectangle, so I commented it out. I fixed the bug by setting the color back to
@@ -758,10 +758,10 @@ function love.draw()
 
         -- Prints text
 		love.graphics.setFont(largeFontSize)
-		love.graphics.print(congratsMessagePart1FirstHalf, VIRTUAL_WIDTH / 4, VIRTUAL_HEIGHT / 4)
-		love.graphics.print(congratsMessagePart1SecondHalf, VIRTUAL_WIDTH / 4, 30 + VIRTUAL_HEIGHT / 4)
+		love.graphics.print(congratsMessagePart1FirstHalf, -15 + VIRTUAL_WIDTH / 4, 30 + VIRTUAL_HEIGHT / 4)
+		love.graphics.print(congratsMessagePart1SecondHalf, -15 + VIRTUAL_WIDTH / 4, 30 + 30 + VIRTUAL_HEIGHT / 4)
 		love.graphics.setFont(smallFontSize) 
-		love.graphics.print(congratsMessagePart2, VIRTUAL_WIDTH / 4, 100 + VIRTUAL_HEIGHT / 4) 
+		love.graphics.print(congratsMessagePart2, -15 + VIRTUAL_WIDTH / 4, 45 + 100 + VIRTUAL_HEIGHT / 4) 
 
 		-- Prevents the screen from becoming black or having a pinkish tint.
 		love.graphics.setColor(1, 1, 1)
