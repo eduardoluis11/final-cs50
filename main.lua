@@ -783,8 +783,12 @@ function love.draw()
 		love.graphics.print(controlsTextFifthLine, 30, 180 + VIRTUAL_HEIGHT / 5)
 
 		-- Prints each door sign indicating the room number
-		love.graphics.print(room1Text, -717 + VIRTUAL_WIDTH, 60 + VIRTUAL_HEIGHT / 2)
-
+		love.graphics.print(room1Text, -715 + 12 + VIRTUAL_WIDTH, 60 + 10 + VIRTUAL_HEIGHT / 2)
+		love.graphics.print(room2Text, -565 + 12 + VIRTUAL_WIDTH, 60 + 10 + VIRTUAL_HEIGHT / 2)
+		love.graphics.print(room3Text, -415 + 12 + VIRTUAL_WIDTH, 60 + 10 + VIRTUAL_HEIGHT / 2)
+		love.graphics.print(room4Text, -265 + 12 + VIRTUAL_WIDTH, 60 + 10 + VIRTUAL_HEIGHT / 2)
+		love.graphics.print(room5Text, -115 + 12 + VIRTUAL_WIDTH, 60 + 10 + VIRTUAL_HEIGHT / 2)
+		
 		-- Prevents the screen from becoming black or having a pinkish tint.
 		love.graphics.setColor(1, 1, 1)
 	end
