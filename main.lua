@@ -745,12 +745,15 @@ function love.draw()
 
 		--[[ Sets color to black. This caused a bug that made msot of the screen to go black, with the exception
 		of the background rectangle, so I commented it out. ]]
-        -- love.graphics.setColor(0, 0, 0) 
+        love.graphics.setColor(0, 0, 0) 
 
         -- Prints text
 		love.graphics.setFont(largeFontSize)
 		love.graphics.print(congratsMessagePart1, 0, 0)
 		love.graphics.setFont(smallFontSize) 
 		love.graphics.print(congratsMessagePart2, 0, 100) 
+
+		-- Prevents the screen from becoming black or having a pinkish tint.
+		love.graphics.setColor(1, 1, 1)
 	-- end
 end
