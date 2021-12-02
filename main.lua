@@ -246,13 +246,18 @@ function love.load()
 	function in main.lua.
 
 	If I want to store the 2 lines of text into variables, I would need to first insert 
-	them into main.lua’s load() function (source: https://sheepolution.com/learn/book/7 ). 
+	them into main.lua’s load() function (source: https://sheepolution.com/learn/book/7 )
+		
+		I want the "Congrats!" message to be divided into two lines. So, I will separate
+	that initial message into two variables, and I will manually specify the position
+	of the 2nd half of the message so that it appears right below the 1st half of it. 
 	]]
 	-- These variables will store the custom font sizes 
-    largeFontSize = love.graphics.newFont(18)
-	smallFontSize = love.graphics.newFont(12)
+    largeFontSize = love.graphics.newFont(24)
+	smallFontSize = love.graphics.newFont(20)
 
-	congratsMessagePart1 = "Congrats! You have found all of the treasure in the castle!"
+	congratsMessagePart1FirstHalf = "Congrats! You have found all of the"
+	congratsMessagePart1SecondHalf = "treasure in the castle!"
     congratsMessagePart2 = "Press Esc to exit the game"
 
 	--[[ This will prevent the screen from becoming black once the victory message 
@@ -744,7 +749,7 @@ function love.draw()
 	-- if victoryState == true then
 		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
 
-        love.graphics.rectangle("fill", 100, 50, 200, 150) -- Draws rectangle
+        love.graphics.rectangle("fill", VIRTUAL_WIDTH / 4, VIRTUAL_HEIGHT / 4, 400, 200) -- Draws rectangle
 
 		--[[ Sets color to black. This caused a bug that made msot of the screen to go black, with the exception
 		of the background rectangle, so I commented it out. I fixed the bug by setting the color back to
@@ -753,9 +758,10 @@ function love.draw()
 
         -- Prints text
 		love.graphics.setFont(largeFontSize)
-		love.graphics.print(congratsMessagePart1, 0, 0)
+		love.graphics.print(congratsMessagePart1FirstHalf, VIRTUAL_WIDTH / 4, VIRTUAL_HEIGHT / 4)
+		love.graphics.print(congratsMessagePart1SecondHalf, VIRTUAL_WIDTH / 4, 30 + VIRTUAL_HEIGHT / 4)
 		love.graphics.setFont(smallFontSize) 
-		love.graphics.print(congratsMessagePart2, 0, 100) 
+		love.graphics.print(congratsMessagePart2, VIRTUAL_WIDTH / 4, 100 + VIRTUAL_HEIGHT / 4) 
 
 		-- Prevents the screen from becoming black or having a pinkish tint.
 		love.graphics.setColor(1, 1, 1)
