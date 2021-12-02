@@ -248,12 +248,16 @@ function love.load()
 	If I want to store the 2 lines of text into variables, I would need to first insert 
 	them into main.lua’s load() function (source: https://sheepolution.com/learn/book/7 ). 
 	]]
+	-- These variables will store the custom font sizes 
+    largeFontSize = love.graphics.newFont(18)
+	smallFontSize = love.graphics.newFont(12)
+
 	congratsMessagePart1 = "Congrats! You have found all of the treasure in the castle!"
     congratsMessagePart2 = "Press Esc to exit the game"
 
 	--[[ This will prevent the screen from becoming black once the victory message 
 	renders (source: https://sheepolution.com/learn/book/12) ]]
-	-- love.graphics.setBackgroundColor(1, 1, 1)
+	love.graphics.setBackgroundColor(1, 1, 1)
 
     -- This table will detect all of my previous inputs from the keyboard
 	love.keyboard.keysPressed = {}
@@ -726,6 +730,13 @@ function love.draw()
 	Then, I will set the color to black, which will serve as the font’s color.
 
 	Finally, I will print the text.
+
+	I needed to make some changes to my code snippet for specifying the font size since 
+	it would eat up too much memory after a while. I need to insert the font size (be it 
+	20 or 24, or large or small) into a variable in main.lua’s load() function, NOT in 
+	the draw() function (or the memory consumption bug would occur) (source: 
+	https://love2d.org/wiki/love.graphics.setFont ). Then, I would call that 
+	variable in the draw() function using setFont to change the font size.
 	]]
 	-- if victoryState == true then
 		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
@@ -737,9 +748,9 @@ function love.draw()
         -- love.graphics.setColor(0, 0, 0) 
 
         -- Prints text
-		love.graphics.setFont(love.graphics.newFont(18)) 
+		love.graphics.setFont(largeFontSize)
 		love.graphics.print(congratsMessagePart1, 0, 0)
-		love.graphics.setFont(love.graphics.newFont(12)) 
+		love.graphics.setFont(smallFontSize) 
 		love.graphics.print(congratsMessagePart2, 0, 100) 
 	-- end
 end
