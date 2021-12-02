@@ -1,7 +1,7 @@
 --[[ CS50's Introduction to Computer Science Final Project by Eduardo Salinas.
 
 	This is a videogame made in Lua and Love2D. The game's currently called "Untitled Treasure Adventure 
-	Game".
+	Game."
 
 	Most of the code was written by Eduardo Salinas. The class.lua file and the sprites used are copyright of
 	their respective owners. See the "references.txt" file to check this project's references, that is, to
