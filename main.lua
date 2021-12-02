@@ -273,6 +273,13 @@ function love.load()
 	objectiveTextFirstLine = "Get the treasure from all of"
 	objectiveTextSecondLine = "the 5 chests in the castle."
 
+	--[[ These variables contain the text for the door signs at the hub ]]
+	room1Text = "Room 1"
+	room2Text = "Room 2"
+	room3Text = "Room 3"
+	room4Text = "Room 4"
+	room5Text = "Room 5"
+
 	--[[ This will prevent the screen from becoming black once the victory message 
 	renders (source: https://sheepolution.com/learn/book/12) ]]
 	love.graphics.setBackgroundColor(1, 1, 1)
@@ -731,9 +738,6 @@ function love.draw()
 	else
 		hubDoor:render()
 	end
-	
-    --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
-	player:render()
 
 	--[[ This will print the game's controls and the game's objective in the main hub. ]]
 	if currentRoom == 0 then
@@ -746,7 +750,16 @@ function love.draw()
 		-- Draws rectangle showing the game's objective
 		love.graphics.rectangle("fill", 60 + VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 5, 240, 125) 
 
-		-- Draws rectangles displaying each room's number.
+		--[[ Draws rectangles displaying each room's number. I will make them the same width as the door sprites 
+		(86 px.) I will add a couple more px so that the sign is slightly wider than the door. 
+		
+		The first line of code is Room 1's door sign, and the last one is Room 5's.
+		]]
+		love.graphics.rectangle("fill", -717 + VIRTUAL_WIDTH, 60 + VIRTUAL_HEIGHT / 2, 90, 40)	
+		love.graphics.rectangle("fill", -567 + VIRTUAL_WIDTH, 60 + VIRTUAL_HEIGHT / 2, 90, 40)
+		love.graphics.rectangle("fill", -417 + VIRTUAL_WIDTH, 60 + VIRTUAL_HEIGHT / 2, 90, 40)
+		love.graphics.rectangle("fill", -267 + VIRTUAL_WIDTH, 60 + VIRTUAL_HEIGHT / 2, 90, 40)
+		love.graphics.rectangle("fill", -117 + VIRTUAL_WIDTH, 60 + VIRTUAL_HEIGHT / 2, 90, 40)
 
 
 		--[[ Sets font color to black.  ]]
@@ -769,9 +782,15 @@ function love.draw()
 		love.graphics.print(controlsTextFourthLine, 20 + 30, 150 + VIRTUAL_HEIGHT / 5)  
 		love.graphics.print(controlsTextFifthLine, 30, 180 + VIRTUAL_HEIGHT / 5)
 
+		-- Prints each door sign indicating the room number
+		love.graphics.print(room1Text, -717 + VIRTUAL_WIDTH, 60 + VIRTUAL_HEIGHT / 2)
+
 		-- Prevents the screen from becoming black or having a pinkish tint.
 		love.graphics.setColor(1, 1, 1)
 	end
+
+	--[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
+	player:render()
 
 	--[[ This will print the victory message once the player opens the five chests (source: 
 	https://love2d.org/wiki/love.graphics.setFont).
