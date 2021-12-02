@@ -269,6 +269,10 @@ function love.load()
 	controlsTextFourthLine = "activate a lever."
 	controlsTextFifthLine = "Esc: Exit game."
 
+	objectiveTitleText = "Goal:"
+	objectiveTextFirstLine = "Get the treasure from all of"
+	objectiveTextSecondLine = "the 5 chests in the castle."
+
 	--[[ This will prevent the screen from becoming black once the victory message 
 	renders (source: https://sheepolution.com/learn/book/12) ]]
 	love.graphics.setBackgroundColor(1, 1, 1)
@@ -733,22 +737,34 @@ function love.draw()
 
 	--[[ This will print the game's controls and the game's objective in the main hub. ]]
 	if currentRoom == 0 then
+		
 		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
 
-        love.graphics.rectangle("fill", 20, VIRTUAL_HEIGHT / 4, 320, 200) -- Draws rectangle
+		-- Draws rectangle displaying the controls
+        love.graphics.rectangle("fill", 20, VIRTUAL_HEIGHT / 5, 320, 210) 
+
+		-- Draws rectangle showing the game's objective
+		love.graphics.rectangle("fill", 60 + VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 5, 240, 125) 
 
 		--[[ Sets font color to black.  ]]
         love.graphics.setColor(0, 0, 0) 
 
-        -- Prints text displaying the game's controls
+        -- Prints text displaying the game's objective
 		love.graphics.setFont(smallFontSize)
-		love.graphics.print(controlsTitleText, 30, 15 + VIRTUAL_HEIGHT / 4)
+		love.graphics.print(objectiveTitleText, 70 + VIRTUAL_WIDTH / 2, 15 + VIRTUAL_HEIGHT / 5)
 		love.graphics.setFont(smallestFontSize)
-		love.graphics.print(controlsTextFirstLine, 30, 60 + VIRTUAL_HEIGHT / 4)
-		love.graphics.print(controlsTextSecondLine, 30, 90 + VIRTUAL_HEIGHT / 4) 
-		love.graphics.print(controlsTextThirdLine, 30, 120 + VIRTUAL_HEIGHT / 4)
-		love.graphics.print(controlsTextFourthLine, 20 + 30, 150 + VIRTUAL_HEIGHT / 4)  
-		love.graphics.print(controlsTextFifthLine, 30, 180 + VIRTUAL_HEIGHT / 4)
+		love.graphics.print(objectiveTextFirstLine, 70 + VIRTUAL_WIDTH / 2, 60 + VIRTUAL_HEIGHT / 5)
+		love.graphics.print(objectiveTextSecondLine, 70 + VIRTUAL_WIDTH / 2, 90 + VIRTUAL_HEIGHT / 5) 
+
+		-- Prints text showing the game's controls
+		love.graphics.setFont(smallFontSize)
+		love.graphics.print(controlsTitleText, 30, 15 + VIRTUAL_HEIGHT / 5)
+		love.graphics.setFont(smallestFontSize)
+		love.graphics.print(controlsTextFirstLine, 30, 60 + VIRTUAL_HEIGHT / 5)
+		love.graphics.print(controlsTextSecondLine, 30, 90 + VIRTUAL_HEIGHT / 5) 
+		love.graphics.print(controlsTextThirdLine, 30, 120 + VIRTUAL_HEIGHT / 5)
+		love.graphics.print(controlsTextFourthLine, 20 + 30, 150 + VIRTUAL_HEIGHT / 5)  
+		love.graphics.print(controlsTextFifthLine, 30, 180 + VIRTUAL_HEIGHT / 5)
 
 		-- Prevents the screen from becoming black or having a pinkish tint.
 		love.graphics.setColor(1, 1, 1)
