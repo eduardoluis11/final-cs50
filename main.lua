@@ -745,10 +745,10 @@ function love.draw()
 		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
 
 		-- Draws rectangle displaying the controls
-        love.graphics.rectangle("fill", 20, VIRTUAL_HEIGHT / 5, 320, 210) 
+        love.graphics.rectangle("fill", 20, VIRTUAL_HEIGHT / 6, 320, 210) 
 
 		-- Draws rectangle showing the game's objective
-		love.graphics.rectangle("fill", 60 + VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 5, 240, 125) 
+		love.graphics.rectangle("fill", 60 + VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 6, 240, 125) 
 
 		--[[ Draws rectangles displaying each room's number. I will make them the same width as the door sprites 
 		(86 px.) I will add a couple more px so that the sign is slightly wider than the door. 
@@ -767,20 +767,20 @@ function love.draw()
 
         -- Prints text displaying the game's objective
 		love.graphics.setFont(smallFontSize)
-		love.graphics.print(objectiveTitleText, 70 + VIRTUAL_WIDTH / 2, 15 + VIRTUAL_HEIGHT / 5)
+		love.graphics.print(objectiveTitleText, 70 + VIRTUAL_WIDTH / 2, 15 + VIRTUAL_HEIGHT / 6)
 		love.graphics.setFont(smallestFontSize)
-		love.graphics.print(objectiveTextFirstLine, 70 + VIRTUAL_WIDTH / 2, 60 + VIRTUAL_HEIGHT / 5)
-		love.graphics.print(objectiveTextSecondLine, 70 + VIRTUAL_WIDTH / 2, 90 + VIRTUAL_HEIGHT / 5) 
+		love.graphics.print(objectiveTextFirstLine, 70 + VIRTUAL_WIDTH / 2, 60 + VIRTUAL_HEIGHT / 6)
+		love.graphics.print(objectiveTextSecondLine, 70 + VIRTUAL_WIDTH / 2, 90 + VIRTUAL_HEIGHT / 6) 
 
 		-- Prints text showing the game's controls
 		love.graphics.setFont(smallFontSize)
-		love.graphics.print(controlsTitleText, 30, 15 + VIRTUAL_HEIGHT / 5)
+		love.graphics.print(controlsTitleText, 30, 15 + VIRTUAL_HEIGHT / 6)
 		love.graphics.setFont(smallestFontSize)
-		love.graphics.print(controlsTextFirstLine, 30, 60 + VIRTUAL_HEIGHT / 5)
-		love.graphics.print(controlsTextSecondLine, 30, 90 + VIRTUAL_HEIGHT / 5) 
-		love.graphics.print(controlsTextThirdLine, 30, 120 + VIRTUAL_HEIGHT / 5)
-		love.graphics.print(controlsTextFourthLine, 20 + 30, 150 + VIRTUAL_HEIGHT / 5)  
-		love.graphics.print(controlsTextFifthLine, 30, 180 + VIRTUAL_HEIGHT / 5)
+		love.graphics.print(controlsTextFirstLine, 30, 60 + VIRTUAL_HEIGHT / 6)
+		love.graphics.print(controlsTextSecondLine, 30, 90 + VIRTUAL_HEIGHT / 6) 
+		love.graphics.print(controlsTextThirdLine, 30, 120 + VIRTUAL_HEIGHT / 6)
+		love.graphics.print(controlsTextFourthLine, 20 + 30, 150 + VIRTUAL_HEIGHT / 6)  
+		love.graphics.print(controlsTextFifthLine, 30, 180 + VIRTUAL_HEIGHT / 6)
 
 		-- Prints each door sign indicating the room number
 		love.graphics.print(room1Text, -715 + 12 + VIRTUAL_WIDTH, 60 + 10 + VIRTUAL_HEIGHT / 2)
