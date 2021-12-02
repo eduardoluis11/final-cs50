@@ -70,7 +70,7 @@ victoryState = false
 
 --[[ This global variable will store the current room where the player currently is. Temporarily, for debugging 
 purposes, the current room will be Room 1. --]]
-currentRoom = 5
+currentRoom = 0
 
 --[[ This is a variable that will tell the game whether to render the closed chest sprite or the opened one.
 
@@ -255,6 +255,7 @@ function love.load()
 	-- These variables will store the custom font sizes 
     largeFontSize = love.graphics.newFont(24)
 	smallFontSize = love.graphics.newFont(20)
+	smallestFontSize = love.graphics.newFont(16)
 
 	congratsMessagePart1FirstHalf = "Congrats! You have found all of the"
 	congratsMessagePart1SecondHalf = "treasure in the castle!"
@@ -264,8 +265,8 @@ function love.load()
 	controlsTitleText = "Controls:"
 	controlsTextFirstLine = "Left and right arrows: Move around."
 	controlsTextSecondLine = "Space: Jump."
-	controlsTextThirdLine = "E: Enter through a door, open chest,"
-	controlsTextFourthLine = "activate lever."
+	controlsTextThirdLine = "E: Enter through a door, open a chest,"
+	controlsTextFourthLine = "activate a lever."
 	controlsTextFifthLine = "Esc: Exit game."
 
 	--[[ This will prevent the screen from becoming black once the victory message 
@@ -734,18 +735,20 @@ function love.draw()
 	if currentRoom == 0 then
 		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
 
-        love.graphics.rectangle("fill", -50 + VIRTUAL_WIDTH / 4, VIRTUAL_HEIGHT / 4, 500, 200) -- Draws rectangle
+        love.graphics.rectangle("fill", 20, VIRTUAL_HEIGHT / 4, 320, 200) -- Draws rectangle
 
-		--[[ Sets color to black. This caused a bug that made msot of the screen to go black, with the exception
-		of the background rectangle, so I commented it out. I fixed the bug by setting the color back to
-		(1, 1, 1) at the end of the draw() function. ]]
+		--[[ Sets font color to black.  ]]
         love.graphics.setColor(0, 0, 0) 
 
-        -- Prints text
-		love.graphics.setFont(largeFontSize)
-		love.graphics.print(controlsTitleText, -15 + VIRTUAL_WIDTH / 4, 30 + VIRTUAL_HEIGHT / 4)
-		love.graphics.setFont(smallFontSize) 
-		love.graphics.print(controlsTextFirstLine, -15 + VIRTUAL_WIDTH / 4, 45 + 100 + VIRTUAL_HEIGHT / 4) 
+        -- Prints text displaying the game's controls
+		love.graphics.setFont(smallFontSize)
+		love.graphics.print(controlsTitleText, 30, 15 + VIRTUAL_HEIGHT / 4)
+		love.graphics.setFont(smallestFontSize)
+		love.graphics.print(controlsTextFirstLine, 30, 60 + VIRTUAL_HEIGHT / 4)
+		love.graphics.print(controlsTextSecondLine, 30, 90 + VIRTUAL_HEIGHT / 4) 
+		love.graphics.print(controlsTextThirdLine, 30, 120 + VIRTUAL_HEIGHT / 4)
+		love.graphics.print(controlsTextFourthLine, 20 + 30, 150 + VIRTUAL_HEIGHT / 4)  
+		love.graphics.print(controlsTextFifthLine, 30, 180 + VIRTUAL_HEIGHT / 4)
 
 		-- Prevents the screen from becoming black or having a pinkish tint.
 		love.graphics.setColor(1, 1, 1)
