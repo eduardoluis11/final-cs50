@@ -260,6 +260,14 @@ function love.load()
 	congratsMessagePart1SecondHalf = "treasure in the castle!"
     congratsMessagePart2 = "Press Esc to exit the game."
 
+	--[[ These variables contain the game's controls and the game's objective. ]]
+	controlsTitleText = "Controls:"
+	controlsTextFirstLine = "Left and right arrows: Move around."
+	controlsTextSecondLine = "Space: Jump."
+	controlsTextThirdLine = "E: Enter through a door, open chest,"
+	controlsTextFourthLine = "activate lever."
+	controlsTextFifthLine = "Esc: Exit game."
+
 	--[[ This will prevent the screen from becoming black once the victory message 
 	renders (source: https://sheepolution.com/learn/book/12) ]]
 	love.graphics.setBackgroundColor(1, 1, 1)
@@ -721,6 +729,27 @@ function love.draw()
 	
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
+
+	--[[ This will print the game's controls and the game's objective in the main hub. ]]
+	if currentRoom == 0 then
+		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
+
+        love.graphics.rectangle("fill", -50 + VIRTUAL_WIDTH / 4, VIRTUAL_HEIGHT / 4, 500, 200) -- Draws rectangle
+
+		--[[ Sets color to black. This caused a bug that made msot of the screen to go black, with the exception
+		of the background rectangle, so I commented it out. I fixed the bug by setting the color back to
+		(1, 1, 1) at the end of the draw() function. ]]
+        love.graphics.setColor(0, 0, 0) 
+
+        -- Prints text
+		love.graphics.setFont(largeFontSize)
+		love.graphics.print(controlsTitleText, -15 + VIRTUAL_WIDTH / 4, 30 + VIRTUAL_HEIGHT / 4)
+		love.graphics.setFont(smallFontSize) 
+		love.graphics.print(controlsTextFirstLine, -15 + VIRTUAL_WIDTH / 4, 45 + 100 + VIRTUAL_HEIGHT / 4) 
+
+		-- Prevents the screen from becoming black or having a pinkish tint.
+		love.graphics.setColor(1, 1, 1)
+	end
 
 	--[[ This will print the victory message once the player opens the five chests (source: 
 	https://love2d.org/wiki/love.graphics.setFont).

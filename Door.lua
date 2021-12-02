@@ -62,9 +62,12 @@ rooms.
 
 I added a global variable from player.lua that will make the user start at the far left 
 side of the room if they room that they enter is a treasure room.
+
+Upon further consideration, I will make the player enter a room if they press "E" instead of 
+the up arrow key.
 ]]
 function Door:update(isTouchingDoor)
-    if love.keyboard.wasPressed('up') then
+    if love.keyboard.wasPressed('e') then
         if isTouchingDoor == true then
             currentRoom = self.roomNumber
 
