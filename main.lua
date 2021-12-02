@@ -1,4 +1,14 @@
---[[ BEGINNING OF COMMENT
+--[[ CS50's Introduction to Computer Science Final Project by Eduardo Salinas.
+
+	This is a videogame made in Lua and Love2D. The game's currently called "Untitled Treasure Adventure 
+	Game".
+
+	Most of the code was written by Eduardo Salinas. The class.lua file and the sprites used are copyright of
+	their respective owners. See the "references.txt" file to check this project's references, that is, to
+	learn more about the sources cited for this project.
+
+	Copyright (c) 2021 Eduardo Salinas.
+
 	This time, I will be using class.lua to create the classes (source: 
     http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip  , 
     which comes from https://cs50.harvard.edu/games/2018/weeks/1/ )
@@ -15,8 +25,7 @@
     https://love2d.org/forums/viewtopic.php?t=8995#:~:text=Re%3A%20Default%20Screen%20Size&text=With%20no%20config%20file%20specifying,is%20the%201344x768%20widescreen%20variant. )
 	
     So, my first 2 constants will be “VIRTUAL_WIDTH = 800” and “VIRTUAL_HEIGHT = 600”.
-
-END OF COMMENT --]]
+--]]
 -- This will allow Lua to use classes
 Class = require 'class'
 
