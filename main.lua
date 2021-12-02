@@ -251,6 +251,10 @@ function love.load()
 	congratsMessagePart1 = "Congrats! You have found all of the treasure in the castle!"
     congratsMessagePart2 = "Press Esc to exit the game"
 
+	--[[ This will prevent the screen from becoming black once the victory message 
+	renders (source: https://sheepolution.com/learn/book/12) ]]
+	-- love.graphics.setBackgroundColor(1, 1, 1)
+
     -- This table will detect all of my previous inputs from the keyboard
 	love.keyboard.keysPressed = {}
 end
@@ -707,11 +711,35 @@ function love.draw()
 	player:render()
 
 	--[[ This will print the victory message once the player opens the five chests (source: 
-	https://love2d.org/wiki/love.graphics.setFont). ]]
-	if victoryState == true then
+	https://love2d.org/wiki/love.graphics.setFont).
+	
+	I will add a rectangle that will serve as a background to the victory message text so that the text is easier 
+	to read. The text will be black and the rectangle will be of a skin / pinkish color. The color of the rectangle 
+	will be of e5d3d3 in hex or (229, 211, 211) in RGB. I need to use the RGB values since that’s how Love displays 
+	colors.
+
+    First, I will set the color for the rectangle. I need to divide each number of each RGB value by 255 (source: 
+	https://sheepolution.com/learn/book/12 ).
+
+	Next, I will draw a rectangle (source: https://sheepolution.com/learn/book/5 ).
+
+	Then, I will set the color to black, which will serve as the font’s color.
+
+	Finally, I will print the text.
+	]]
+	-- if victoryState == true then
+		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
+
+        love.graphics.rectangle("fill", 100, 50, 200, 150) -- Draws rectangle
+
+		--[[ Sets color to black. This caused a bug that made msot of the screen to go black, with the exception
+		of the background rectangle, so I commented it out. ]]
+        -- love.graphics.setColor(0, 0, 0) 
+
+        -- Prints text
 		love.graphics.setFont(love.graphics.newFont(18)) 
-		love.graphics.print(congratsMessagePart1, 0, 0) 
+		love.graphics.print(congratsMessagePart1, 0, 0)
 		love.graphics.setFont(love.graphics.newFont(12)) 
 		love.graphics.print(congratsMessagePart2, 0, 100) 
-	end
+	-- end
 end
