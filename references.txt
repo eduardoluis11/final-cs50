@@ -96,8 +96,19 @@ Sheepolution. (n.d.). Chapter 8 - Objects. Sheepolution. Retrieved November 30,
 
 
 
+ADD TO CITATION MACHINE:
+
 *) love.graphics.setFont (ADD TO CITATION MACHINE):
 https://love2d.org/wiki/love.graphics.setFont
+
+*) Sheepolution, Chapter 12: 
+https://sheepolution.com/learn/book/12
+
+*) Sheepolution, Chapter 5:
+https://sheepolution.com/learn/book/5
+
+*) love.graphics.rectangle:
+https://love2d.org/wiki/love.graphics.rectangle
 
 
 

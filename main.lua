@@ -737,6 +737,9 @@ function love.draw()
 	the draw() function (or the memory consumption bug would occur) (source: 
 	https://love2d.org/wiki/love.graphics.setFont ). Then, I would call that 
 	variable in the draw() function using setFont to change the font size.
+
+		The parameters of the function that draws the rectangle are x, y, width, and height (source: 
+	https://love2d.org/wiki/love.graphics.rectangle .)
 	]]
 	-- if victoryState == true then
 		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
@@ -744,7 +747,8 @@ function love.draw()
         love.graphics.rectangle("fill", 100, 50, 200, 150) -- Draws rectangle
 
 		--[[ Sets color to black. This caused a bug that made msot of the screen to go black, with the exception
-		of the background rectangle, so I commented it out. ]]
+		of the background rectangle, so I commented it out. I fixed the bug by setting the color back to
+		(1, 1, 1) at the end of the draw() function. ]]
         love.graphics.setColor(0, 0, 0) 
 
         -- Prints text
