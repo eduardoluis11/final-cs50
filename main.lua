@@ -230,6 +230,27 @@ function love.load()
 	--[[ This will give a name to the window that runs my game (source: https://youtu.be/3IdOCxHGMIo )  --]]
 	love.window.setTitle('Final Project')
 
+	--[[ Now that the console is finally printing the victory message after finding all of 
+	the treasure, I need to actually print in-game the message.
+
+    The victory message will be “Congrats! You have found all of the treasure in the 
+	castle!”, “Press Esc to exit the game”.
+
+    If the default font in Love is hard to read on any of the Rooms’ background, I will 
+	have to add and render a background that contrasts with the default font’s color to 
+	make the text easy to read.
+
+    To render the text in-game, I’ll have to add a code snippet in the draw() function in 
+	main.lua. Also, if I want 
+	to insert the text in variables, I should ideally put those variables in the load() 
+	function in main.lua.
+
+	If I want to store the 2 lines of text into variables, I would need to first insert 
+	them into main.lua’s load() function (source: https://sheepolution.com/learn/book/7 ). 
+	]]
+	congratsMessagePart1 = "Congrats! You have found all of the treasure in the castle!"
+    congratsMessagePart2 = "Press Esc to exit the game"
+
     -- This table will detect all of my previous inputs from the keyboard
 	love.keyboard.keysPressed = {}
 end
@@ -684,4 +705,13 @@ function love.draw()
 	
     --[[ This calls the variable where the Player class is being called, and it will render it into the game. --]]
 	player:render()
+
+	--[[ This will print the victory message once the player opens the five chests (source: 
+	https://love2d.org/wiki/love.graphics.setFont). ]]
+	if victoryState == true then
+		love.graphics.setFont(love.graphics.newFont(18)) 
+		love.graphics.print(congratsMessagePart1, 0, 0) 
+		love.graphics.setFont(love.graphics.newFont(12)) 
+		love.graphics.print(congratsMessagePart2, 0, 100) 
+	end
 end
