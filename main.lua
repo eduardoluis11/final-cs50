@@ -527,14 +527,17 @@ function love.update(dt)
 	the stalatite render offscreen (or to the lower left corner of the screen) so that the player isn't able
 	to jump on top of the stalactite in rooms where the stalactite isn't supposed to be rendered. 
 	
-	I will check the current room where I'm located in the stalactite script, NOT here in main.lua.]]
-	if currentRoom == 3 then
+	I will check the current room where I'm located in the stalactite script, NOT here in main.lua.
+	
+	I will stop updating Room 5's stalatite once the player finds all of the treasures since the
+	animation of the stalactite is too distracting. ]]
+	if currentRoom == 3 and victoryState == false then
 		stalactiteRoom_3:update(dt)
 
-	elseif currentRoom == 4 then
+	elseif currentRoom == 4 and victoryState == false then
 		stalactiteRoom_4:update(dt)
 
-	elseif currentRoom == 5 then
+	elseif currentRoom == 5 and victoryState == false then
 		stalactiteRoom_5:update(dt)
 	end
 
@@ -746,7 +749,7 @@ function love.draw()
 		The parameters of the function that draws the rectangle are x, y, width, and height (source: 
 	https://love2d.org/wiki/love.graphics.rectangle .)
 	]]
-	-- if victoryState == true then
+	if victoryState == true then
 		love.graphics.setColor(229/255, 211/255, 211/255) -- Rectangle’s color
 
         love.graphics.rectangle("fill", -50 + VIRTUAL_WIDTH / 4, VIRTUAL_HEIGHT / 4, 500, 200) -- Draws rectangle
@@ -765,5 +768,5 @@ function love.draw()
 
 		-- Prevents the screen from becoming black or having a pinkish tint.
 		love.graphics.setColor(1, 1, 1)
-	-- end
+	end
 end
