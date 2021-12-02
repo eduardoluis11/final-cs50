@@ -162,11 +162,11 @@ local stalactiteRoom_5 = Stalactite(550, 0)
 local treasure_list = TreasureList()
 
 --[[ Next, I would have to create each of the 6 instances of the door class ]]
-local door1 = Door(100, -80 + VIRTUAL_HEIGHT - 110, 1)
-local door2 = Door(200, -80 + VIRTUAL_HEIGHT - 110, 2)
-local door3 = Door(300, -80 + VIRTUAL_HEIGHT - 110, 3)
-local door4 = Door(400, -80 + VIRTUAL_HEIGHT - 110, 4)
-local door5 = Door(500, -80 + VIRTUAL_HEIGHT - 110, 5)
+local door1 = Door(-715 + VIRTUAL_WIDTH, -80 + VIRTUAL_HEIGHT - 110, 1)
+local door2 = Door(-565 + VIRTUAL_WIDTH, -80 + VIRTUAL_HEIGHT - 110, 2)
+local door3 = Door(-415 + VIRTUAL_WIDTH, -80 + VIRTUAL_HEIGHT - 110, 3)
+local door4 = Door(-265 + VIRTUAL_WIDTH, -80 + VIRTUAL_HEIGHT - 110, 4)
+local door5 = Door(-115 + VIRTUAL_WIDTH, -80 + VIRTUAL_HEIGHT - 110, 5)
 local hubDoor = Door(0, -80 + VIRTUAL_HEIGHT - 110, 0)
 
 --[[ I will create a table where I will store every sprite or object that’s not the player. This will be called in a 
@@ -745,6 +745,9 @@ function love.draw()
 
 		-- Draws rectangle showing the game's objective
 		love.graphics.rectangle("fill", 60 + VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 5, 240, 125) 
+
+		-- Draws rectangles displaying each room's number.
+
 
 		--[[ Sets font color to black.  ]]
         love.graphics.setColor(0, 0, 0) 

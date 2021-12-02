@@ -38,7 +38,7 @@ function Player:init()
 	
 	I edited the y coordinate so it initially starts at 445 px, which is the height at which the player walks 
 	on the floor with the lowest height. --]]
-	self.x = 100
+	self.x = 30
 	self.y = 445
 
 	--[[ This is the player's initical vertical speed. If I don't initialize it here, I will get an error
