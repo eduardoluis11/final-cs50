@@ -3,42 +3,34 @@ Sprites and backgrounds' references:
 I downloaded sprites and backgrounds from the following sources:
 
 
-0x72. (2017). 16x16 dungeon tileset by 0x72. 0x72. Retrieved November 30, 2021, from 
+	0x72. (2017). 16x16 dungeon tileset by 0x72. 0x72. Retrieved November 30, 2021, from 
 https://0x72.itch.io/16x16-dungeon-tileset. 
 
-
-ansimuz. (2017, April 10). Caverns environment by Ansimuz. ansimuz. Retrieved November 
+	ansimuz. (2017, April 10). Caverns environment by Ansimuz. ansimuz. Retrieved November 
 30, 2021, from https://ansimuz.itch.io/caverns-environment. 
 
-
-BlackSpire Studio. (2018). Medieval pixel art asset free by Blackspire Studio. BlackSpire 
+	BlackSpire Studio. (2018). Medieval pixel art asset free by Blackspire Studio. BlackSpire 
 Studio. Retrieved November 30, 2021, from 
 https://blackspirestudio.itch.io/medieval-pixel-art-asset-free. 
 
-
-greatdocbrown. (2020, July 21). Coins &amp; Gems &amp; Chests &amp; etc by Greatdocbrown. 
+	greatdocbrown. (2020, July 21). Coins &amp; Gems &amp; Chests &amp; etc by Greatdocbrown. 
 greatdocbrown. Retrieved November 30, 2021, from https://greatdocbrown.itch.io/coins-gems-etc. 
 
-
-Kyrise. (2018). Kyrise's free 16x16 RPG icon pack by Kyrise. Kyrise's Game Assets. Retrieved 
+	Kyrise. (2018). Kyrise's free 16x16 RPG icon pack by Kyrise. Kyrise's Game Assets. Retrieved 
 November 30, 2021, from https://kyrise.itch.io/kyrises-free-16x16-rpg-icon-pack. This sprite 
 pack is licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1
 
-
-Lil Cthulhu. (2021, May 21). Animated pixel character by Lil Cthulhu. Lil Cthulhu. Retrieved 
+	Lil Cthulhu. (2021, May 21). Animated pixel character by Lil Cthulhu. Lil Cthulhu. Retrieved 
 November 30, 2021, from https://lil-cthulhu.itch.io/animated-pixel-charackter. 
 
-
-Raou. (2020, June 8). Free dungeon mini-tileset by Raou. Raou. Retrieved November 30, 2021, 
+	Raou. (2020, June 8). Free dungeon mini-tileset by Raou. Raou. Retrieved November 30, 2021, 
 from https://raou.itch.io/free-dungeon-mini-tileset. 
 
-
-RottingPixels. (2019, July 1). Cave platformer tileset [16x16][free] by RottingPixels. 
+	RottingPixels. (2019, July 1). Cave platformer tileset [16x16][free] by RottingPixels. 
 RottingPixels. Retrieved November 30, 2021, from 
 https://rottingpixels.itch.io/cave-platformer-tileset-16x16free. 
 
-
-RottingPixels. (2019, June 23). Dungeon platformer tileset [16x16][free] by RottingPixels. 
+	RottingPixels. (2019, June 23). Dungeon platformer tileset [16x16][free] by RottingPixels. 
 RottingPixels. Retrieved November 30, 2021, from 
 https://rottingpixels.itch.io/platformer-dungeon-tileset. 
 
@@ -50,65 +42,58 @@ Code references:
 
 I took code snippets or anything else related to code from these sources:
 
-(2018). Breakout - Lecture 2 - CS50's Introduction to Game Development 2018. 
-Retrieved November 30, 2021, from https://www.youtube.com/watch?v=F86edI_EF3s. 
+	(2018). Breakout - Lecture 2 - CS50's Introduction to Game Development 2018. Retrieved 
+November 30, 2021, from https://www.youtube.com/watch?v=F86edI_EF3s. 
 
-(2018). Flappy Bird - Lecture 1 - CS50's Introduction to Game Development 2018. 
+	(2018). Flappy Bird - Lecture 1 - CS50's Introduction to Game Development 2018. 
 Retrieved November 30, 2021, from https://youtu.be/3IdOCxHGMIo. 
 
-Ensayia . (2012). Default Screen Size. LÖVE - Free 2D Game Engine. Retrieved 
-November 30, 2021, from 
+	Ensayia . (2012). Default Screen Size. LÖVE - Free 2D Game Engine. Retrieved November 
+30, 2021, from 
 https://love2d.org/forums/viewtopic.php?t=8995#:~:text=Re%3A%20Default%20Screen%20Size&amp;text=With%20no%20config%20file%20specifying,is%20the%201344x768%20widescreen%20variant. I learned Love2D's default window resolution thanks to Ensayia's post.
 
-Jasoco. (2012). Bugs When Window Is Moved. LÖVE - Free 2D Game Engine. Retrieved 
-November 30, 2021, from https://love2d.org/forums/viewtopic.php?t=8740. I used 
-a code snippet from Jasoco's post.
+	Jasoco. (2012). Bugs When Window Is Moved. LÖVE - Free 2D Game Engine. Retrieved November
+30, 2021, from https://love2d.org/forums/viewtopic.php?t=8740. I used a code snippet from 
+Jasoco's post.
+	
+	Jasoco. (2013, December 23). Game runs too fast on a laptop? LÖVE - Free 2D Game Engine. 
+Retrieved November 30, 2021, from https://love2d.org/forums/viewtopic.php?t=76758. I learned 
+how to use delta time thanks to Jasoco's post.
+	
+	Kankaanpaa, H. (2015). Doing game gravity right. OpenArena. Retrieved November 30, 2021, 
+from http://openarena.ws/board/index.php?topic=5100.0. I used "delta time / 2" in my code 
+thanks to GrosBedo's post citing Hannu Kankaanpaa about how to use delta time.
 
-Jasoco. (2013, December 23). Game runs too fast on a laptop? LÖVE - Free 2D Game 
-Engine. Retrieved November 30, 2021, from 
-https://love2d.org/forums/viewtopic.php?t=76758. I learned how to use delta time 
-thanks to Jasoco's post.
+	KeyConstant. LOVE. (2021, March 2). Retrieved November 30, 2021, from 
+https://love2d.org/wiki/KeyConstant. I learned how to access the space bar key in Love2D 
+from here.
+	
+	love.graphics.rectangle. LOVE. (2021, August 21). Retrieved December 3, 2021, from 
+https://love2d.org/wiki/love.graphics.rectangle. 
 
-Kankaanpaa, H. (2015). Doing game gravity right. OpenArena. Retrieved November 
-30, 2021, from http://openarena.ws/board/index.php?topic=5100.0. I used "delta 
-time / 2" in my code thanks to GrosBedo's post citing Hannu Kankaanpaa about 
-how to use delta time.
+	love.graphics.setFont. LOVE. (2020, June 19). Retrieved December 3, 2021, from 
+https://love2d.org/wiki/love.graphics.setFont. 
 
-KeyConstant. LOVE. (2021, March 2). Retrieved November 30, 2021, from 
-https://love2d.org/wiki/KeyConstant. I learned how to access the space bar key 
-in Love2D from here.
+	Richter, M. (2018). class.lua. CS50’s Introduction to Game Development. computer software. 
+Retrieved November 30, 2021, from http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip. 
 
-Richter, M. (2018). class.lua. CS50’s Introduction to Game Development. computer 
-software. Retrieved November 30, 2021, from 
-http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip. 
+	Sheepolution. (n.d.). Chapter 5 - Moving a rectangle. Sheepolution. Retrieved December 3, 
+2021, from https://sheepolution.com/learn/book/5.
 
-Sheepolution. (n.d.). Chapter 23 - Resolving collision. Sheepolution. Retrieved 
-November 30, 2021, from https://sheepolution.com/learn/book/23. 
+	Sheepolution. (n.d.). Chapter 7 - Tables and for-loops. Sheepolution. Retrieved November 30, 
+2021, from https://sheepolution.com/learn/book/7. 
 
-Sheepolution. (n.d.). Chapter 24 - Platformer. Sheepolution. Retrieved November 
-30, 2021, from https://sheepolution.com/learn/book/24. 
+	Sheepolution. (n.d.). Chapter 8 - Objects. Sheepolution. Retrieved November 30, 2021, from 
+https://sheepolution.com/learn/book/8. 
 
-Sheepolution. (n.d.). Chapter 7 - Tables and for-loops. Sheepolution. Retrieved 
-November 30, 2021, from https://sheepolution.com/learn/book/7. 
+	Sheepolution. (n.d.). Chapter 12 - Images. Sheepolution. Retrieved December 3, 2021, from 
+https://sheepolution.com/learn/book/12. 
 
-Sheepolution. (n.d.). Chapter 8 - Objects. Sheepolution. Retrieved November 30, 
-2021, from https://sheepolution.com/learn/book/8. 
+	Sheepolution. (n.d.). Chapter 23 - Resolving collision. Sheepolution. Retrieved November 
+30, 2021, from https://sheepolution.com/learn/book/23. 
 
-
-
-ADD TO CITATION MACHINE:
-
-*) love.graphics.setFont (ADD TO CITATION MACHINE):
-https://love2d.org/wiki/love.graphics.setFont
-
-*) Sheepolution, Chapter 12: 
-https://sheepolution.com/learn/book/12
-
-*) Sheepolution, Chapter 5:
-https://sheepolution.com/learn/book/5
-
-*) love.graphics.rectangle:
-https://love2d.org/wiki/love.graphics.rectangle
+	Sheepolution. (n.d.). Chapter 24 - Platformer. Sheepolution. Retrieved November 30, 2021, 
+from https://sheepolution.com/learn/book/24. 
 
 
 
