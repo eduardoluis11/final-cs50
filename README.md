@@ -10,11 +10,11 @@ This is Golden Heart, a game made by Eduardo Salinas for CS50x’s Final Project
 
 ##### A bit of background information:
 
-	I've wanted to make a 2D platformer with a focus on finding treasure since my very first CS50 assignment, that is, since the project that we had to do in Scratch. In fact, I originally wanted to add the final puzzle of this game into the Scratch project.
+I've wanted to make a 2D platformer with a focus on finding treasure since my very first CS50 assignment, that is, since the project that we had to do in Scratch. In fact, I originally wanted to add the final puzzle of this game into the Scratch project.
 
-	However, I soon realized that making the puzzle, as well as making the game as I wanted it to be was too complex and would have taken me too much time if I had done it on Scratch. The Scratch project was supposed to be a one-week project. However, to make my game as I wanted, it would have taken me way longer than that.
+However, I soon realized that making the puzzle, as well as making the game as I wanted it to be was too complex and would have taken me too much time if I had done it on Scratch. The Scratch project was supposed to be a one-week project. However, to make my game as I wanted, it would have taken me way longer than that.
 
-	Therefore, I could say that Golden Heart, the game I’m submitting as my final project, is the fully realized version of the game that I originally envisioned for my very first homework assignment for CS50x’s class.
+Therefore, I could say that Golden Heart, the game I’m submitting as my final project, is the fully realized version of the game that I originally envisioned for my very first homework assignment for CS50x’s class.
 
 - What this game is about:
 	Golden Heart is a 2D platformer in which you have to explore a castle and find all of its treasure. You will have to solve some basic puzzles to unlock some of the chests.
