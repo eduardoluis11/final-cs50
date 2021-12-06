@@ -16,13 +16,17 @@ However, I soon realized that making the puzzle, as well as making the game as I
 
 Therefore, I could say that Golden Heart, the game I’m submitting as my final project, is the fully realized version of the game that I originally envisioned for my very first homework assignment for CS50x’s class.
 
-- What this game is about:
-	Golden Heart is a 2D platformer in which you have to explore a castle and find all of its treasure. You will have to solve some basic puzzles to unlock some of the chests.
-	The game was heavily inspired by Wario Land.
-	To beat the game, you need to open all of the 5 treasure chests that are present in the game.
+##### What this game is about:
+
+Golden Heart is a 2D platformer in which you have to explore a castle and find all of its treasure. You will have to solve some basic puzzles to unlock some of the chests.
+
+The game was heavily inspired by Wario Land.
+
+To beat the game, you need to open all of the 5 treasure chests that are present in the game.
 
 
-- Controls:
+##### Controls:
+
 - Left and right arrow keys: Move around.
 - Spacebar: Jump.
 - E: Enter through a door, activate a lever, open a chest.
@@ -30,14 +34,16 @@ Therefore, I could say that Golden Heart, the game I’m submitting as my final 
 
 
 
-- System requirements:
+##### System requirements:
+
 OS: Windows 10, 64-bit.
 Storage: less than 10 MB
 
 
 
 
-- What each file in the source code does:
+##### What each file in the source code does:
+
 1) graphics folder: 
 	This folder contains all of the sprites used in the game.
 2) Block.lua:
@@ -94,7 +100,8 @@ Please, DO NOT DELETE any of the files in this zip folder, and DO NOT RENAME any
 	I may use this script if I ever decide to make the game longer. However, this script currently doesn’t do anything.
 
  
-- Features removed from the game: 
+##### Features removed from the game: 
+
 - Block mechanic:
 	I was going to originally let the player pick up blocks and throw them around so that they could stack them and use them as a platform. I was going to introduce those blocks in the game’s room 4. However, adding them was a bit too complicated for me, and the deadline for the project was near. 
 
@@ -106,99 +113,92 @@ However, if I decide to revisit the game, I may add the block mechanic.
 I was going to add walls to each room to prevent the player from going outside the horizontal boundaries of the rooms. However, just like with the blocks, I had issues with the collision detection, which caused me a ton of bugs.
 I will be adding walls to the game if I ever update it and add more rooms and levels to it.
 
-- Credits and references:
-	Here are all of the external sources used for creating this game. You’ll also find this information in the references.txt and credits.txt files, which are included in the game’s source code.
+##### Credits and references:
 
-Sprites and backgrounds' references:
+Here are all of the external sources used for creating this game. You’ll also find this information in the references.txt and credits.txt files, which are included in the game’s source code.
+
+###### Sprites and backgrounds' references:
 
 I downloaded sprites and backgrounds from the following sources:
 
 
-0x72. (2017). 16x16 dungeon tileset by 0x72. 0x72. Retrieved November 30, 2021, from 
+- 0x72. (2017). 16x16 dungeon tileset by 0x72. 0x72. Retrieved November 30, 2021, from 
 https://0x72.itch.io/16x16-dungeon-tileset. 
 
-
-ansimuz. (2017, April 10). Caverns environment by Ansimuz. ansimuz. Retrieved November 
+- ansimuz. (2017, April 10). Caverns environment by Ansimuz. ansimuz. Retrieved November 
 30, 2021, from https://ansimuz.itch.io/caverns-environment. 
 
-
-BlackSpire Studio. (2018). Medieval pixel art asset free by Blackspire Studio. BlackSpire 
+- BlackSpire Studio. (2018). Medieval pixel art asset free by Blackspire Studio. BlackSpire 
 Studio. Retrieved November 30, 2021, from 
 https://blackspirestudio.itch.io/medieval-pixel-art-asset-free. 
 
-
-greatdocbrown. (2020, July 21). Coins &amp; Gems &amp; Chests &amp; etc by Greatdocbrown. 
+- greatdocbrown. (2020, July 21). Coins &amp; Gems &amp; Chests &amp; etc by Greatdocbrown. 
 greatdocbrown. Retrieved November 30, 2021, from https://greatdocbrown.itch.io/coins-gems-etc. 
 
-
-Kyrise. (2018). Kyrise's free 16x16 RPG icon pack by Kyrise. Kyrise's Game Assets. Retrieved 
+- Kyrise. (2018). Kyrise's free 16x16 RPG icon pack by Kyrise. Kyrise's Game Assets. Retrieved 
 November 30, 2021, from https://kyrise.itch.io/kyrises-free-16x16-rpg-icon-pack. This sprite 
 pack is licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1
 
-
-Lil Cthulhu. (2021, May 21). Animated pixel character by Lil Cthulhu. Lil Cthulhu. Retrieved 
+- Lil Cthulhu. (2021, May 21). Animated pixel character by Lil Cthulhu. Lil Cthulhu. Retrieved 
 November 30, 2021, from https://lil-cthulhu.itch.io/animated-pixel-charackter. 
 
-
-Raou. (2020, June 8). Free dungeon mini-tileset by Raou. Raou. Retrieved November 30, 2021, 
+- Raou. (2020, June 8). Free dungeon mini-tileset by Raou. Raou. Retrieved November 30, 2021, 
 from https://raou.itch.io/free-dungeon-mini-tileset. 
 
-
-RottingPixels. (2019, July 1). Cave platformer tileset [16x16][free] by RottingPixels. 
+- RottingPixels. (2019, July 1). Cave platformer tileset [16x16][free] by RottingPixels. 
 RottingPixels. Retrieved November 30, 2021, from 
 https://rottingpixels.itch.io/cave-platformer-tileset-16x16free. 
 
-
-RottingPixels. (2019, June 23). Dungeon platformer tileset [16x16][free] by RottingPixels. 
+- RottingPixels. (2019, June 23). Dungeon platformer tileset [16x16][free] by RottingPixels. 
 RottingPixels. Retrieved November 30, 2021, from 
 https://rottingpixels.itch.io/platformer-dungeon-tileset. 
 
 ==================================================================
 
-Code references: 
+###### Code references: 
 
 I took code snippets or anything else related to code from these sources:
 
-(2018). Breakout - Lecture 2 - CS50's Introduction to Game Development 2018. 
+- (2018). Breakout - Lecture 2 - CS50's Introduction to Game Development 2018. 
 Retrieved November 30, 2021, from https://www.youtube.com/watch?v=F86edI_EF3s. 
 
-(2018). Flappy Bird - Lecture 1 - CS50's Introduction to Game Development 2018. 
+- (2018). Flappy Bird - Lecture 1 - CS50's Introduction to Game Development 2018. 
 Retrieved November 30, 2021, from https://youtu.be/3IdOCxHGMIo. 
 
-Ensayia . (2012). Default Screen Size. LÖVE - Free 2D Game Engine. Retrieved 
+- Ensayia . (2012). Default Screen Size. LÖVE - Free 2D Game Engine. Retrieved 
 November 30, 2021, from 
 https://love2d.org/forums/viewtopic.php?t=8995#:~:text=Re%3A%20Default%20Screen%20Size&amp;text=With%20no%20config%20file%20specifying,is%20the%201344x768%20widescreen%20variant. I learned Love2D's default window resolution thanks to Ensayia's post.
 
-Jasoco. (2012). Bugs When Window Is Moved. LÖVE - Free 2D Game Engine. Retrieved 
+- Jasoco. (2012). Bugs When Window Is Moved. LÖVE - Free 2D Game Engine. Retrieved 
 November 30, 2021, from https://love2d.org/forums/viewtopic.php?t=8740. I used 
 a code snippet from Jasoco's post.
 
-Jasoco. (2013, December 23). Game runs too fast on a laptop? LÖVE - Free 2D Game 
+- Jasoco. (2013, December 23). Game runs too fast on a laptop? LÖVE - Free 2D Game 
 Engine. Retrieved November 30, 2021, from 
 https://love2d.org/forums/viewtopic.php?t=76758. I learned how to use delta time 
 thanks to Jasoco's post.
 
-Kankaanpaa, H. (2015). Doing game gravity right. OpenArena. Retrieved November 
+- Kankaanpaa, H. (2015). Doing game gravity right. OpenArena. Retrieved November 
 30, 2021, from http://openarena.ws/board/index.php?topic=5100.0. I used "delta 
 time / 2" in my code thanks to GrosBedo's post citing Hannu Kankaanpaa about 
 how to use delta time.
 
-KeyConstant. LOVE. (2021, March 2). Retrieved November 30, 2021, from 
+- KeyConstant. LOVE. (2021, March 2). Retrieved November 30, 2021, from 
 https://love2d.org/wiki/KeyConstant. I learned how to access the space bar key 
 in Love2D from here.
 
-Richter, M. (2018). class.lua. CS50’s Introduction to Game Development. computer 
+- Richter, M. (2018). class.lua. CS50’s Introduction to Game Development. computer 
 software. Retrieved November 30, 2021, from 
 http://cdn.cs50.net/games/2018/spring/lectures/1/src1.zip. 
 
-Sheepolution. (n.d.). Chapter 23 - Resolving collision. Sheepolution. Retrieved 
+- Sheepolution. (n.d.). Chapter 23 - Resolving collision. Sheepolution. Retrieved 
 November 30, 2021, from https://sheepolution.com/learn/book/23. 
 
-Sheepolution. (n.d.). Chapter 24 - Platformer. Sheepolution. Retrieved November 
+- Sheepolution. (n.d.). Chapter 24 - Platformer. Sheepolution. Retrieved November 
 30, 2021, from https://sheepolution.com/learn/book/24. 
 
-Sheepolution. (n.d.). Chapter 7 - Tables and for-loops. Sheepolution. Retrieved 
+- Sheepolution. (n.d.). Chapter 7 - Tables and for-loops. Sheepolution. Retrieved 
 November 30, 2021, from https://sheepolution.com/learn/book/7. 
 
-Sheepolution. (n.d.). Chapter 8 - Objects. Sheepolution. Retrieved November 30, 
+- Sheepolution. (n.d.). Chapter 8 - Objects. Sheepolution. Retrieved November 30, 
 2021, from https://sheepolution.com/learn/book/8. 
