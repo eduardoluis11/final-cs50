@@ -3,10 +3,12 @@
 #### Description:
 
 Copyright (c) 2021 Eduardo Salinas
-Most of the code was written by Eduardo Salinas. The class.lua file and the sprites used are copyright of their respective owners. See the "references.txt" file to check this project's references, that is, to learn more about the sources cited for this project.
-	This is Golden Heart, a game made by Eduardo Salinas for CS50x’s Final Project Assignment.
 
-#### A bit of background information:
+Most of the code was written by Eduardo Salinas. The class.lua file and the sprites used are copyright of their respective owners. See the "references.txt" file to check this project's references, that is, to learn more about the sources cited for this project.
+	
+This is Golden Heart, a game made by Eduardo Salinas for CS50x’s Final Project Assignment.
+
+##### A bit of background information:
 
 	I've wanted to make a 2D platformer with a focus on finding treasure since my very first CS50 assignment, that is, since the project that we had to do in Scratch. In fact, I originally wanted to add the final puzzle of this game into the Scratch project.
 
