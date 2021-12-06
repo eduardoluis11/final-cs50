@@ -45,11 +45,12 @@ To beat the game, you need to open all of the 5 treasure chests that are present
 
 ##### What each file in the source code does:
 
-**1) graphics folder:**
+*1) graphics folder:*
  
-	This folder contains all of the sprites used in the game.
+This folder contains all of the sprites used in the game.
 
-2) Block.lua:
+
+*2) Block.lua:*
 
 This is the script for a gameplay mechanic that I ended up removing from the game. This script was going to allow me to create blocks that the player could pick up, throw, and use as platforms. This script currently doesn’t do anything. 
 
