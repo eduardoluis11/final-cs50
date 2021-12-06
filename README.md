@@ -27,10 +27,10 @@ To beat the game, you need to open all of the 5 treasure chests that are present
 
 ##### Controls:
 
-- Left and right arrow keys: Move around.
-- Spacebar: Jump.
-- E: Enter through a door, activate a lever, open a chest.
-- Esc: Exit the game.
+- **Left and right arrow keys:** Move around.
+- **Spacebar:** Jump.
+- **E:** Enter through a door, activate a lever, open a chest.
+- **Esc:** Exit the game.
 
 
 
@@ -44,73 +44,115 @@ Storage: less than 10 MB
 
 ##### What each file in the source code does:
 
-1) graphics folder: 
-	This folder contains all of the sprites used in the game.
+1) graphics folder:
+ 
+This folder contains all of the sprites used in the game.
+
 2) Block.lua:
-	This is the script for a gameplay mechanic that I ended up removing from the game. This script was going to allow me to create blocks that the player could pick up, throw, and use as platforms. This script currently doesn’t do anything. 
+
+This is the script for a gameplay mechanic that I ended up removing from the game. This script was going to allow me to create blocks that the player could pick up, throw, and use as platforms. This script currently doesn’t do anything. 
+
 However, if I want to release this game to Steam or any other storefront in the future, and I want to add more stuff to the game, I will use this script and add more code to it to add the blocks to the game.
-3) Chest.lua
-	This is a class that allows me to create each instance of a treasure chest. Or in other words, this script allows me to add chests to the game.
+
+3) Chest.lua:
+
+This is a class that allows me to create each instance of a treasure chest. Or in other words, this script allows me to add chests to the game.
 
 4) class.lua:
-	This file was not made by me. It was made by Matthias Richter (see the credits section of this README file or the references.txt for more information.) This script allows me to create classes in Lua, since, by default, Lua doesn’t let me create classes. 
-	By creating classes, I could use Object Oriented Programming, which made it easier for me to create each individual chest, treasure, lever, among other things by writing efficient code. That is, this script allows me to create every chest or other similar object without needing to repeat code.
 
-5) Door.lua
-	This is the class that allows me to create the game’s doors.
-6) Entity.lua
-	This script creates the gravity and the collision detection. That is, it allows the player to fall after jumping, and to fall off a bottomless pit. It also prevents the player from falling through the floor.
-	It was also going to be a base class for all of the game’s objects (the player, the doors, the chests, the floor, etc,) but doing that caused many bugs to show up. So, I didn’t end up using it as a base class for the game’s objects.
+This file was not made by me. It was made by Matthias Richter (see the credits section of this README file or the references.txt for more information.) This script allows me to create classes in Lua, since, by default, Lua doesn’t let me create classes. 
+
+By creating classes, I could use Object Oriented Programming, which made it easier for me to create each individual chest, treasure, lever, among other things by writing efficient code. That is, this script allows me to create every chest or other similar object without needing to repeat code.
+
+5) Door.lua:
+
+This is the class that allows me to create the game’s doors.
+	
+6) Entity.lua:
+
+This script creates the gravity and the collision detection. That is, it allows the player to fall after jumping, and to fall off a bottomless pit. It also prevents the player from falling through the floor.
+	
+It was also going to be a base class for all of the game’s objects (the player, the doors, the chests, the floor, etc,) but doing that caused many bugs to show up. So, I didn’t end up using it as a base class for the game’s objects.
+
 7) Floor.lua:
-	This is the script that creates the floors in the game. Not to confuse it with the platforms. The floors and platforms have different sprites. The bottom of the floor sprites is purple or dark blue.
-	The sprite for the floor where the player is standing at the start of the game is the floor that this script corresponds to.
 
-8) GoldenHeart-1.0.zip
-	Here’s where the actual game is. That is, the executable file that allows you to play the game is located inside of this zip file.
-	This zip file has the .exe file with the game, and all of the code for LOVE 11.3 for 64-bit versions of Windows 10 machines. The entire code for LOVE 11.3 is needed so that the user is able to boot the game without needing to install LOVE on their computer.
+This is the script that creates the floors in the game. Not to confuse it with the platforms. The floors and platforms have different sprites. The bottom of the floor sprites is purple or dark blue.
+
+The sprite for the floor where the player is standing at the start of the game is the floor that this script corresponds to.
+
+8) GoldenHeart-1.0.zip:
+
+Here’s where the actual game is. That is, the executable file that allows you to play the game is located inside of this zip file.
+
+This zip file has the .exe file with the game, and all of the code for LOVE 11.3 for 64-bit versions of Windows 10 machines. The entire code for LOVE 11.3 is needed so that the user is able to boot the game without needing to install LOVE on their computer.
+
 The executable file that lets you play the game is called “GoldenHeart.exe”.
+
 Please, DO NOT DELETE any of the files in this zip folder, and DO NOT RENAME any file (other than “GoldenHeart.exe”). Doing so will make an error message appear and the game won’t boot up any longer.  
 
-9) Lever.lua
-	This is the script that allows me to add levers into the game.
+9) Lever.lua:
 
-10) main.lua
-	This is one of the most important files of the entire game.
-	This script allows the game to run on the LOVE game engine. This is where the load(), update, and draw() functions are located, and the file itself is needed to run the game in Love2D. Without a main.lua file, the game will display an error and won’t run.
-	Also, this file calls all of the other scripts to add all of the objects (the player, the chests, the floors, etc) into the game.
+This is the script that allows me to add levers into the game.
 
-11) Platform.lua
-	This creates the game’s platforms. Do not confuse the platforms with the game’s floors.
-	The platforms can be seen beginning from Room 1 and onwards. The sprites for the platforms are smaller than the floor ones. They don’t have any purple/dark blue color in them. The platforms' sprites are entirely reddish. 
+10) main.lua:
 
-12) Player.lua
-	This is the script that contains all of the code of the playable character.
-13) references.txt
-	This contains all of the external sources used in the making of this game. Here, you will find the sources for the sprites, the class.lua file, and some code snippets that I used in this game that were not made by me. 
-	The same information in this file can be found at the bottom of the README file, as well as in credits.txt in the zip folder with the game’s executable file. 
-14) Stalactite.lua
-	This script has the class that allows me to add stalactites into the game.
-15) Treasure.lua
-	This is the script that allows me to add the individual treasures that you find inside of the chests. Do not confuse this script with the script that renders the actual chests. This script allows me to render, for instance, the ring and the armor that you can find on their respective chests, not the chests themselves.
+This is one of the most important files of the entire game.
+	
+This script allows the game to run on the LOVE game engine. This is where the load(), update, and draw() functions are located, and the file itself is needed to run the game in Love2D. Without a main.lua file, the game will display an error and won’t run.
 
-16) TreasureList.lua
-	This is the script for the UI that appears on top of the screen, which shows you each individual treasure that you have found thus far.
-17) Wall.lua
-	This is the script for another feature of the game that I ended up removing. I was going to add walls into the game which would prevent the player from moving out of the horizontal bounds of the screen.
-	I may use this script if I ever decide to make the game longer. However, this script currently doesn’t do anything.
+Also, this file calls all of the other scripts to add all of the objects (the player, the chests, the floors, etc) into the game.
+
+11) Platform.lua:
+
+This creates the game’s platforms. Do not confuse the platforms with the game’s floors.
+
+The platforms can be seen beginning from Room 1 and onwards. The sprites for the platforms are smaller than the floor ones. They don’t have any purple/dark blue color in them. The platforms' sprites are entirely reddish. 
+
+12) Player.lua:
+
+This is the script that contains all of the code of the playable character.
+
+13) references.txt:
+
+This contains all of the external sources used in the making of this game. Here, you will find the sources for the sprites, the class.lua file, and some code snippets that I used in this game that were not made by me. 
+
+The same information in this file can be found at the bottom of the README file, as well as in credits.txt in the zip folder with the game’s executable file. 
+
+14) Stalactite.lua:
+
+This script has the class that allows me to add stalactites into the game.
+
+15) Treasure.lua:
+
+This is the script that allows me to add the individual treasures that you find inside of the chests. Do not confuse this script with the script that renders the actual chests. This script allows me to render, for instance, the ring and the armor that you can find on their respective chests, not the chests themselves.
+
+16) TreasureList.lua:
+
+This is the script for the UI that appears on top of the screen, which shows you each individual treasure that you have found thus far.
+
+17) Wall.lua:
+
+This is the script for another feature of the game that I ended up removing. I was going to add walls into the game which would prevent the player from moving out of the horizontal bounds of the screen.
+
+I may use this script if I ever decide to make the game longer. However, this script currently doesn’t do anything.
 
  
 ##### Features removed from the game: 
 
-- Block mechanic:
-	I was going to originally let the player pick up blocks and throw them around so that they could stack them and use them as a platform. I was going to introduce those blocks in the game’s room 4. However, adding them was a bit too complicated for me, and the deadline for the project was near. 
+###### Block mechanic:
+
+I was going to originally let the player pick up blocks and throw them around so that they could stack them and use them as a platform. I was going to introduce those blocks in the game’s room 4. However, adding them was a bit too complicated for me, and the deadline for the project was near. 
 
 To add the blocks, I would most likely have had to use Lua’s tables so that the blocks had collision detection. I needed the collision detection so that the player could have jumped on top of them so that they could use them as platforms to reach chests on high platforms. However, collision detection was already giving me a ton of problems. So, if I had added the blocks, I would have needed to modify the collision detection. That would have been too complicated with my limited knowledge in Lua. Also, adding that functionality would cause a ton of bugs, which would require me too much time to fix them.
+
 Therefore, I decided to remove the block mechanic entirely. In room 4, I decided to replace the blocks for a lever that spawns stalactites to be used as platforms.
+
 However, if I decide to revisit the game, I may add the block mechanic.
 
-- Walls:
+###### Walls:
+
 I was going to add walls to each room to prevent the player from going outside the horizontal boundaries of the rooms. However, just like with the blocks, I had issues with the collision detection, which caused me a ton of bugs.
+
 I will be adding walls to the game if I ever update it and add more rooms and levels to it.
 
 ##### Credits and references:
@@ -153,7 +195,7 @@ https://rottingpixels.itch.io/cave-platformer-tileset-16x16free.
 RottingPixels. Retrieved November 30, 2021, from 
 https://rottingpixels.itch.io/platformer-dungeon-tileset. 
 
-==================================================================
+
 
 ###### Code references: 
 
