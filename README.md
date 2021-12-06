@@ -36,17 +36,18 @@ To beat the game, you need to open all of the 5 treasure chests that are present
 
 ##### System requirements:
 
-OS: Windows 10, 64-bit.
-Storage: less than 10 MB
+**OS:** Windows 10, 64-bit.
+
+**Storage:** less than 10 MB
 
 
 
 
 ##### What each file in the source code does:
 
-1) graphics folder:
+*1) graphics folder:*
  
-This folder contains all of the sprites used in the game.
+	This folder contains all of the sprites used in the game.
 
 2) Block.lua:
 
