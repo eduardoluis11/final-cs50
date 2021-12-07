@@ -1,5 +1,5 @@
 # GOLDEN HEART: A GAME MADE WITH LUA AND LOVE
-#### Video Demo:  <URL HERE>
+#### Video Demo:  https://youtu.be/gpbWzcX9z0o
 #### Description:
 
 Copyright (c) 2021 Eduardo Salinas
