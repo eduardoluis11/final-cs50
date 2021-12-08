@@ -1,5 +1,9 @@
 # GOLDEN HEART: A GAME MADE WITH LUA AND LOVE
 #### Video Demo:  https://youtu.be/SgNr82sFVFs
+#### License: 
+
+The code for this game is released under the GNU General Public License v3.0 (https://www.gnu.org/licenses/gpl-3.0.en.html). Meanwhile, the sprites for this game are released under the CC BY-SA 4.0 license (https://creativecommons.org/licenses/by-sa/4.0/ .)
+
 #### Description:
 
 Copyright (c) 2021 Eduardo Salinas
