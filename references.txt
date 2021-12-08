@@ -11,7 +11,8 @@ https://0x72.itch.io/16x16-dungeon-tileset.
 
 	BlackSpire Studio. (2018). Medieval pixel art asset free by Blackspire Studio. BlackSpire 
 Studio. Retrieved November 30, 2021, from 
-https://blackspirestudio.itch.io/medieval-pixel-art-asset-free. 
+https://blackspirestudio.itch.io/medieval-pixel-art-asset-free. This sprite 
+pack is licensed under CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/ 
 
 	greatdocbrown. (2020, July 21). Coins &amp; Gems &amp; Chests &amp; etc by Greatdocbrown. 
 greatdocbrown. Retrieved November 30, 2021, from https://greatdocbrown.itch.io/coins-gems-etc. 
