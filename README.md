@@ -2,7 +2,7 @@
 
 ## License: 
 
-Most of the code for this game, with the only exception of the class.lua file, is released under the GNU General Public License v3.0 (https://www.gnu.org/licenses/gpl-3.0.en.html .) Meanwhile, the class.lua file is released with a special license. Read the class.lua file to find the full description of the license used for that file. The class.lua file is copyright of Matthias Richter. 
+Most of the code for this game, with the only exception of the class.lua file, is released under the GNU General Public License v3.0 (https://www.gnu.org/licenses/gpl-3.0.en.html .) Meanwhile, the class.lua file is released with a special license. Read the class.lua file to find the full description of the license used for that file (which can be found here: https://github.com/eduardoluis11/final-cs50/blob/main/class.lua .) The class.lua file is copyright of Matthias Richter. 
 
 The sprites for this game are released under the CC BY-SA 4.0 license (https://creativecommons.org/licenses/by-sa/4.0/ .)
 
